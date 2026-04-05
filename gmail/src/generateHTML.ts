@@ -107,8 +107,22 @@ export function generateHTML(jobs: JobEmail[]) {
         padding-top: 0;
       }
       .job-title {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
         margin: 0 0 6px;
         font-size: 1.05rem;
+      }
+      .job-index {
+        flex-shrink: 0;
+        min-width: 2.25rem;
+        padding: 3px 8px;
+        border-radius: 999px;
+        background: var(--panel-strong);
+        color: var(--accent);
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-align: center;
       }
       .job-meta {
         margin: 0;
@@ -160,9 +174,9 @@ export function generateHTML(jobs: JobEmail[]) {
           </summary>
           <div class="jobs">
             ${email.jobs.length
-              ? email.jobs.map(job => `
+              ? email.jobs.map((job, jobIndex) => `
                 <article class="job">
-                  <h2 class="job-title">${escapeHtml(job.title)}</h2>
+                  <h2 class="job-title"><span class="job-index">#${jobIndex + 1}</span><span>${escapeHtml(job.title)}</span></h2>
                   <p class="job-meta">${escapeHtml(job.company)} | ${escapeHtml(job.location)}</p>
                   ${job.details.length
                     ? `<ul class="job-details">${job.details.map(detail => `<li>${escapeHtml(detail)}</li>`).join('')}</ul>`
