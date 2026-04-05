@@ -4,6 +4,10 @@ import { JobEmail } from './fetchJobs';
 
 export function generateHTML(jobs: JobEmail[]) {
   const totalJobCount = jobs.reduce((sum, email) => sum + email.jobs.length, 0);
+  const createdAt = new Date().toLocaleString('en-US', {
+    dateStyle: 'medium',
+    timeStyle: 'medium'
+  });
   const html = `
   <html>
   <head>
@@ -45,8 +49,17 @@ export function generateHTML(jobs: JobEmail[]) {
         border-radius: 18px;
         background: rgba(255, 253, 248, 0.86);
       }
+      .summary-title {
+        margin: 0 0 10px;
+        font-size: 1.15rem;
+      }
       .summary strong {
         color: var(--accent);
+      }
+      .summary-timestamp {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 0.95rem;
       }
       details.email {
         margin-bottom: 16px;
@@ -158,8 +171,10 @@ export function generateHTML(jobs: JobEmail[]) {
     <div class="page">
       <h1>LinkedIn Job Alerts Review</h1>
       <p class="summary">
+        <strong class="summary-title">Summary</strong><br />
         Total emails from <strong>jobalerts-noreply@linkedin.com</strong>: <strong>${jobs.length}</strong><br />
         Total jobs parsed from those emails: <strong>${totalJobCount}</strong>
+        <span class="summary-timestamp"><br />Created: <strong>${escapeHtml(createdAt)}</strong></span>
       </p>
       ${jobs.map((email, index) => `
         <details class="email" ${index === 0 ? 'open' : ''}>
