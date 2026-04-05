@@ -1,0 +1,9 @@
+{
+  "gmailApiConfig": {
+    "paths": {
+      "clientSecret": "C:\\Users\\ANDY TANG\\OneDrive\\Documents\\ANDY\\GMAIL\\madeinuk14_gmail_client_secret_cred.json",
+      "token": "C:\\Users\\ANDY TANG\\OneDrive\\Documents\\ANDY\\GMAIL\\gmail_token.json",
+      "tokenCopy": "./gmail-token.sym-link.json"
+    }
+  }
+}
