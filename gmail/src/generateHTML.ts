@@ -8,6 +8,8 @@ export function generateHTML(jobs: JobEmail[]) {
     dateStyle: 'medium',
     timeStyle: 'medium'
   });
+  const outputDir = path.join(__dirname, '../Results');
+  const outputPath = path.join(outputDir, 'Review-Linked-In-Jobs.html');
   const html = `
   <html>
   <head>
@@ -208,8 +210,9 @@ export function generateHTML(jobs: JobEmail[]) {
   </html>
   `;
 
-  fs.writeFileSync(path.join(__dirname, '../Review-Linked-In-Jobs.html'), html);
-  console.log('Review-Linked-In-Jobs.html generated!');
+  fs.mkdirSync(outputDir, { recursive: true });
+  fs.writeFileSync(outputPath, html);
+  console.log(`Review-Linked-In-Jobs.html generated at ${outputPath}`);
 }
 
 function escapeHtml(value: string): string {
