@@ -2,4 +2,6 @@
 /gmail/node_modules/
 /dist/
 /gmail/dist/
+/Results/
+/gmail/Results/
 gmail/gmail-token.sym-link.json
