@@ -31,7 +31,7 @@
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "manageToken": "ts-node src/manageToken.ts",
     "fetchJobs": "ts-node src/fetchJobs.ts",
-    "generateHTML": "ts-node src/generateHTML.ts",
+    "generateReview": "ts-node src/generateReview.ts",
     "reviewJobs": "ts-node src/index.ts"
   }
 }
