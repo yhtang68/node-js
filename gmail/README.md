@@ -46,7 +46,7 @@ Example:
     "paths": {
       "clientSecret": "C:\\Users\\ANDY TANG\\OneDrive\\Documents\\ANDY\\GMAIL\\madeinuk14_gmail_client_secret_cred.json",
       "token": "C:\\Users\\ANDY TANG\\OneDrive\\Documents\\ANDY\\GMAIL\\gmail_token.json",
-      "tokenCopy": "./gmail-token.sym-link.json"
+      "tokenCopy": "./gmail-token.copy.json"
     }
   }
 }
@@ -56,7 +56,7 @@ Fields:
 
 * `clientSecret`: Absolute path to the Google OAuth client credentials JSON.
 * `token`: Absolute path to the Gmail OAuth token file created later by `npm run manageToken`.
-* `tokenCopy`: Local project-side token reference file.
+* `tokenCopy`: Local project-side copied token file.
 
 How it is used:
 
@@ -69,7 +69,8 @@ Notes:
 
 * `clientSecret` and `token` can live outside the repo.
 * Update the paths on each machine if your local credential locations are different.
-* `gmail-token.sym-link.json` is only a project helper file and does not replace the real token path in `paths.token`.
+* `gmail-token.copy.json` is only a project helper copy and does not replace the real token path in `paths.token`.
+* `gmail-token.copy.json` is git-ignored, so the copied local token file will not be committed.
 
 ## 2. Manage Token
 
@@ -79,18 +80,30 @@ Run:
 npm run manageToken
 ```
 
-Then:
+The script now tries to make the flow easier:
+
+1. It starts a temporary local callback server.
+2. It opens the Google authorization page in your browser automatically.
+3. After you approve access, Google redirects back to the local callback.
+4. The script captures the authorization code automatically and saves the token.
+
+If the browser does not open or the automatic callback flow times out, the script falls back to manual mode and lets you paste either:
+
+* the full redirected URL, or
+* just the `code` value
+
+Manual fallback steps:
 
 1. Copy the authorization URL printed in the terminal into your browser.
 2. Sign in with your Gmail test user.
 3. Approve the requested Gmail permissions.
-4. After Google redirects to `http://localhost/?code=...`, copy the `code` value.
-5. Paste that code back into the terminal.
+4. Copy the full redirected URL or the `code` value.
+5. Paste it back into the terminal.
 
 What happens next:
 
 * The token is saved to the path configured in `gmail-api.config.json`.
-* A local helper copy is written to `gmail-token.sym-link.json`.
+* A local helper copy is written to `gmail-token.copy.json`.
 
 You usually only need to do this again if the token expires, is revoked, or you switch accounts.
 
