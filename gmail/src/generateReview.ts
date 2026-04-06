@@ -2,14 +2,37 @@ import fs from 'fs';
 import path from 'path';
 import { JobEmail } from './fetchJobs';
 
-export function generateHTML(jobs: JobEmail[]) {
+export function generateReview(jobs: JobEmail[]) {
   const totalJobCount = jobs.reduce((sum, email) => sum + email.jobs.length, 0);
-  const createdAt = new Date().toLocaleString('en-US', {
+  const createdAtDate = new Date();
+  const createdAt = createdAtDate.toLocaleString('en-US', {
     dateStyle: 'medium',
     timeStyle: 'medium'
   });
   const outputDir = path.join(__dirname, '../Results');
-  const outputPath = path.join(outputDir, 'Review-Linked-In-Jobs.html');
+  const htmlOutputPath = path.join(outputDir, 'Linked-In-Jobs-Review.html');
+  const jsonOutputPath = path.join(outputDir, 'Linked-In-Jobs-Review.json');
+  const jsonPayload = {
+    summary: {
+      source: 'jobalerts-noreply@linkedin.com',
+      totalEmails: jobs.length,
+      totalJobs: totalJobCount,
+      createdAt,
+      createdAtIso: createdAtDate.toISOString()
+    },
+    emails: jobs.map(email => ({
+      subject: email.subject,
+      datetime: email.date,
+      jobs: email.jobs.map((job, index) => ({
+        index: index + 1,
+        title: job.title,
+        company: job.company,
+        location: job.location,
+        details: job.details,
+        link: job.link
+      }))
+    }))
+  };
   const html = `
   <html>
   <head>
@@ -211,8 +234,10 @@ export function generateHTML(jobs: JobEmail[]) {
   `;
 
   fs.mkdirSync(outputDir, { recursive: true });
-  fs.writeFileSync(outputPath, html);
-  console.log(`Review-Linked-In-Jobs.html generated at ${outputPath}`);
+  fs.writeFileSync(htmlOutputPath, html);
+  fs.writeFileSync(jsonOutputPath, JSON.stringify(jsonPayload, null, 2));
+  console.log(`Linked-In-Jobs-Review.html generated at ${htmlOutputPath}`);
+  console.log(`Linked-In-Jobs-Review.json generated at ${jsonOutputPath}`);
 }
 
 function escapeHtml(value: string): string {

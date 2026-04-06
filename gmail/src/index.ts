@@ -1,5 +1,6 @@
 import { fetchJobEmails, deduplicateJobs } from './fetchJobs';
-import { generateHTML } from './generateHTML';
+import { generateFilteredReview } from './generateFilteredReview';
+import { generateReview } from './generateReview';
 
 async function main() {
   console.log('Fetching LinkedIn job emails...');
@@ -8,8 +9,9 @@ async function main() {
   console.log(`Fetched ${emails.length} emails. Deduplicating...`);
   const jobs = deduplicateJobs(emails);
 
-  console.log(`Deduplicated jobs count: ${jobs.length}. Generating HTML...`);
-  generateHTML(jobs);
+  console.log(`Deduplicated jobs count: ${jobs.length}. Generating review...`);
+  generateReview(jobs);
+  generateFilteredReview();
 
   console.log('Done!');
 }
