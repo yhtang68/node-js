@@ -1,6 +1,6 @@
 # LinkedIn Job Review
 
-This project reads LinkedIn job alert emails from Gmail and generates a foldable HTML review page.
+This project reads LinkedIn job alert emails from Gmail and generates review files in both HTML and JSON format, including a filtered version with duplicate jobs removed.
 
 ## 1. Project Setup
 
@@ -114,11 +114,37 @@ What it does:
 * Connects to Gmail using the configured OAuth files.
 * Fetches emails from `jobalerts-noreply@linkedin.com`.
 * Parses job entries from those emails.
-* Generates the review page at [`Review-Linked-In-Jobs.html`](/c:/dev/yhtang/node-js/gmail/Results/Review-Linked-In-Jobs.html).
+* Generates the full review files:
+  [`Linked-In-Jobs-Review.html`](/c:/dev/yhtang/node-js/gmail/Results/Linked-In-Jobs-Review.html) and
+  [`Linked-In-Jobs-Review.json`](/c:/dev/yhtang/node-js/gmail/Results/Linked-In-Jobs-Review.json).
+* Generates the filtered review files:
+  [`Linked-In-Jobs-Review-Filtered.html`](/c:/dev/yhtang/node-js/gmail/Results/Linked-In-Jobs-Review-Filtered.html) and
+  [`Linked-In-Jobs-Review-Filtered.json`](/c:/dev/yhtang/node-js/gmail/Results/Linked-In-Jobs-Review-Filtered.json).
 
-Open the generated HTML file in [`Results`](/c:/dev/yhtang/node-js/gmail/Results) to review the grouped and foldable job results.
+Filtered review behavior:
+
+* Emails are sorted latest first.
+* Duplicate jobs are kept in the latest email only.
+* The same jobs are removed from older emails.
+* Any email with `0` jobs after filtering is omitted from the filtered output.
+
+Open the generated files in [`Results`](/c:/dev/yhtang/node-js/gmail/Results) to review the outputs.
+
+### Cleanup scripts
+
+Useful scripts from [`package.json`](/c:/dev/yhtang/node-js/gmail/package.json):
+
+```bash
+npm run del:results
+npm run del:packages
+```
+
+They do the following:
+
+* `del:results`: removes the generated `Results` folder.
+* `del:packages`: removes `node_modules`.
 
 ## Notes
 
-* The `punycode` deprecation warning in the terminal can be ignored for now.
 * If Google returns a 403 during authorization, make sure your Gmail account was added as a test user.
+* `npm install` may still show `node-domexception@1.0.0` as deprecated. That warning currently comes from the upstream Google HTTP dependency chain and can be ignored for now.

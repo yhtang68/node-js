@@ -1,42 +1,103 @@
 import fs from 'fs';
 import path from 'path';
-import { JobEmail } from './fetchJobs';
 
-export function generateReview(jobs: JobEmail[]) {
-  const totalJobCount = jobs.reduce((sum, email) => sum + email.jobs.length, 0);
-  const createdAtDate = new Date();
-  const createdAt = createdAtDate.toLocaleString('en-US', {
-    dateStyle: 'medium',
-    timeStyle: 'medium'
-  });
+interface ReviewJob {
+  index: number;
+  title: string;
+  company: string;
+  location: string;
+  details: string[];
+  link: string;
+}
+
+interface ReviewEmail {
+  subject: string;
+  datetime: string;
+  jobs: ReviewJob[];
+}
+
+interface ReviewSummary {
+  source: string;
+  totalEmails: number;
+  totalJobs: number;
+  createdAt: string;
+  createdAtIso: string;
+}
+
+interface ReviewData {
+  summary: ReviewSummary;
+  emails: ReviewEmail[];
+}
+
+export function generateFilteredReview() {
   const outputDir = path.join(__dirname, '../Results');
-  const htmlOutputPath = path.join(outputDir, 'Linked-In-Jobs-Review.html');
-  const jsonOutputPath = path.join(outputDir, 'Linked-In-Jobs-Review.json');
-  const jsonPayload = {
+  const inputPath = path.join(outputDir, 'Linked-In-Jobs-Review.json');
+  const htmlOutputPath = path.join(outputDir, 'Linked-In-Jobs-Review-Filtered.html');
+  const jsonOutputPath = path.join(outputDir, 'Linked-In-Jobs-Review-Filtered.json');
+
+  if (!fs.existsSync(inputPath)) {
+    throw new Error(`Review JSON not found at ${inputPath}. Generate Linked-In-Jobs-Review.json first.`);
+  }
+
+  const reviewData = JSON.parse(fs.readFileSync(inputPath, 'utf8')) as ReviewData;
+  const filteredData = buildFilteredReview(reviewData);
+  const html = buildFilteredHtml(filteredData);
+
+  fs.mkdirSync(outputDir, { recursive: true });
+  fs.writeFileSync(htmlOutputPath, html);
+  fs.writeFileSync(jsonOutputPath, JSON.stringify(filteredData, null, 2));
+  console.log(`Linked-In-Jobs-Review-Filtered.html generated at ${htmlOutputPath}`);
+  console.log(`Linked-In-Jobs-Review-Filtered.json generated at ${jsonOutputPath}`);
+}
+
+function buildFilteredReview(reviewData: ReviewData): ReviewData {
+  const sortedEmails = [...reviewData.emails].sort((a, b) => parseEmailDate(b.datetime) - parseEmailDate(a.datetime));
+  const seenLinks = new Set<string>();
+
+  const filteredEmails = sortedEmails
+    .map(email => {
+      const jobs = email.jobs
+        .filter(job => {
+          const jobKey = getJobKey(job);
+          if (seenLinks.has(jobKey)) return false;
+          seenLinks.add(jobKey);
+          return true;
+        })
+        .map((job, index) => ({
+          ...job,
+          index: index + 1
+        }));
+
+      return {
+        ...email,
+        jobs
+      };
+    })
+    .filter(email => email.jobs.length > 0);
+
+  const totalJobs = filteredEmails.reduce((sum, email) => sum + email.jobs.length, 0);
+  const createdAtDate = new Date();
+
+  return {
     summary: {
-      source: 'jobalerts-noreply@linkedin.com',
-      totalEmails: jobs.length,
-      totalJobs: totalJobCount,
-      createdAt,
+      source: reviewData.summary.source,
+      totalEmails: filteredEmails.length,
+      totalJobs,
+      createdAt: createdAtDate.toLocaleString('en-US', {
+        dateStyle: 'medium',
+        timeStyle: 'medium'
+      }),
       createdAtIso: createdAtDate.toISOString()
     },
-    emails: jobs.map(email => ({
-      subject: email.subject,
-      datetime: email.date,
-      jobs: email.jobs.map((job, index) => ({
-        index: index + 1,
-        title: job.title,
-        company: job.company,
-        location: job.location,
-        details: job.details,
-        link: job.link
-      }))
-    }))
+    emails: filteredEmails
   };
-  const html = `
+}
+
+function buildFilteredHtml(reviewData: ReviewData): string {
+  return `
   <html>
   <head>
-    <title>LinkedIn Job Review</title>
+    <title>LinkedIn Jobs Filtered</title>
     <style>
       :root {
         color-scheme: light;
@@ -131,11 +192,6 @@ export function generateReview(jobs: JobEmail[]) {
       .jobs {
         padding: 18px 22px 22px;
       }
-      .empty {
-        margin: 0;
-        color: var(--muted);
-        font-style: italic;
-      }
       .job {
         padding: 16px 0;
         border-top: 1px solid var(--line);
@@ -194,37 +250,35 @@ export function generateReview(jobs: JobEmail[]) {
   </head>
   <body>
     <div class="page">
-      <h1>LinkedIn Job Alerts Review</h1>
+      <h1>LinkedIn Jobs Filtered</h1>
       <p class="summary">
         <strong class="summary-title">Summary</strong><br />
-        Total emails from <strong>jobalerts-noreply@linkedin.com</strong>: <strong>${jobs.length}</strong><br />
-        Total jobs parsed from those emails: <strong>${totalJobCount}</strong>
-        <span class="summary-timestamp"><br />Created: <strong>${escapeHtml(createdAt)}</strong></span>
+        Total emails from <strong>${escapeHtml(reviewData.summary.source)}</strong> with unique jobs: <strong>${reviewData.summary.totalEmails}</strong><br />
+        Total unique jobs: <strong>${reviewData.summary.totalJobs}</strong>
+        <span class="summary-timestamp"><br />Created: <strong>${escapeHtml(reviewData.summary.createdAt)}</strong></span>
       </p>
-      ${jobs.map((email, index) => `
+      ${reviewData.emails.map((email, index) => `
         <details class="email" ${index === 0 ? 'open' : ''}>
           <summary>
             <div class="summary-row">
               <div>
                 <div class="email-subject">${escapeHtml(email.subject)}</div>
-                <div class="email-date">${escapeHtml(email.date)}</div>
+                <div class="email-date">${escapeHtml(email.datetime)}</div>
               </div>
               <div class="email-count">${email.jobs.length} jobs</div>
             </div>
           </summary>
           <div class="jobs">
-            ${email.jobs.length
-              ? email.jobs.map((job, jobIndex) => `
-                <article class="job">
-                  <h2 class="job-title"><span class="job-index">#${jobIndex + 1}</span><span>${escapeHtml(job.title)}</span></h2>
-                  <p class="job-meta">${escapeHtml(job.company)} | ${escapeHtml(job.location)}</p>
-                  ${job.details.length
-                    ? `<ul class="job-details">${job.details.map(detail => `<li>${escapeHtml(detail)}</li>`).join('')}</ul>`
-                    : ''}
-                  <a class="job-link" href="${escapeAttribute(job.link)}" target="_blank" rel="noreferrer">Open job</a>
-                </article>
-              `).join('')
-              : '<p class="empty">No individual jobs were parsed from this email.</p>'}
+            ${email.jobs.map(job => `
+              <article class="job">
+                <h2 class="job-title"><span class="job-index">#${job.index}</span><span>${escapeHtml(job.title)}</span></h2>
+                <p class="job-meta">${escapeHtml(job.company)} | ${escapeHtml(job.location)}</p>
+                ${job.details.length
+                  ? `<ul class="job-details">${job.details.map(detail => `<li>${escapeHtml(detail)}</li>`).join('')}</ul>`
+                  : ''}
+                <a class="job-link" href="${escapeAttribute(job.link)}" target="_blank" rel="noreferrer">Open job</a>
+              </article>
+            `).join('')}
           </div>
         </details>
       `).join('')}
@@ -232,12 +286,20 @@ export function generateReview(jobs: JobEmail[]) {
   </body>
   </html>
   `;
+}
 
-  fs.mkdirSync(outputDir, { recursive: true });
-  fs.writeFileSync(htmlOutputPath, html);
-  fs.writeFileSync(jsonOutputPath, JSON.stringify(jsonPayload, null, 2));
-  console.log(`Linked-In-Jobs-Review.html generated at ${htmlOutputPath}`);
-  console.log(`Linked-In-Jobs-Review.json generated at ${jsonOutputPath}`);
+function parseEmailDate(value: string): number {
+  const parsed = Date.parse(value);
+  return Number.isNaN(parsed) ? 0 : parsed;
+}
+
+function getJobKey(job: ReviewJob): string {
+  const idMatch = job.link.match(/\/jobs\/view\/(\d+)/);
+  if (idMatch) {
+    return idMatch[1];
+  }
+
+  return `${job.title}|${job.company}|${job.location}`;
 }
 
 function escapeHtml(value: string): string {
@@ -251,4 +313,8 @@ function escapeHtml(value: string): string {
 
 function escapeAttribute(value: string): string {
   return escapeHtml(value);
+}
+
+if (require.main === module) {
+  generateFilteredReview();
 }

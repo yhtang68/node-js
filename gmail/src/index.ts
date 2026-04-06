@@ -1,4 +1,5 @@
 import { fetchJobEmails, deduplicateJobs } from './fetchJobs';
+import { generateFilteredReview } from './generateFilteredReview';
 import { generateReview } from './generateReview';
 
 async function main() {
@@ -10,6 +11,7 @@ async function main() {
 
   console.log(`Deduplicated jobs count: ${jobs.length}. Generating review...`);
   generateReview(jobs);
+  generateFilteredReview();
 
   console.log('Done!');
 }
