@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "strict": true,
+
+    // 👇 output folder
+    "outDir": "./dist",
+
+    // 👇 keeps JS structure aligned with TS files
+    "rootDir": "./"
+  },
+  "include": ["./**/*"]
+}
