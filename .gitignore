@@ -1,7 +1,14 @@
-/node_modules/
-/gmail/node_modules/
-/dist/
-/gmail/dist/
-/Results/
-/gmail/Results/
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+
+# Test / runtime results
+Results/
+**/Results/
+
+# Gmail token file (sensitive)
 gmail/gmail-token.copy.json
