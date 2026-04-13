@@ -4,6 +4,7 @@
     "module": "CommonJS",
     "strict": true,
 
+    "types": ["node"],
     // 👇 output folder
     "outDir": "./dist",
 

@@ -1,4 +1,4 @@
-console.log("hello");
+import { printDebug } from "./debug";
 
 function twoSum(nums: number[], target: number): number[] {
   const map = new Map<number, number>();
@@ -16,7 +16,16 @@ function twoSum(nums: number[], target: number): number[] {
   return [];
 }
 
-const nums = [2, 7, 11, 15];
-const input = 9;
+function main() {
+  const data = [7, 11, 15, 2];
+  const input = 9;
 
-console.log(twoSum(nums, input));
+  printDebug({
+    fileName: __filename,
+    test: { data, input },
+  });
+
+  console.log(twoSum(data, input));
+}
+
+main();

@@ -5,14 +5,14 @@ class Solution {
     const map = new Map<number, number>();
 
     for (let i = 0; i < nums.length; i++) {
-      const num = nums[i]!; // 👈 FIX 1: assert not undefined
+      const num = nums[i]!;
       const complement = target - num;
 
       if (map.has(complement)) {
         return [map.get(complement)!, i];
       }
 
-      map.set(num, i); // 👈 FIX 2: use safe value
+      map.set(num, i);
     }
 
     return [];
@@ -30,7 +30,7 @@ function main(): Status {
 
   const sol = new Solution();
 
-  const result = sol.twoSum([2, 7, 11, 15], 9);
+  const result = sol.twoSum([2, 7, 11, 15, 6, 3], 9);
 
   console.log("RESULT:", result);
 
