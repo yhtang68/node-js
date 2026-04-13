@@ -1,9 +1,10 @@
 {
   "type": "commonjs",
   "scripts": {
-    "dev": "ts-node --compiler-options {\"module\":\"CommonJS\"} two-sum.class.ts"
+    "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts"
   },
   "devDependencies": {
+    "nodemon": "^3.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.2"
   }
