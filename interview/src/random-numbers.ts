@@ -122,7 +122,7 @@ function test_Generator() {
   }
 }
 
-function main2() {
+function test_Generator2() {
   const generator = new Generator();
   const n = 500;
 
