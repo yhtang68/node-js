@@ -3,10 +3,10 @@
  * A palindrome is a string that reads the same forward and backward, for example: "radar", "level", "madam".
  */
 
-const _ = require("lodash");
+import _ from "lodash";
 
 class PalindromeChecker {
-  constructor() {}
+  constructor() { }
 
   public isPalindrome(str: string) {
     // str.replace(/\s+/g, "")
