@@ -33,7 +33,6 @@
     "del:results": "rimraf Results",
     "del:packages": "rimraf node_modules",
     "manageToken": "ts-node src/manageToken.ts",
-    "fetchJobs": "ts-node src/fetchJobs.ts",
     "generateReview": "ts-node src/generateReview.ts",
     "generateFilteredReview": "ts-node src/generateFilteredReview.ts",
     "reviewJobs": "ts-node src/index.ts"

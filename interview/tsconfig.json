@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "CommonJS",
+    "strict": true,
+
+    "types": ["node"],
+    // 👇 output folder
+    "outDir": "./dist",
+
+    // 👇 keeps JS structure aligned with TS files
+    "rootDir": "./"
+  },
+  "include": ["./**/*"]
+}
