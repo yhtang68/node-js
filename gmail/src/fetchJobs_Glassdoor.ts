@@ -118,9 +118,10 @@ function parseJobsFromHtml(html: string): JobPosting[] {
 
     if (!href || !title || !company || !location) continue;
 
-    const ageText = extractAllByClass(inner, 'gd-764e661c5b')
+    const ageRaw = extractAllByClass(inner, 'gd-764e661c5b')
       .map(text => text.trim())
       .filter(Boolean)[0];
+    const ageText = ageRaw ? normalizePosted(ageRaw) : '';
 
     const ratingRaw = extractAllByClass(inner, 'gd-562cbc7b4e')
       .map(text => text.trim())
@@ -149,6 +150,12 @@ function normalizeRating(value: string): string {
   if (match) return `Rated: ${match[1]} ★`;
   if (clean) return `Rated: ${clean}`;
   return '';
+}
+
+function normalizePosted(value: string): string {
+  const clean = value.replace(/\s+/g, ' ').trim();
+  if (!clean) return '';
+  return `Posted: ${clean}`;
 }
 
 function extractByClass(html: string, className: string): string {
