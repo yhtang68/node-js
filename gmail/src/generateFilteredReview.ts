@@ -61,13 +61,14 @@ export function generateFilteredReview(source: JobSourceConfig, filters: JobFilt
 }
 
 function buildFilteredReview(reviewData: ReviewData, filters: JobFilterConfig): ReviewData {
+  const sourceId = reviewData.summary.sourceId as JobSourceConfig['id'];
   const sortedEmails = [...reviewData.emails].sort((a, b) => parseEmailDate(b.datetime) - parseEmailDate(a.datetime));
   const seenLinks = new Set<string>();
 
   const filteredEmails = sortedEmails
     .map(email => {
       const jobs = email.jobs
-        .filter(job => applyJobFilters(job, filters, seenLinks))
+        .filter(job => applyJobFilters(sourceId, job, filters, seenLinks))
         .map((job, index) => ({
           ...job,
           index: index + 1
@@ -101,9 +102,14 @@ function buildFilteredReview(reviewData: ReviewData, filters: JobFilterConfig): 
   };
 }
 
-function applyJobFilters(job: ReviewJob, filters: JobFilterConfig, seenKeys: Set<string>): boolean {
+function applyJobFilters(
+  sourceId: JobSourceConfig['id'],
+  job: ReviewJob,
+  filters: JobFilterConfig,
+  seenKeys: Set<string>
+): boolean {
   if (filters.dedupe) {
-    const key = getJobKey(job);
+    const key = getJobKey(sourceId, job);
     if (seenKeys.has(key)) return false;
     seenKeys.add(key);
   }

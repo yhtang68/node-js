@@ -12,6 +12,12 @@ export const JOB_SOURCES: JobSourceConfig[] = [
     fromEmail: 'noreply@glassdoor.com',
     displayName: 'Glassdoor Job Alerts',
     outputBaseName: 'Glassdoor-Jobs'
+  },
+  {
+    id: 'Lensa',
+    fromEmail: 'jobalert@lensa.com',
+    displayName: 'Lensa Job Alerts',
+    outputBaseName: 'Lensa-Jobs'
   }
 ];
 
@@ -21,8 +27,12 @@ export const JOB_FILTERS: Record<JobSourceConfig['id'], JobFilterConfig> = {
   },
   Glassdoor: {
     dedupe: true,
-    minSalaryUsdYear: 150_000,
+    minSalaryUsdYear: 145_000,
+    requireSalaryForMinSalaryFilter: true
+  },
+  Lensa: {
+    dedupe: true,
+    minSalaryUsdYear: 160_000,
     requireSalaryForMinSalaryFilter: true
   }
 };
-

@@ -1,6 +1,7 @@
 import { JOB_FILTERS, JOB_SOURCES } from './config';
 import { fetchJobEmails_Glassdoor } from './fetchJobs_Glassdoor';
 import { fetchJobEmails_LinkedIn } from './fetchJobs_LinkedIn';
+import { fetchJobEmails_Lensa } from './fetchJobs_Lensa';
 import { generateFilteredReview } from './generateFilteredReview';
 import { generateReview } from './generateReview';
 import { JobEmail, JobSourceId } from './types';
@@ -8,7 +9,8 @@ import { JobEmail, JobSourceId } from './types';
 async function main() {
   const fetchers: Record<JobSourceId, () => Promise<JobEmail[]>> = {
     LinkedIn: fetchJobEmails_LinkedIn,
-    Glassdoor: fetchJobEmails_Glassdoor
+    Glassdoor: fetchJobEmails_Glassdoor,
+    Lensa: fetchJobEmails_Lensa
   };
 
   for (const source of JOB_SOURCES) {

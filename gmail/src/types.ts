@@ -1,4 +1,4 @@
-export type JobSourceId = 'LinkedIn' | 'Glassdoor';
+export type JobSourceId = 'LinkedIn' | 'Glassdoor' | 'Lensa';
 
 export interface SalaryRangeUsdYear {
   text: string;
@@ -33,4 +33,3 @@ export interface JobFilterConfig {
   minSalaryUsdYear?: number;
   requireSalaryForMinSalaryFilter?: boolean;
 }
-
