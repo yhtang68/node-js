@@ -21,7 +21,7 @@ export const JOB_FILTERS: Record<JobSourceConfig['id'], JobFilterConfig> = {
   },
   Glassdoor: {
     dedupe: true,
-    minSalaryUsdYear: 200_000,
+    minSalaryUsdYear: 150_000,
     requireSalaryForMinSalaryFilter: true
   }
 };
