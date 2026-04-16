@@ -1,20 +1,8 @@
 import { getGmailClient } from './auth';
+import { JobEmail, JobPosting } from './types';
+import { decodeGmailBodyData } from './utils/gmail';
 
-export interface JobItem {
-  title: string;
-  company: string;
-  location: string;
-  details: string[];
-  link: string;
-}
-
-export interface JobEmail {
-  subject: string;
-  date: string;
-  jobs: JobItem[];
-}
-
-export async function fetchJobEmails(): Promise<JobEmail[]> {
+export async function fetchJobEmails_LinkedIn(): Promise<JobEmail[]> {
   const gmail = await getGmailClient();
 
   const res = await gmail.users.messages.list({
@@ -46,17 +34,13 @@ export async function fetchJobEmails(): Promise<JobEmail[]> {
   return emails;
 }
 
-export function deduplicateJobs(jobs: JobEmail[]): JobEmail[] {
-  return jobs;
-}
-
 function extractPlainText(
   payload: { mimeType?: string | null; body?: { data?: string | null } | null; parts?: any[] | null } | undefined
 ): string {
   if (!payload) return '';
 
   if (payload.mimeType === 'text/plain' && payload.body?.data) {
-    return Buffer.from(payload.body.data, 'base64').toString('utf8');
+    return decodeGmailBodyData(payload.body.data);
   }
 
   for (const part of payload.parts || []) {
@@ -67,16 +51,16 @@ function extractPlainText(
   return '';
 }
 
-function parseJobsFromBody(body: string): JobItem[] {
+function parseJobsFromBody(body: string): JobPosting[] {
   if (!body) return [];
 
   return body
     .split(/-{20,}/)
     .map(section => parseJobSection(section))
-    .filter((job): job is JobItem => job !== null);
+    .filter((job): job is JobPosting => job !== null);
 }
 
-function parseJobSection(section: string): JobItem | null {
+function parseJobSection(section: string): JobPosting | null {
   const lines = section
     .split(/\r?\n/)
     .map(line => line.trim())

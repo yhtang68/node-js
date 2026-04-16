@@ -1,6 +1,6 @@
-# LinkedIn Job Review
+# Job Review (LinkedIn + Glassdoor)
 
-This project reads LinkedIn job alert emails from Gmail and generates review files in both HTML and JSON format, including a filtered version with duplicate jobs removed.
+This project reads job alert emails from Gmail (LinkedIn + Glassdoor) and generates review files in both HTML and JSON format, including a filtered version with duplicate jobs removed (and optional salary filtering for Glassdoor).
 
 ## 1. Project Setup
 
@@ -125,14 +125,16 @@ What it does:
 
 * Starts the review flow from [`index.ts`](/c:/dev/yhtang/node-js/gmail/src/index.ts).
 * Connects to Gmail using the configured OAuth files.
-* Fetches emails from `jobalerts-noreply@linkedin.com`.
+* Fetches emails from:
+  * `jobalerts-noreply@linkedin.com` (LinkedIn)
+  * `noreply@glassdoor.com` (Glassdoor)
 * Parses job entries from those emails.
-* Generates the full review files:
-  [`Linked-In-Jobs-Review.html`](/c:/dev/yhtang/node-js/gmail/Results/Linked-In-Jobs-Review.html) and
-  [`Linked-In-Jobs-Review.json`](/c:/dev/yhtang/node-js/gmail/Results/Linked-In-Jobs-Review.json).
-* Generates the filtered review files:
-  [`Linked-In-Jobs-Review-Filtered.html`](/c:/dev/yhtang/node-js/gmail/Results/Linked-In-Jobs-Review-Filtered.html) and
-  [`Linked-In-Jobs-Review-Filtered.json`](/c:/dev/yhtang/node-js/gmail/Results/Linked-In-Jobs-Review-Filtered.json).
+* Generates the full review files (per source), for example:
+  * `Results/Linked-In-Jobs-Review.html` + `Results/Linked-In-Jobs-Review.json`
+  * `Results/Glassdoor-Jobs-Review.html` + `Results/Glassdoor-Jobs-Review.json`
+* Generates the filtered review files (per source), for example:
+  * `Results/Linked-In-Jobs-Review-Filtered.html` + `Results/Linked-In-Jobs-Review-Filtered.json`
+  * `Results/Glassdoor-Jobs-Review-Filtered.html` + `Results/Glassdoor-Jobs-Review-Filtered.json`
 
 Filtered review behavior:
 
@@ -140,6 +142,7 @@ Filtered review behavior:
 * Duplicate jobs are kept in the latest email only.
 * The same jobs are removed from older emails.
 * Any email with `0` jobs after filtering is omitted from the filtered output.
+* For Glassdoor, the filtered review also applies the salary filter configured in [`src/config.ts`](/c:/dev/yhtang/node-js/gmail/src/config.ts).
 
 Open the generated files in [`Results`](/c:/dev/yhtang/node-js/gmail/Results) to review the outputs.
 
