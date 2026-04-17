@@ -1,0 +1,2675 @@
+Delivered-To: madeinuk14@gmail.com
+Received: by 2002:a05:6124:1786:b0:43b:34a5:be82 with SMTP id p6csp959794vlh;
+        Wed, 15 Apr 2026 07:00:59 -0700 (PDT)
+X-Received: by 2002:a05:6a20:9389:b0:398:a1ca:7a2a with SMTP id adf61e73a8af0-39fe4051d08mr23192155637.48.1776261658998;
+        Wed, 15 Apr 2026 07:00:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1776261658; cv=none;
+        d=google.com; s=arc-20240605;
+        b=AORW2Jfj8gjJTmxN9Nu+gvpQ4ZWmu+np28tcMkUPQpj9GVYS/fsMwO2rBx9RVvmtCM
+         tkwQvKzgpWyq06OBOJEbsa8qUo07P2f+I3ScWyI3DJu1TGo0qIAlnSfgAhofmqmG+f9A
+         e0HT8rvc11Ub+Ebn92IVq+dn6xzup0jEpt3SqalGDKaWR8e/4CBDebSb4gsQXf0QjT9t
+         iXKFcfhshIOgIIQr9zt8nKsVKPCY9BlKtFLphtMQwl6Gc91zuEtrHwNd9c91oG15FCtr
+         XdWqd4K8eoP9QZlwNk2YVfDgPjUA29pqbPmGvHAcfRMPRrO4YI2LBn6vhIqK6n4w4BB4
+         iyHw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:list-unsubscribe-post:list-unsubscribe:list-id:feedback-id
+         :subject:message-id:mime-version:from:date:dkim-signature
+         :dkim-signature;
+        bh=+moHMHzMGi6TQbJoZSVgAhq5MdYKIhG7oV4yAo+uim8=;
+        fh=VyLXBlxxznJhNpK3fIaC176tFdypYNPBohEnhANIDk8=;
+        b=W+OK/1sLCcBXqgf38Ne2ncS4/3DpaR4Pju0Lo58E1iJM8iNFHCwofm9GsLCu6thngI
+         nrZObXytYHMtoO2dcyy8WakGKW2zQZEf69y9bPij9KUQFYypTMzaUsHSAedsNWmHip+H
+         6CA+UwzhIF13jQd2esj+2d9OuUCNTkec7gX8WtCYxuQU9VLq/zORYNbxkwdD8Q0UA/06
+         GVqrSutVoe8rbJIQfWFceJzA4rcwtqtypRSadbWU/xE5Q7hlqQNgl2/yhdpa1gas2V5x
+         a+3NicoaHvojVCsQIFfu6L3/AUh6re13Cpsdv+adoE/gylF2sp8RxcHiWEpxg6+gABMm
+         AeSQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@sg3.lensa.com header.s=003 header.b=Kn0fUd+r;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=GaXCyMzQ;
+       spf=pass (google.com: domain of bounces+17147574-4364-madeinuk14=gmail.com@em2176.sg3.lensa.com designates 198.37.150.224 as permitted sender) smtp.mailfrom="bounces+17147574-4364-madeinuk14=gmail.com@em2176.sg3.lensa.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=lensa.com
+Return-Path: <bounces+17147574-4364-madeinuk14=gmail.com@em2176.sg3.lensa.com>
+Received: from o9.ptr861.lensa.com (o9.ptr861.lensa.com. [198.37.150.224])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-c7957f100basi3350244a12.32.2026.04.15.07.00.58
+        for <madeinuk14@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 15 Apr 2026 07:00:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+17147574-4364-madeinuk14=gmail.com@em2176.sg3.lensa.com designates 198.37.150.224 as permitted sender) client-ip=198.37.150.224;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@sg3.lensa.com header.s=003 header.b=Kn0fUd+r;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=GaXCyMzQ;
+       spf=pass (google.com: domain of bounces+17147574-4364-madeinuk14=gmail.com@em2176.sg3.lensa.com designates 198.37.150.224 as permitted sender) smtp.mailfrom="bounces+17147574-4364-madeinuk14=gmail.com@em2176.sg3.lensa.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=lensa.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sg3.lensa.com; h=content-type:date:from:mime-version:subject:feedback-id:list-id: list-unsubscribe:list-unsubscribe-post:to:cc:content-type:date:feedback-id:from: subject:to; s=003; t=1776261600; bh=+moHMHzMGi6TQbJoZSVgAhq5MdYKIhG7oV4yAo+uim8=; b=Kn0fUd+r42VO3k7BQI2JVne+J6SuDPHebUxqA1I9kVOapNWl+AG9+QMCtF7jr8MuOIoP OJocKJ5M08zdOWqhzd2skXoA2KOScI83ge31MMSDy3cXrZV45tX44vBWlnRzMm3Mea8IaH YD7YfcZtvX/6g+7YyiBgNwXxjblfixbiZ+bjadIdMIk6c1K67mKeElvSuM0bod7mKtLiep RuWwiTt3wseFQT85+d/+6mIgnY4YJQS2p/zzplxNjseWj6++BQ2sX3ppNp/2IVlwaFIpbk po5q7pSIZFA/sDUWZbQVGGsANH6eQ411QV11fchSvKoowRwueAa2YdMcUFvs1yMA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info; h=content-type:date:from:mime-version:subject:feedback-id:list-id: list-unsubscribe:list-unsubscribe-post:to:cc:content-type:date:feedback-id:from: subject:to; s=smtpapi; t=1776261600; bh=+moHMHzMGi6TQbJoZSVgAhq5MdYKIhG7oV4yAo+uim8=; b=GaXCyMzQOaFi5jGKnmryw02VuPWYMUWO5JDws6JmFVpPtMSl04bJFF2+RXSHsxkP2W+8 zagr0TZ4QyBgfeE1hCOFHmFbVcX3Yclfc+3d9v3qmiwe+dD0r9rcJhd/E5qM8Zxta5qdc8 7ZYhNNI4mnSrEF5PKUAoCw3HOAw8Mwj4E=
+Received: by recvd-78fc9f94cc-4vmws with SMTP id recvd-78fc9f94cc-4vmws-1-69DF93CC-F0 2026-04-15 13:34:04.786279982 +0000 UTC m=+419449.811551985
+Received: from MTcxNDc1NzQ (unknown) by geopod-ismtpd-50 (SG) with HTTP id D0fQyvvUTd2oC0A9eKmoNg Wed, 15 Apr 2026 13:34:04.760 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=9836a11a1999567a21ec451e0faf0e2c611e3ac5c7998ba2eff2b18dff03
+Date: Wed, 15 Apr 2026 14:00:00 +0000 (UTC)
+From: Lensa <jobalert@lensa.com>
+Mime-Version: 1.0
+Message-ID: <D0fQyvvUTd2oC0A9eKmoNg@geopod-ismtpd-50>
+Subject: Msp Hire, Inc․ and others are hiring for M365 Architect in and around Burlington, MA
+Feedback-ID: 8_14days:2026-04-02:cpc:lensa
+List-ID: Job Alert <537579552.lensa.com>
+List-Unsubscribe: <https://lensa.com/api/job-seeker-manager/v1/auto-unsubscribe?tok=8341f42e-ed7e-4ad9-b450-c7141755a480&subscription_id=537579552&utm_source=jobalert&utm_campaign=unsubscribe-header&utm_medium=email>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Campaignid: jobalert
+X-Cid: jobalert++subject212
+X-SG-EID: u001.dmIDodpoQ2TRRzCe+0ThUsDzD+NJYzI/kKYMkOOmQqaNW4UM6dfWqnrNCbOn22uJgww9gkBv+fsjYbaeixPmLSa2J0xfPcs7BclEV6FICz9mg4D1bIxGsvnK/N8kvDgLOvqpuD0ztisXQNkuscWfQh+inPh1kZ2hwetkdDcnugNL8KqXFFyHGNBlm1zerQ4MLFG5ORPtnoQ1xv3EIMghyreKAq8pr5b1ocx4SpzRlRc=
+X-SG-ID: u001.SdBcvi+Evd/bQef8eZF3BtU2z/O2BNcxWmqjmrpERH4QDRps6eLvUfGWoO8wQIqXIyDmHm3JUKFeqnjp/cF9YYtgU1JxhjSH/b5oH7PQ8jnYOlcEI+pvNSnDBFw+DtrHYoJj2E4EDUszW538TSu+QPMil3v/8oUVVOzQYsnIWGZW0E2NMX9XHqFO+c/zB3X32V0GoRWwAvMeFhOSTBWXPZGpykwEw3A02ABuNcuH5K36t52CSCJM1N1q7YfctkZRk5ZlTxaY/6p1dn748bjKsbBqnTH2PDFSauwc80Gk2UIMGKBzmUVzVTL9Voiz4cfqSak3ObSgPhl6oRqPHDnWgws8tVpu5etyIde3PvVxobZFPys9atJBBdyYhcfDihJD0i6KEOwLUNQtPjwBwbl2XTOsLCRvtoId33WOCLqr5YA=
+To: madeinuk14@gmail.com
+X-Entity-ID: u001.0UiCpNNpuBNrBCkmwdjG1g==
+
+--9836a11a1999567a21ec451e0faf0e2c611e3ac5c7998ba2eff2b18dff03
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+Software engineer within 25 miles of Boston, MA =E2=80=94 [edit
+settings](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMa56ggCq9dPD1wo0AdR-2B590jY4d7YS0rT93kA-2Feksa7Qk-2BAkDATGumibs-2FM=
+B8FdBZQ-3D-3DeGwj_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3=
+whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG=
+8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZj=
+I1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BP=
+ABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1=
+MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYDptPM4eRxUnWJL=
+96TdgAVun1l44hJu4rQuuDt-2FF0JbSEC-2Blb1yKar-2BOh5HpA5rrpO9WrkhyOAMgHz6t0Oii=
+pc6DC3LgIDtDEtt4TikYrAc9pZFp0wDg-2FkGkrqjqxbos24J8F3g5JHsvVPxZaF556UzaiqLes=
+OKvfanMz1bqCKVTNj0v21ie-2FuZRL1vdmF0bxzsfpEWqq1ADy1EBS3AtlFhNPLZKipaH-2FEDV=
+IJTchSZQ-3D
+preferences/?tok=3D8341f42e-ed7e-4ad9-b450-c7141755a480&utm_source=3Djobale=
+rt&utm_term=3Dplain&utm_campaign=3Dupdate_profile_header&utm_medium=3Demail=
+) =20
+ =20
+--- =20
+ =20
+Your Job Alerts for Wednesday, April 15 =20
+ =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WLZrRwNL-2BN0Zmqt-2BDLEpL8Kow32dzG0Gq12MM4=
+gTVGOgg-3D-3Do-dN_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3=
+whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG=
+8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZj=
+I1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BP=
+ABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1=
+MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYdjxt4n2Kpx-2FM=
+Muiqm-2B-2Bz3cz64epQpCm3B8Schh7HpuaBlv42F-2BGWSL005RRUZd-2F2NYJCNwQM2Wl-2Fd=
+1FX3PFJmLg7R1vTdAcxBs91IGlX-2FJ-2BxzMAI6mH9XETJPIXzvFY65WmMda-2FBnRN-2FHcDx=
+i1OxN1XCm35nUumffHxCVCcF5DnqFANStZ0DaXslHewed-2F9qZuTMz5OtpWfmtrNBrmKvYhKtu=
+05bH4A7SDZLjtdbElE-3D |
+MSP Hire, Inc=E2=80=A4 =20
+---|--- =20
+[M365
+Architect](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F=
+8UCG6e-2FMTHe-2BgRwxQA9WnCoEpV0nxnKyTk-2FjMbJMawHM-2BOVmaWrYiyFTXLzAw3X7RwM=
+juw6BzJXSbtT-2BSjtZGA89I-2BgxkEZZpXA-2FRB7iUUCKeTLtGdF0CLPj8qe1tEovgkhkfeQN=
+AeJIvDvtHrlNBy4wUnt-2FHyMo-2F-2BTXjlX5S35qaTh7eCJcE-2BLWadyZJfCkXmGaLoyzV-2=
+FqmT1u4knfwtrJx5DKp0LDcZ526bMY2-2BycPQvhdwiht1Vz_f-2B7n9rAduQ4P4uWpDFm2mbTe=
+I6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKh=
+L3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2Bg=
+Ae7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv=
+-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4=
+x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqq=
+PXij5JviqODaBHBSYJt0mITSsYytw2cM2AaTAvz4kPhhyQijjY1vW7K9k9z2wJ5a6vnPt5lXDEY=
+YErBUb0e-2FwWKKzIDpQezHL1iDchD2ij0iB8J6p5QvtOOIiSZEVfNjyQMxWRRLEHZMkSqXuSUJ=
+sRtiaQaqUGV-2FUGwdpO6j5MV9xwhP8T0FEGaqA0ss-2FGHV-2FAUfRqsHIxBMv8Gr1iN-2BKuX=
+KYzP4PfF5G-2FuxJ7zPuV2aM5CdFHfktPEC1vbg-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DAqBD_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY0vWny5Mlb=
+qxdHeEF3cf-2BZrO3l-2BRwRNFlA18RBLIZMhulkfb8f2hce3t13lcCDCarsSlbBnrE-2FuS0YY=
+FuToFTFYK5Sm7anzYv-2B81CR-2FOtYIiOi-2BWThqhlMBkN6paZV0VFyEYi9E4-2BLDEMlRtUE=
+ryPvCu6blKD-2BBBSt4-2BgjH-2F81xENl1ubciO9qYCujiIp1YjhZ7Rpt0L9fa0hb9VAwQyopI=
+JcKhqRgLomIKzZ31D5pDs-3D |
+
+Burlington, MA =20
+ =20
+---|--- =20
+ =20
+about $200K / yr. =20
+ =20
+Full-Time =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5OfZYarRKJ2HLMNrXIfo=
+BNgmQ-3D-3DpoZs_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3wh=
+XNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8V=
+kEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1=
+o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPAB=
+BhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1Me=
+kT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYaWesdjpy9DFty-2F=
+B2Z7kqfoEvnSwuuY2eTDsZKcl-2FznuyVbAAtDCZ8MPrp5pQ8g1Sk2Pne-2FN2gt5h0NwyASG8c=
+N5rz4XtQjbcH6JZFztE-2B8wDYxiXaDc-2Bsl15rnlyCK8qiyRiA5tT8xNrXNcrPlYfe21c2-2B=
+MVXhNMP0aMwALScy0YfZRqdzyhHyHfL7SD9Nwl4rwW8PD8R7yo7EfiLIArYtHLdLw9CTkycs5Qs=
+4XOykU-3D
+security-logo.webp) | Transmit Security =20
+---|--- =20
+[Solutions
+Architect](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F=
+8UCG6e-2FMU3pQdYlJFHPUDmc7WZNkTVoHL1W7Y-2B65G-2BJJcdjWN1jv6bDbGtLumu4KbKMlO=
+QnVRznjLOAU3Yi-2BqRaguVzMnU-2BaApk8Th-2BmUMtLIySLq3hGpVKfOkgxfehnDjtvyXLFr2=
+Ots8Ae88CpGrti-2BNu2uQHzeog1WdVjt2IC-2FcSXoCyt0L9cEMYsMPhILE-2BxxnRUev2879z=
+aBkIZCVAmlf2thmnoNGJlMCyCAiiXd7VccHyD8Kt_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8Fet=
+lkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO=
+-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpV=
+o59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4=
+UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2=
+BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5Jvi=
+qODaBHBSYO2aBqchmn48yzGJvr8eEYOefQ4P26eKob-2BHjfbYKZL9QYHKw340QEaPMLKL2ls1R=
+8VBi2Twi9ZoP-2FCLnB3NPyODhz6WQsb2O-2Bvnup7Pip9zBI-2FaU9OokiLmUqmKUTAcQ7XQ55=
+LXCUPa-2F-2Fo3ROIV9rNmCvCJWUlxfVCMnb2r-2BXvPt8ec6BzcMXFrhwANqFwwT5XBPFpVGb4=
+ZBMPMi5eXzYAljycPBDipfv5JdpJttFXs-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DO7KD_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYELTpIvXcU=
+eIme91ZuZTd3lUE1d3UhSlEZHsU9Nhz9a3bT3yHeBjgvvM7u9uXSq5JZUuS-2FDHSFMFTGemOun=
+xLTGYblILCrXesXT6UKVWTUY1J2OC0-2FIp9CSxrEXqg6PeE1TwLkeqtmSgZfTE0uo4bAursTUn=
+qij-2Bd6RdWFolyMpuK6TwuzZz1Si2ZZFkKx9QUfU-2FTBlYbuFueORae02QXACh8FCtu57CM-2=
+B3QPhlyrusU-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$141K-$173K / yr. (est.) =20
+ =20
+Full-Time  Vision Insurance  Vacation & Paid Time Off =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5OfS8OjnRQRtSB-2B7n0=
+ZbjF-2Byg-3D-3DcBom_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIP=
+S3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WU=
+gG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2Bhp=
+ZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2=
+BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGf=
+i1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYVeQT9IPVyaWh=
+qnHA13cpD1FjsXYIKWut5Cx97dU1O-2BDGKdm-2B0OjRUo6q-2Fg5HR9h4SWbwU3wdKzTG2x7bS=
+DeWnffD1LmCraAdevgRF0NMqS7-2BBpetPDYhTzp6ElqQIuRbREMFpbWMVi-2BUnALCNBkufxmM=
+QgQmltmJ8XtQFsavuIH-2B0mKa5Nn4Gk0ns1OkOxFKGR5tWF7rv0qMIiPwCBSIYCpLYsbU10NYw=
+AH5vNyF5cU-3D
+logo.webp) | Shield AI =20
+---|--- =20
+[Senior Staff Engineer, Autonomy - Tactical
+Behaviors](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F=
+8UCG6e-2FMcJGHoMcBzO7XJc6suG9z3-2FBqBkqaEgd84swQ2y9wMDGMNia6PDDA268rtqI8Ib0=
+n3yK46U2j96zNe3gNhwmYQl1vvA4TNwK9tRFu5nHlqD9PzICwG6CiDtBIJUWajgD3ljXA5MJNkL=
+rIraAoXNF9ASzZFS9lYAt2MjVaBnalQ04dmb9DNncMhYe23-2FOeKix2XfizuEZlghxb2lgvHDr=
+HJCSOXz5cAIpDxKvEE79JkbbQ1UB_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6hav=
+PiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0=
+-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDr=
+Bzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhx=
+nGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQ=
+ARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYXLf=
+IJJ2yuzt4xVxSzMN-2FJ3O65zOpRrihP3rR4gNThtl5YSrfIfYQFVIQRyujCaf647s-2BtbgANI=
+6kVxD-2BWe8N5U1CFGkNFveB-2BPmJoFvhw1iCIvWNomQG-2FqBSkFPn4V3qW2InEl1QCvF4YEQ=
+osAMxEP6vLmvg2QS4jZ7vCviXPYStVy1i8m-2F8ib7trYQx0CsRtEhVkURpEd8syhCulYKF5mId=
+bzKh7SuiYB0ff1eWjtA-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DsYaK_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYU2WSDh1UG=
+DzbTv8OgR-2FRsqhzt4lUMl6e6a2Lw76Pl-2FtDSqX9MWFvsOJ-2FGQo7oFLyDOlX7K61iCtOqZ=
+wod7uAJGmML-2FPjMhxA6tYvjhAHQxhJGoPWOTioLAIA9cXn1IdpJRJMg8gat1YPcXzX9zf-2BS=
+ExpBj0G-2FXDiEPON3P2IPDASnGIPiw2imXMyB0tTpIpxi7XioYi4xcs-2BzAeAUHCu0hUnMM8q=
+oExltTf6lF7XlDs-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$145K-$177K / yr. (est.) =20
+ =20
+Full-Time =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5Of86ZAjZORQXlXrWGSs=
+KBjlIOPJb8OfMUiwLXzZi6oMCI-3Dv_GR_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZ=
+B6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2=
+rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L=
+4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcAC=
+SFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7q=
+cRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHB=
+SYzBqngsOYo78xbPvAaXgj83lq4S3PZU4-2FFrrg7ohTzS0haJ-2Bih2TJZxIjK3C-2FWQPBIYR=
+19GINSEoMgmi96GEjk8sRt5SdCKMmsOt8rAS07WRIMpPA6Z-2BgqPa2C29wrzfUqzWVmoDsMrwx=
+TJTJKGbHtvL-2BkSlsBMZuxay4OiYnlLAsBABvX1G9pLbQJJGl6WquMubOzAdcCetdNzAtQ51BJ=
+qPJQInCpVCcOYb3ItSl3Us-3D
+logo.webp) | CD PROJEKT RED =20
+---|--- =20
+[Lead AI
+Engineer](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMc6Ww3joHtMbBve4N7qtpeup-2Fhbn8fH87RFyaxVXNfLMiIxz6efU-2BTFLGUkabt6=
+k9j9Tnws-2BsLxWD3e4dH-2BEtgynrSxjIDj-2F-2FMW-2FbbBO1BxCLO7mxMz3wJCgAcGsgxTq=
+DgYQsTfsmsiLuTmsdZmv7en65fFWbqJ86W8LFVqO7e9BfVB7ihXkuIW8hU8wtrK0q6fEm-2B43h=
+Gw0e9lTbmOF6X6i4-2FEj75VLIcYLz6cFJdtVLBld_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8Fe=
+tlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvq=
+O-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGp=
+Vo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj=
+4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-=
+2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5Jv=
+iqODaBHBSYgegc7L0QJn-2FZkkY52KRbe1h6IHHEZhoIgqoFbvvXEXK-2FyAgc-2BMVhU9cLVZQ=
+zJuRsWdMUKDooncXFuonmqy1OJVvAby-2FxCKPz02O1rRolZn9m8p-2BNyx75xCckqJS7BBPkif=
+h7ZeSXpLFvgIrlqNiFkPYvYYizigfRGAfUspYuTmsUhqHgI16wVsubul2ohHF6xYSJrAIEPGRse=
+zoy-2FDZYomK8MKaaGbrMSSPFPGCjg5Y-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DwLFU_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY2zVcw8gEm=
+jyqhlSZZ6GaOmoW9KnXHCCqQlaNk7dzluWzrfnWMjRLynufAsg9QVPeCbxgu7ROKdpvIvI-2Fkb=
+9tDYFN3dKL8sfaD0tZqMxuzIeqiD39prI4mPUeJtFsjQffuET3CAy8-2B89ApjYju-2FELtBSu7=
+PtolYTvhGWXiOYpnaJaZ-2FaR-2FwPQ1Jke0AMSLAk3Uda6ueSTdCXP9zuc39ywK541R4IwoRA4=
+KzHN2R3Zy4Q-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$168K-$257K / yr. =20
+ =20
+Full-Time  Vision Insurance  Dental Insurance =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5OfDYUwypvVzk8vVaW5p=
+Nzilw-3D-3Dnl5P_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3wh=
+XNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8V=
+kEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1=
+o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPAB=
+BhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1Me=
+kT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYb3p3nVbFsy0JnnIL=
+VzVXFy6fDS4nJd90gPaWKET3b0a3ZNnmAhNpALMkTE8PJ2S7iRGH6yAFSxUX2oDhCA6BGWuOYzQ=
+9rIq6s-2FkoaRGqFARNOd4bUoK9K4DtvCvQx-2BqKOsYcLduFf2-2FyyCP2AH-2F-2FF7x2sEso=
+E2TEsux1DNopPAY-2BGfhQVDXKFfJmydqJpXN1-2FNdvfdrP4V9e7HKH2fmnV4Fj9uhwwxeEPWN=
+yo1shq3c-3D
+logo.webp) | Klaviyo =20
+---|--- =20
+5.0  |  =E2=98=85=E2=98=85=E2=98=85=E2=98=85=E2=98=85 =20
+[Lead Solutions Architect,
+GSIs](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6=
+e-2FMZN6SI55NzR-2BOu-2FWmpdeOO0sA300SzHU5l1h5zy38OlaqgGQvAomGM6TgyS2UI1cmje=
+BNZoweSC13H1dewG499nrM6k2VYa1u9XYsB0zug4bjwRK4axFjVJX5v-2B-2FMGm-2FSLnzGbrB=
+7g3xR2Dd-2F2VM99gOuYHPpPnm6ptyMyE-2B2-2FBZsghyAe54Iz-2FRZZp0KyILa4NueVgmKTl=
+fRT2P-2FR7pBCPvjAYmCCd06U7XM6uA0IbTU3Y-_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8Fetl=
+kZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-=
+2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo=
+59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4U=
+JTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2B=
+RWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5Jviq=
+ODaBHBSYc63Jv5F2PSGvvQc9cYRwLZEpIUfFYXSBw1tLuSsHhRphmvmjUDeWa3oWTzpqJB8l8Di=
+gzmQHYEPs0DV-2F6uSHv75p8VBXZq8UVPfjClTeu3YWE-2BGQfFi5v1C1zdrchwLMrpM0v7LS6o=
+Ry4QDjinn6HISjEvbH8Egu3VyRU4cf0YhFK6oU98cdFazkGLVPCVN778D-2BD0ZVhx8xYurvaqt=
+nJLOzOsE24QV1oWfSbcgrYqY-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3D4H6j_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY1UDWCs8yy=
+T6-2BWcjr9W-2B-2F5uQI3r8auzU4ioz-2Fupw3UxkWdufaUvTtHPAqkkIqg6AkHvLNuYRSU4XN=
+FCl30CTbBGrfazk9qNNsOCT48BvjiM3-2FUKsW26gTi2mnr8fWsiGJzE9UcHjOzzcErhmKWphTT=
+eZrYp36YWMSW5zFgjlcA29dHHp7KAlLi08kAnHKOnTyOKIyMj2u8234ycrCh-2FOBvPJ67iWuvf=
+a4Qe6gUR5yWkQ-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+about $157K / yr. =20
+ =20
+Full-Time  =E2=9C=93 Remarkable Professional Growth  =E2=9C=93 Excellent Sa=
+lary &
+Benefits =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WLZrRwNL-2BN0Zmqt-2BDLEpL8Kow32dzG0Gq12MM4=
+gTVGOgg-3D-3D7ZuT_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3=
+whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG=
+8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZj=
+I1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BP=
+ABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1=
+MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYuYmKSBVk5XS7fF=
+diYJUOXtws77Z7-2F3nB-2FYPbodCfOM6yhBotj7MAZ8yw6aKxIRK-2FHbk1sr8BjsI02JekMLt=
+MZbxlt1eRt8za5R1leTTeU98r3868juRX7zeIwkDb6UBXdtPSFkjCa7hdE3cXUKxVkSdC9IvGKN=
+xlxlNb1j7t1TzGSTBQyDs-2FJEdkZ83t8gkBQM-2BxGCrDqCZgB6vs6CedPXBv1ulkNfi-2BUjF=
+NDNHIMAM-3D |
+Counsel Health =20
+---|--- =20
+[Software
+Engineer](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMU3pQdYlJFHPUDmc7WZNkTURO4i39dcWLX-2ByXYhb-2BpWAar55vA6nzd-2F-2B27g=
+4-2FeSj4bdNIIUZz-2FdoOEhWk9mP9OJJuo2x9Tlrow6y1baYs26D3cZnavvpWBrKw3Pm-2FmrP=
+BdCDPVx-2BowMJETO67UY1H9QH3CckOK35KDOtaXayxytPS2CXF2IZ4-2FOnewmRtnKdRMPacGi=
+P7f1Pi9INpEQRqXEvQVGHN6G9VcTkJ-2Fc5-2BlmmAxn7_f-2B7n9rAduQ4P4uWpDFm2mbTeI6n=
+S8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3V=
+OlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7=
+nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2B=
+prCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1a=
+Hoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXi=
+j5JviqODaBHBSYD6QT093jBTZM9QJ31s21S6eBZEJ-2F242jhXGUfebw7JFe6fMNctU5oDulAlz=
+MEyxQPSHa9TrK2ftO-2Br1nWYeIyNh4cM6IG3ArVZBuwz-2FsePQ-2BQrTi-2F3N3hDogIxFWnN=
+8bVKKcKldfYY3MNT69-2Fvv4LzrDSb48Y3bvqtpdo8U27i-2F26WP5isNt5DYkTgPI2Dse-2Fts=
+-2Fe5fUdJGA8fkOB-2F6DzSDJSB1exFTIEIt0J0tqDGs-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DYNkw_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY2nCnElDxC=
+WX3KSkz4e2UqJRB3FpnJd3ZONsWGFyBNY5AcZwRaYBKulT42DzGq7sYflaNtQEhaZXlC5HHoq7c=
+uorPxf-2Bxc5uiWaX3Qitmc5ndG0ctzmsSFqZPlF-2Fe5SlwQYONb31VTRt8q8VUHQSXZfVAYpX=
+64pV1en-2FY5-2FGI-2FO-2B11YsA-2B7KCpIN1GwN050vfhdqto-2FuSbJTVgt2Lv78FHhPrM5=
+vUttndHLOJQMdirfM-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$160K-$225K / yr. =20
+ =20
+Full-Time  Dental Insurance  Vision Insurance =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WLZrRwNL-2BN0Zmqt-2BDLEpL8Kow32dzG0Gq12MM4=
+gTVGOgg-3D-3DG09K_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3=
+whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG=
+8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZj=
+I1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BP=
+ABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1=
+MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY0wVzrx9RIDMCmu=
+LX0KQ2NmWUQiInp-2BwcuRwjVpZDz9MuRASZZ7VwT1GC7Tbu-2BrvnoMbHoQQ6Peh84MjTvhca1=
+wj6O-2FuclIDaSf-2BU4fXd1SCluWFOlUpBMQy0iDcGRbPkJPdB6UOLkLtWom8ues1YjGZwtPKb=
+6XBEdtv-2BPUCHRE4ygA09xfusAHQgdUkhBxsels8tG2VLhvRfese3yREEwtfEGO9m4kEt5T552=
+1vqzyc-3D |
+Blitzy AI =20
+---|--- =20
+[Forward Deployed Software
+Engineer](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMUDdsRkq9ffrJz3iOFAZQvJgJ7U4G31j6yG2vj5S0YeMAxr-2FPoQyEtM-2FUZUIA2i=
+Cv0ViVY285ISJLokJAWB3-2Bxaznr00WgDGhjdPz3ERtHURKtCqN9YWarpJ4IVi3bnElkq6IfOK=
+FIoFb-2BSUZGldkGwX5m6s1dbbH3cJvH6UcD10WSF9KRMNOg3c3uZuwRACYskYPKcdFO3qL1nty=
+LYFMGW7PFqyiWJl8LFUA2V64grYcoGp_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6=
+havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd=
+9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4c=
+cDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSF=
+AhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcR=
+rNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY=
+uvT-2BgG6SvWOuMlZyDhXrKCqRXZK6-2ByFCBx3GF4l4c-2BawU1kcNyOl0Ny6dFBmSHLSDCKcf=
+t1yIaQXRUPKWIt-2BHB81f79mFWVYqYEtbM6vkpZHosn0H-2BN4WIzErdGv3SzofOgCxG2AAcrD=
+VWHWwjnkLAMekg6K7UVh0X5EfSCw-2Fj5H5cU3aqJBYyr-2BgdjEvvRdEfkN6treRgM3Ff-2FeU=
+72AjfQGd4eOCZrzFH3sSEJDjWc-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DP3fK_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYsp-2FNYuO=
+un5Fjgwm6qUZ9teVaXq7rCR935vQEaMzbSUxXxUtW4n2XtThYbwT6ZifCnqnQ3sAT3JhEn7XQQD=
+vroNYIKMDaT4gQFmuiXXZWzo4mKZnpFWMMBudSWY6vxgFL5M-2B6RJKvhiFHgQAvujPtZjU51Fv=
+gv9bghwVIg9ChcHGavB9UDhygCkBI9cmigpGP0T1fwC4VcY5WLZnXj9RWWvBfA4MkmKXnYFqUOk=
+eRIq0-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$175K-$200K / yr. =20
+ =20
+Full-Time =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WLZrRwNL-2BN0Zmqt-2BDLEpL8Kow32dzG0Gq12MM4=
+gTVGOgg-3D-3DWUws_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3=
+whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG=
+8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZj=
+I1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BP=
+ABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1=
+MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYJWx5ZUhfc0eCNz=
+1eaTwWRNGfivtvhx0uY5gMtWsSFm5GfKE7egIk-2BdmCCNy2yB70arevWAJ3iwgIFjDH2y6LrHK=
+5TDUli8H3feEiJiOFt-2BOXpVydJmOQBgcI4pWlbJtFiApzKnNBh0ML6BXNao885vEGKNEBTU3f=
+eOItOGDcTpIdPWXEBjk7NZVqhmW8KDcAx9wIn-2FJ-2FRDKxekOr94q8i0qxo5TnCdwz7a7Rh2H=
+-2Fiog-3D |
+Amazon Development Center U=E2=80=A4S=E2=80=A4, Inc=E2=80=A4 =20
+---|--- =20
+[Sr. SDE, AWS Transform
+Migrations](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMaq65Aqf8JybmT1-2FQwsh1QKQ0Wev7OYJRojkseJflY8w5KaXVaGn7HP0Dj-2B6w=
+Lr9JQ6nr0TDoFWpPnviauhXexi8kr1IqecyuHgm01c0R9NhqPqM-2Fak3nu87yn1tgEfjuRleOB=
+QhpRh-2B2BoCERPl1pwGzxHiXjSEyQho8Kzj5S9PshTpiyuWY-2Bwi-2FQ8ZsDvDWqD4gj4UgBV=
+XAxFlNCkJMc8k2NXOvVGtTAUr1sT7uFE6Y-QN_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZ=
+b1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F=
+0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59=
+ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJT=
+KcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRW=
+Jw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqOD=
+aBHBSYr67UEIjvK4240PfamOGn7AbdJJPl71u1Jnvn9hhTMLe-2FWWmHMJckL7nVswa3n5eoK-2=
+BqdukKmIf6PxJqP2xA7CuYJq0Nt0-2F-2FiL9iVGMoqJYMXnsGCtESfxrtdLJDlhd2leiNjbXMf=
+sRStz3RQf4lo6dFBAspVCYVrF8TIe0LI-2FRwO8rtcb9SZw-2BLvzA-2B1vtKRpXdGDE-2BOYsH=
+LM3sdP0mJ59Pipmy0M9m5cCUqlBt0dSc-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DFpwQ_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYL4ZVTnsuQ=
+Tzq-2Bi8-2FkruMS-2BqB69scQBFXhP0f8cP7VXPTUA6uqGJCYd9BEYi6cgmxwYJ5S0dPUOEwD8=
+48NoKC96i3sU5SxS-2B-2FEPKGKJJ6E0ZEvBVvc2GQ1vNzSnxwzq84yTWVmSjO0YqPJgobJcXSo=
+-2F0ihtynu6PoEUldi3x88QPnfNoPXhkSONQYqLYVMxAgZeznEmvD-2B8IZ63uk2Sr7QvpC4vpB=
+e0hg4jIzs6XTung-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$168K-$227K / yr. =20
+ =20
+Full-Time  Vacation & Paid Time Off  Flexible Spending Account (FSA) =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5OfSwakNbF-2BuhLRQaA=
+t2TSiKw-3D-3DCreE_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3=
+whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG=
+8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZj=
+I1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BP=
+ABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1=
+MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYbfJnVIBGQJzm7o=
+FJaiPXxCmonJ9j3h2ha-2F7nE3uIH9ndJ1-2BkoivLnVe0lAkGujndWFkBQ64C0NdscXTGcxNk9=
+S614xaGeI8LnAMN9tNinmSZyQqP9cPhHPvs1JxbOK-2FV6-2BT0OYdHBVxTphEW4SdGNrIiN36w=
+a6t5I-2BEMTgOw1QDidyhaTRdphhM1noW8sLjrekRgq-2FccoBzX6FZbM3pWzAX-2FgaAqpXqyN=
+hHwS8G7G2g-3D
+mifflin-harcourt-logo.webp) | Houghton Mifflin Harcourt Co =20
+---|--- =20
+4.2  |  =E2=98=85=E2=98=85=E2=98=85=E2=98=85=E2=98=86 =20
+[Staff Software
+Engineer](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMdNNGy-2FTm-2BHFEB7rTjiMXmpsR0Y0tzMsj-2BL7ou-2BQdCHqQbwTc6wXkV9m1Yh=
+CNMlD4RO5Y6HV-2F6HetMWJF5Q4qjxLBkqf5mf870jbg6zfFPTuVRRcEhRg2F6VKqYqVTHaKSvV=
+cXdoapdlqymnyPXBg8QUFMcmQMj6cPqA8q-2FD8-2BTPNtkJOH65WlieZpxgjzSvDOFL-2B2j8N=
+sMi5JMBJXcadBI09sbTcvcPz0ROkQNc3WLWjpiv_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8Fetl=
+kZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-=
+2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo=
+59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4U=
+JTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2B=
+RWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5Jviq=
+ODaBHBSYrp7gD3G9YRng9-2Fofc1fyKmb4PV3Seo4BBjDqlVlR0801CZhYncPqAFX-2FpIea3Vv=
+Jz0q81C9mZ2KgGVyDAZJOv1dDeSqAXXvekgte9Q6J6HQeY53I3zQdolT319MkuNxFDeIzlOZVEr=
+DpC9J1yEJadTcn6Fuog5M9xUkzyD37dIy-2ByqADhXcKmmE5w1GvxO0nrvwSyeJa2T1eidx5nXh=
+EY05a7NR3P5WavRoaN2MJTes-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3Dp5AL_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYJtH3agK3j=
+T2S96CxXh2VHHpfKTIux8BLtOZCRnCgdgfgIzsrA7mcJotoSp91vHJ0C1p9BIbOFP9hzaiK0Knr=
+quTmt-2Bvpl4roiFSzVLefFJ9SMaeJk9UNIgNrQPuYn6x-2Fn-2BP3aYbMsvBf4wScwOjoImlsh=
+gvXKpmgI4wnS8k99DsrFiC021VI1cGrBHjXfQwnC9yiAAEYZ-2BVfpq2GXPsx-2FeSDNCNQTz62=
+xUQ9kM4Uw6w-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$122K-$149K / yr. (est.) =20
+ =20
+Full-Time  =E2=9C=93 Excellent Salary & Benefits  =E2=9C=93 Solid Professio=
+nal Growth =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5Ofr2rXGt-2BYpAJb-2F=
+cGGZvdTJQ-3D-3DLoyn_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIP=
+S3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WU=
+gG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2Bhp=
+ZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2=
+BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGf=
+i1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYpVXofFBtanRX=
+SQgAfpUe-2BePr-2F-2BSrO2J4mh-2BaW4wkiUeSByQL2L2QZrlc2hCbHL3NKmYuSygOYxy-2BD=
+ATdLnfNSjToEisOlEMAahsluxeCb7b1V3nBzfuEBF8ZdujgA41agedyNQVzub-2FP8dErz5pGa8=
+s79Zw6CaA0zYUqmM4jQ8c4OETrcwgPyo69WzVFAc7xax05RN-2BMWaED5BZXnVG1YHaLMfGUIKO=
+xejWam0fu-2BRI-3D
+logo.webp) | Xometry =20
+---|--- =20
+[Staff Software
+Engineer](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMaq65Aqf8JybmT1-2FQwsh1QIWKLTN5kbkzTGx36168xko3SLCroHQuMffQnShiY97l=
+bFP5cCBFAqseBmgV18rT9s65JmNvkjYt41EJiT8iInuwtOx7cIfaZSNjoyy7iFCT79PS0Ebe8Ry=
+DK-2Fzp3OJD4InNII31-2FVUXriMhMsnSGmQzFtkENWa7R5enH-2B5PIr1fLTczbfsSsMnZBA7V=
+Kk3K3nNWmhmB78Fv9vlLy-2Fp5h8SMbAh_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZ=
+B6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2=
+rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L=
+4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcAC=
+SFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7q=
+cRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHB=
+SYxUeFLjtCP1DpGhw1ijeGk40kORhYoNwk8j9iaNojz6R5hahx6I-2F0I8xA-2FqYklqtqoTbcy=
+nwsjnflSLFrv1IHp7hppR18UWxKk0zSmcJeWQ1Sfo36DtKPVf4wIMvKzGZpeqG-2BspEU6GTwOR=
+kvFSg-2FFYjIqunZQAh4Pw72z01uKfz9JIbLfYixWQRk-2F4n-2FFcA0qpOkeJ-2BO8uLtHFSJ3=
+DZfaQIdms-2FuRSyLBkD9AajYddk-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DNUJ1_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYf3sepgFkH=
+8H8i6TadZziw8lCVMnbGPfXolixhvRTbeK9M-2BYDkPfBTo0kP7gTzIBQ13B2lzoSZEi3iZ017W=
+-2B6I-2F2won1ZeY8yljz1-2BXaJxXX-2Fqnxw8CjO-2BiwA1jA3o1spJTdyt8amE72OyLJQT18=
+zzeUVZpOQjGSOscGVE7FL-2ByJm1qJd9cawrFxCgHAM46rsSFh4pX-2FEfo5ly97a3KRMVSGZC3=
+CFpVtIUcsJexpp-2B-2FU-3D |
+
+Waltham, MA =20
+ =20
+---|--- =20
+ =20
+$160K-$195K / yr. (est.) =20
+ =20
+Full-Time =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5OfKZ5SoKQWxsWf8Z14Q=
+ZvdY5oPvQJi-2FD3AI2UcWj35EBk-3DDJFa_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1=
+zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0Q=
+V2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja=
+0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKc=
+ACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw=
+7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaB=
+HBSYiY7UxlZtbez-2FLZBrwHr4NM-2BaeMwpWb71nFaU9qKD561PBwO0F4rj8TDTWustnJ3EI8d=
+kynfvEWVJEtzd4hnz4upUevDnyBP3JZBokMtO-2FJRv-2Bzgz43zktcUNQBDnuVOba4yX18CtNb=
+oIQV1PmrdGIMUXXWxCYN8TnjTpjgUOrrbO3iH2vwTgVLFwnMWsM1A2uog0Bfq0s1CAQXnHbZnKU=
+lRdmO4RZEC-2B0ABF7MFn1z4-3D
+merchant-logo.webp) | The Computer Merchant, LTD=E2=80=A4 =20
+---|--- =20
+[Senior PowerBI
+Developer](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F=
+8UCG6e-2FMcJIxTkVXJAfRQEEYLh0HL-2BPMnfVA5b4nBVunSRDTCpySAGtUs-2BL6CsxjjIZP9=
+xi5G3qvWl3HnzvUMwG54-2FfBo3DMxm3dGSGb0KKKBmVWpGWmDd2qz8AFLdbGJRQE2oh-2BjkG5=
+Lo9pqp034hk2EFE70-2F-2BS-2FMZKLjoL-2B67miKgKM2UlX-2BM4hNrKK4KmB0B6zmaNbXEE9=
+zUQdzMaIzZ-2Fw-2FibE5YGaIdDGbWuAbVEzNayFopjjZy_f-2B7n9rAduQ4P4uWpDFm2mbTeI6=
+nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3=
+VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe=
+7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2=
+BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1=
+aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPX=
+ij5JviqODaBHBSYLO4TDBIVydXPXoSpfZKGVwYKL1c23aJt3JaPgt9gzQ5mw7M5nSTbMUtWhz6o=
+FR1JtTkOTtRPQnz9jQEmGg2jXt1fuIAjskAkRchGScYXOhHrBSHoUEdff-2F6KraYqL1kybxTwZ=
+xJyVFOw-2FWOpUuNquEcm7-2BKBlXYyVvGlFfA2nXg-2B7qyI4HIMXLdhORRzGu8Xy5gmMpcdVN=
+UIA2EoZJE5be8CMmycmARAi-2BmzYQg5-2BvE-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DAvSa_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYw3H1E7tsG=
+cc1sZjo5GqG6tDHTHwJNbBxSvZFV-2Fqct2ajfj6dpnN6Fs6EiUYFnnIjlyJD7FajrFg7WzEU19=
+hdd5Zx2UOj-2F21RpDBtnPLm10ZKZIaVV-2FDdeKIOUhgKuwd5hvUJk7ymTPkSYxvkoFS8a2B1l=
+vUJv9JXyctmVGztot1CtOyuIoh6-2FhbeQm9WHiELroepbls9PeAYVr-2BCX6X9NBWaTV7jX8PG=
+8-2BhP7rgz5Mk-3D |
+
+Everett, MA =20
+ =20
+---|--- =20
+ =20
+$63-$65 / hr. =20
+ =20
+Full-Time  Flexible Spending Account (FSA)  Sick Days =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5Of1ylzBOaf8LWJuVdpj=
+R4wRA-3D-3D9Uqo_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3wh=
+XNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8V=
+kEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1=
+o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPAB=
+BhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1Me=
+kT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYRlH-2B5XxQV8Szwg=
+RmNTkXfR8TYDp9GlySHPJHtRfJrkaNxyGsLTPB7HBgkowFUUPH2zCgFkSeqe9jMDVavWVLRCdnV=
+VxTd5es5cFdgFOHPlHp4X8DB9-2F0dEm5lbkHSJzdLshZ59im-2B3zujaqE1104ZZ8TBZUOTFyn=
+FEU6P9KcjzHbTBbHWRQMjwOD6zp0Bd51Hc6mpt6q45kga6ucjOQ2Qv3kkA8cqXa8QZIJRb3I4Kg=
+-3D
+logo.webp) | Coinbase =20
+---|--- =20
+3.7  |  =E2=98=85=E2=98=85=E2=98=85=E2=98=86=E2=98=86 =20
+[Senior Software Engineer
+(EAA)](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG=
+6e-2FMSJK5Wp3fQZ-2B3010iAdD-2FcSwyOvD2996K6Xj9LKMaSFpMScQP2C3Sqgq4kbka5EZ6D=
+lPaAQOUtIroJ-2B7H5C6bVJrqw6gcPSQbNU7-2Bw5VI77sZtwVWKh4K4tUkSYHLrl2NDRC3oPQU=
+hmjcRD8u4u-2B0RaIT-2BShx738sQ-2BXWhmx6c3MnsQD9UsRGrR-2BAsGXODPpSCJvV5MrCcGH=
+Bsh4SIgb4PrO-2FsG2Er-2FITb5hFpNap-2FubC6CZ_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8F=
+etlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlv=
+qO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhG=
+pVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprC=
+j4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa=
+-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5J=
+viqODaBHBSYDn-2FatNhIqRJjptKsIB19VY5H75HSgjbDrAMwlzJI1-2FscbzW7XNx1fbM34r-2=
+BT4LoTUN3T9yVKPFPhXoSI1wpBRbSu-2F-2Fri1bQwZkVKd6otSAd-2FCtOnGSZCIjsc3w-2BfU=
+Frpj9M43K-2FWtiYylB8RVGilBLGDFmvi2UeYpm-2B5dPHuwVpi-2B7E4VeGMSPVIsZPsFF5sys=
+x4wwtbLiZFVkLSrbiWy4Fezn2W91kezL9pmt3H2mI-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DfVfe_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYzRQFcjx3o=
+RpBj63NDrW9VFMHOro3K0PmU4-2FNKqy8106-2BIx0ZK71fxazEuiZ7quDUep5cpTDck9TAZvzt=
+xsyiI2GNm8WZo-2BodtFfupnkVCIfPpJa7d3rcBcMl2v-2F5Rlvt1oVxOmEK7JHLB4ksdhwqUuC=
+INpkkP-2FkqixQPt2ZlZtx-2FN-2FSLacjcQDR9OXRe-2Fi0G4UEtF189CaQHHvMf5F5bl7-2Fo=
+YOpYM721Rs7cK3p4MUo-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+about $186K / yr. =20
+ =20
+Full-Time  =E2=9C=93 Good Salary & Benefits  Positive Culture & Values  401=
+K
+Plan =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5Of-2FvqWO-2F7koypeY=
+qfPzylH8A-3D-3DbgOa_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIP=
+S3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WU=
+gG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2Bhp=
+ZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2=
+BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGf=
+i1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY2ZT4qV15AH8s=
+wabE4U41vRZD-2BLNt6aEJVrUMcZGr3qRrxNn2a3EdbJuJVdT2OCz0V-2BcsJTmhV9YT8cXo1Gg=
+vYd2z0ctnzz22V8QW0zN8V4rLXC1DdXCwC1dXRUWPoMSEFUUgrH7tRvLLch4uQupouxZQUxf9rY=
+wzQZLbXWNWmH3-2FnVEg7k2HSK3EL-2B1410wRGO-2BgBUiMJcHWQllDJvncyMyx8haC7iMLvty=
+CAZCwPhY-3D
+templeton-logo.webp) | Franklin Templeton =20
+---|--- =20
+3.7  |  =E2=98=85=E2=98=85=E2=98=85=E2=98=86=E2=98=86 =20
+[Senior Software
+Engineer](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMcJIxTkVXJAfRQEEYLh0HL-2FCw1cZqd4tfByoDq3rVNl1qiRkmyRVMdgbxPlpsuOn8=
+9xO331KAU2NzaYxNYJdhbjGMSi02UoMrcTLFJ3p6lEqMumJJ-2B2c1i-2FLZzyVZ5qWYOBgnTlp=
+mp0Xc0gycRccLl4or8-2Bi2zf2jb-2BaYwk4nBYSl7qS-2FWDvaJgu56kh1Yo4yQPINIfLGs4q1=
+gnhQdkcEWq58kZ7v7u8HMfRctbCtmlkTOpr_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1=
+zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0Q=
+V2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja=
+0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKc=
+ACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw=
+7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaB=
+HBSYAXcHiNp0HDIRbJY-2F-2Fo6d9oWBGg5yVquCAJhhYVCINqbkhBJimyM-2FA7z04oDisj7g2=
+CldiPjQ8RkN0MVA1Gf9uwC3lbAhychV8wP-2BuHa8kHuUn9ZquJ2CxU1RgxjM5pKPlCG5cV6EO5=
+ZDB02udCSYwsjjf89pfuZH43tV-2Fc9fK6eywCg58SX51hFjQMtZb0pWLDHsDjUH-2BRA-2F-2B=
+Zo6z5lMyC36gzcQGnoJ6bTzPITZn6w-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3D1lfN_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYMcfWk0MPz=
+hxOHF0gnprvgyO53PXQlhJll-2B6CtqphAkc1DVnoCMHWlgiJsLd6OJ23ztmcMxWvKSVZYqPxzd=
+BGsFrco8oRqdDrA4CU0HbVD9wASTGrqnCVEBuNnnFERKO7SISBm7iVLLT1ut5yZ5WeuPwXTcfbJ=
+Oo0nK1N6EZ0jJfsTshdtM01sUV-2Bh-2FOEJ26EMNhbD11GBdZ4ynlbto2E0o1mNrqtXXB-2FpH=
+m3rlbjCIM-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+about $178K / yr. =20
+ =20
+Full-Time  =E2=9C=93 Good Salary & Benefits  Outstanding Work-Life Balance
+Stock Options =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5OfsivWLmQl1Tpfd1ZFH=
+7C5z4vi4wjTcs74wKpcngbXuWg-3DS2Qi_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZ=
+B6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2=
+rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L=
+4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcAC=
+SFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7q=
+cRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHB=
+SYE75FeduDn-2Fou3xQZ1sClafbJPnRarmbBLQFcY7QMxSNKs32e9on7Zkv37kXd-2BikGmhhbO=
+J5s-2Fj6BY51pribWMR6yfpYfSsK7F9t-2F-2FGQU43xkAsUK7Gg90wjr-2F8UCoF82T8YXddzn=
+qBqb71PQpOLuTLjPKcAsMHsp4cwK2N5n8i8ie3I2mqekewpApL-2BQDKMpSHw6ZKGAY2INzc3Pz=
+i8cfaxZdluVSZGJpiSHP4Sz0Qs-3D
+logo.webp) | PlanIT Group, LLC =20
+---|--- =20
+[Senior Software
+Engineer](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMWyNmUfzaybywhr8IOvdo-2B7eystYfexZxfUNmBTXFPJeCTDzf8wvxZcN9zKcWEw5P=
+9lip40roHLHdjmATElTi6AYBS0pYoURs7eSxP2aaQ3LZhRCVE5ObseN5EKViuzhzhQ2znUm95Dj=
+2ssd2xRut1alNG6tA1DLP1NQDsL90SYalOFpCmOE-2BWw8xPodVPLiJ0YSBSAkznqnS5Ik5GuXA=
+QUhqqZOq4accai0YD-2B1GaToB5uA_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6ha=
+vPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u=
+0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccD=
+rBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAh=
+xnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrN=
+QARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYQ0=
+1fBBYdXBPPFFezLzr7-2Fwmw2K3YxSHtGNfz-2FEkALPq3pc0F8tdp-2FQ6Y3AHBy54a-2Bmy6T=
+tUCo9K6xCN9ZfoIQsllEbweeVAeRtDfoHioEE2NKnfeCdJQekhHBsDwXsAJhEJSv9xy7anPbnTs=
+l0-2Bk5VXqaZ7hLmInvEhitZmRu31TZGT-2BuKP5y8LvbGJ-2FN0Hon4ZkC4OXNCVqej7BVJ7RS=
+rhCIsyesZmlOGbody5nkk4-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DLxzE_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYqk04F90q9=
+u-2BEZT9f-2BZjl1mTJ8XCA1k04CFevLXH7hN9aEvHbSfx9Xf-2Fcye7NgoOFb5mamZdm1hUG60=
+MYQvysiLzbHyxzu0mhofng2GbSoOLGV4jjtqwQRs23gb05u3JjOxbB2O8lkapJghi8kXbkirRnj=
+Ad47gLuezLw0YzOqX1pSqrEVejkQME6Mlt40M8sDZFmf7XxFNPu5PyB2Ntct7hgglLkWyr2Vfhk=
+eAs2rCc-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$102K-$125K / yr. (est.) =20
+ =20
+Full-Time =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WLZrRwNL-2BN0Zmqt-2BDLEpL8Kow32dzG0Gq12MM4=
+gTVGOgg-3D-3DuG_g_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3=
+whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG=
+8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZj=
+I1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BP=
+ABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1=
+MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY7NsjeH2zHt2B6D=
+C9Dc7h-2B-2BMqCz2rnfhHsN4600IzPkXLvhbVxSmwRGPvcXmJucEVgD4yLe2P0vtIHuGNMExie=
+73YxJrVhD1j3TnksLQW2M-2Fk-2Bz7Mdbf1g-2FzQWXoFQuY7AmZe6B0fv37ekLahJELOKZwuZk=
+f-2BaWRlInRjfojq99pmgihFtuKQc6IsB-2B3jZDC5UUBMCgBdqnAjl-2FGW4OKgdsusFtocX7X=
+aL0k-2FVHEfX8s-3D |
+NaSPA, Inc=E2=80=A4 =20
+---|--- =20
+3.9  |  =E2=98=85=E2=98=85=E2=98=85=E2=98=85=E2=98=86 =20
+[Senior Software Engineer,
+Prepared](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMZdWc9O2SfNBX5H2Zy8vjm-2F5Mns-2FT-2FR9stn2GNUngJwLqQpq5ReIrP-2FoWvG=
+3aqHkTZzdCSFb8pmEOaJ47SGnSWox8AZbf4CYsOCoDYrq7wjn-2FmWO6tP72-2BjSe-2FxgWXR7=
+Zjz3AlcediJzQeDfeB6onuBpmkna5-2FsE9UHQ2f1Jes6Wqw4j277C1JNgLZyQJYrj0I1HsHmbC=
+iuLSnuika5-2FvEAlF3FEZeKY5s7FeJVCslkdxH-__f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8Fe=
+tlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvq=
+O-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGp=
+Vo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj=
+4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-=
+2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5Jv=
+iqODaBHBSY2sJiaBDa371ZT3xe4FnU-2BG2MznN17t4BbZV-2BEqgPARzZqCubgSGJkkzgADw4f=
+mtqoYzJ3UkHmrnNmJQb0iNlmBaAZH2lo72rmTluS9QD6wRl09J7Dx1DH7RBbKp48gZv5axHiaXc=
+OkH1mnP7LOC2KjiP7YsrwbHpIbk6rzUPN5k48s7cGyZ1Prn5uCbnGXG6bjHMIXPpfbSp5WhE9Eu=
+s0H9KuW5nPIqkMg8FhuWNBb0-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DYMcB_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYDeJ33ZSFr=
+76SiS74E-2F1J-2FlVU7fQnW1deo3ZtXS3UyobfA9Gt-2FSKX6Ja8-2F-2BxqJSTnEvPLe9eIN-=
+2B4gkE4AjpewmPY2y-2BYiRjJyJNuJ8WSjptOAbjU0oe8f9gLviz2rdU58-2FC5JDycxbyQjnDK=
+ew-2FVR91SN0-2BXiIIU-2FA19WIIgGMP05x6TkHiSR-2FGynCjljC0LSP3YiYGxosFwL27NcZ2=
+L-2BjWzaJWhmpSAoIuiMtxukT14-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+about $141K / yr. =20
+ =20
+Full-Time  =E2=9C=93 Solid Professional Growth  =E2=9C=93 Good Salary & Ben=
+efits  401K
+Plan =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WLZrRwNL-2BN0Zmqt-2BDLEpL8Kow32dzG0Gq12MM4=
+gTVGOgg-3D-3D0XFJ_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3=
+whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG=
+8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZj=
+I1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BP=
+ABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1=
+MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYHmBaKSywcs69Li=
+YuSKKlZluN9E66E-2Bd0fZ8oE-2F0MCZu7EpRqbZtg8GaWMfu-2FenS-2FKrcwG1eIsGVD-2BdU=
+0J271fAyDRTPPfx-2Fh1xwRmZopHYI12rMQl7Ms-2F3W5WjLrCKx3logC5iOM9jvQIiSAzEeiYd=
+Sgs3UEk-2BikDFJB9S-2Bt6m7SEnm3-2BLQxG7vZXXPtQWpUGgQ9etmxUueJuf4mQMyRxSUWPUe=
+yaCXbXBDm3i5fjqc-3D |
+Robin Powered, Inc=E2=80=A4 =20
+---|--- =20
+[Senior Software
+Engineer](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMUDdsRkq9ffrJz3iOFAZQvJrp3ru4NVqrFHuz6-2F8Ta4xSQ7L9qJjjGnMOktzVcaY1=
+bT09humP4mxoUw1Y85b4-2FlyEBsCfKyVxQ8dCMcw9LhgwJnDC-2Fyuj7PnzShLPRre4LIVLcL4=
+hCzobeN5uBCBPrlSnMWIs3yyEp6pyeVtk-2Bf1KVSAEOGGWA4mBhHck-2BBF26Uh98oE-2BhVfS=
+9kpEv7e5L6bm-2BLuPNLAMSYbQwLM5UFkmWBm_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZ=
+b1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F=
+0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59=
+ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJT=
+KcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRW=
+Jw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqOD=
+aBHBSY0SVXMJW9o8tASi-2BDo6CBvaB2xju6FxC0-2Bs0XLhHvc1gtOBN-2BCGsI4EZgQUE6mJE=
+lfrbKqVywmyge3kL4kypvYQx-2FTeB7nkfH1nebw74sc0WjWvss6sYsVS4jZacX60hp8FBC-2FZ=
+6ItrczkSAZkUy9rs9KHvKRIhG6ASafcN0xfPBWea6Z6qELj9XfOIuBWTAWboUvtBcC1y8PPmwSo=
+0eyGjfjXwWEFtbGs-2B66AS6y2gU-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DYNb9_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYe6c56NiAt=
+zFol9MW88Ete5gcLzkp00Sndy3tXtsltj4sAasTVVTd18lnLn9QZE4GhZoCCK784xtZMQI0Bk94=
+-2BqJhsc1tZ9LC-2BikWNNJZQvk04jrQeo-2F70mEAgzNdaqs22yoBZp1ZYBlnJf2P5Q5WjlpEM=
+-2FGLELnPW06SFk6AH5fcw4Fcx6ufUZkPivdm7ftYqcqwmOA5lSaf0r6x3Uu0hIW1ckQJ06sscz=
+00crz2HK8-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$110K-$134K / yr. (est.) =20
+ =20
+Full-Time  Life Insurance  Disability Insurance =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WLZrRwNL-2BN0Zmqt-2BDLEpL8Kow32dzG0Gq12MM4=
+gTVGOgg-3D-3DfhxP_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3=
+whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG=
+8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZj=
+I1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BP=
+ABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1=
+MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYL6xSePU-2B8enW=
+BkIVgGOuS-2F8EriP9804ywCM4mTiTu4magNHzeukg3GDmFkQG-2BoklQEUC3WtD6EFPuUAHOka=
+Reu0ysVrjUIaFIyMAstEo2HRayeir2aDrGrT8PcmuYIuPXCc92faO56lK08bNPLxeLT1A5jdnzJ=
+TduPOru5xAOUz9eQQMPkxFB9a38v3stzQCQEzz04v-2BIRYcNwPsVUpE35MM3zUtfZ6KSlgN0a-=
+2Bo-2FcU-3D |
+The Association of Technology, Management and Applied Engineering =20
+---|--- =20
+[Senior Software Engineer,
+Prepared](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMWyNmUfzaybywhr8IOvdo-2B7440RF1-2BvFfKRLuGJfrsjcyROd6g2Wrc81IMeeuQK=
+yZukHDNPFY-2FI6vI4HzIuCzERkGu4KyOzVRGAmOX1JZ1QEQriWYYqWpI2h3vGJWwqXYiEi9BrD=
+d6zN-2FRZZMzaA6rJsw4JT3XhIf0dKefLxc-2BbHjxwORWjxp6mV-2FT3bmNlCdWZfPvjumcwbd=
+rUbj6qJVSE1qAUlp-2FHHRl4eUN5o5wt29k-0_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZ=
+b1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F=
+0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59=
+ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJT=
+KcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRW=
+Jw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqOD=
+aBHBSYgo7XwiaAt-2FbBeUe-2FoKE6FmfUXs4xe8gdCE1UJmi2JHa3N5co0LbjG25pLfoqCnc82=
+kW36kplnCAkzSrmpdZJMhzK2Cx2yaDS71XsquQJ6V8-2BJGBE0KLoZCd8vcQL0tFKNSzFt9Jg1Z=
+grt3JMBygWAYS3mZfIoWye7pTDi5LSRZ0aFaZL0StiPn1yhL5ZifYDfdzWeMv-2BSN-2Frepj2X=
+UMDHUT0ujEBFlXFVvQOywCfs-2BY-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DNN8x_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYEa-2BgfiR=
+o92HlTp-2FTObHL5YQYcx2kU-2FlWslM-2BfOlt9O0BRSRRDFQRI-2BUHGt0qj5Dp4tGDcPyp4n=
+vrNahjgG6Prd5i-2BjzyMpwYV-2BcO170yUyAXdSfJe2900LQdC7yqRIrD97rD5DRCuS7IpZQiD=
+L66lKGcjPsAutROkJBS4vw91f1o6JIQGYTJi1toR4dGCel5tG4L7s-2FDGgtwtv8D647cEj5c5x=
+iq7bEVbMRLrZXROYc-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+about $141K / yr. =20
+ =20
+Full-Time  401K Plan  Dental Insurance =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5OfkPUO3QyzwJsHz7kQE=
+lEhSg-3D-3DhRWg_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3wh=
+XNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8V=
+kEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1=
+o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPAB=
+BhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1Me=
+kT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYslXR5KGyNettvNGu=
+5cqX0yAqB-2F4dOQMaR8a0-2BtnyNil4g0UFLcVqzPsOXdBHabwkoFoap4JeNYR51JaOx-2FN3w=
+fieeGMVhpcB451QkXTvEFZ0UkWZENHcjy7Ix0zUUOM3ulZN5-2Fmu8b5-2BnBPGKj61iGiG9LDq=
+wMHTsfFBf8nswQUwF4r50x4Vqc7oggNRpXG-2BdyCj7Y0UdoREPH-2Fmi46e-2FDuHQprtFjVhs=
+w5DUmcUlBg-3D
+technologies-logo.webp) | SS&amp;C; Technologies, Inc=E2=80=A4 =20
+---|--- =20
+[Senior Software
+Engineer](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMesiSSGZmeLEYppTGXCUn53nsXyKG0L2ZNnvLmG-2BYM1xoY9fMKxa-2B6VG4cxFiO-=
+2BQqpG7vPARM9Yv6a-2BkCOIXApypU3wINCe-2FStxx5Zcw2hs6VMbzVyzdeQLuK7uN7hDz5Ug6=
+H3RZpA0uJ52XFg-2F06wEqICS7emw7Mx9oytJmu2a-2FMMLxuVKIA8Fyv9eumXAElthR-2F4UyD=
+anMmbH7hAAUJDadVfq3Y-2BKub2SFppegEmj-2BlFTA_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8=
+FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOl=
+vqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nh=
+GpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2Bpr=
+Cj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHo=
+a-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5=
+JviqODaBHBSYQSEBRjXxkqDSX2Z6kJqWci8-2FDzNes2IeLzxxrJDq7SKBGbApndHiojLBDeHpU=
+Vk37ibfLdGA49NfIG-2BSHeOos0N7bYNFWg4u-2B1E9T8LhSsJQjaiYVi7oAhOpgxliHylAq9i2=
+uchiiiJY3HpUXaByfJCmd22dY9IYNlXrANh8QgN3-2Fz53GpWwQMQ15lTEvPDYrEyqzySbOrgZo=
+crgbG2gti7-2B-2FgzefhOgFmUQCnKGb2Y-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3Dw0m4_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYrGeHdErL2=
+blHdfmV4Edund3QgG2VIzzsQVR71LHjXbTudCMt2pQOrdRJNHctKhDbDOcirtJtjJa2RHBKvPHr=
+R3ZDwIMN6kv1sLP101xIRF-2Bl7ih49qUcp-2BqkTFGEXs2kBr9fai6DpE26DoXtXdzmDW-2FJg=
+CWAzaEa21RptpT9HwwKTfdQmI1Kpc1PdLKTr2KIUZ1Rje1VzzBmO9J-2BO0UEsSq2fhOWFSXwa0=
+Khyap4ZA0-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$120K-$147K / yr. (est.) =20
+ =20
+Full-Time  Employee Assistance Program  Vacation & Paid Time Off =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WLZrRwNL-2BN0Zmqt-2BDLEpL8Kow32dzG0Gq12MM4=
+gTVGOgg-3D-3DE5qy_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3=
+whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG=
+8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZj=
+I1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BP=
+ABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1=
+MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYNoK8nn6I6EmJFT=
+JHWf5qQSypRIUZ8okRGf6oML8nab9E6qRvDg1-2BjsQPnLcU1CCtbmJDTEVuHDaKE5djS3UTpxC=
+vRzOVb2uV5e2YdPCqYDetfG4BUQAwAmnkZBHLmmaN-2BRRUicE9IlGi-2BUrZDy4xsrmvA4Mo-2=
+FET94Tnwlc7q4tPLXwHKe9tQKsJEnRJzBj-2FAV0g8ECl8KYnVEgYU9-2B9Pp552o-2B936daMH=
+G3EnhXetA0-3D |
+Sophia Genetics SA =20
+---|--- =20
+[Senior Software
+Engineer](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8=
+UCG6e-2FMZdWc9O2SfNBX5H2Zy8vjm-2FPFpwWxXavdiby1ZczKitmuNFjYd7Fvh2cbbhUwp8Sy=
+bYT6l0MvYXD50U8a9GG0YmRto3g66UK8Q7k-2BHS5BlCob44PdgTO8Oz4yG2-2BsW-2F8x4l-2B=
+KV1ns6UL-2FoIIYQCZaTqEya8H1mA4XQuaD27iRRrGK0ub8BLYMAjBmo4PB5UTQ0Esvm3kf8vi-=
+2BAVcOct0TyzV-2BTrsHzZ-2FAMVUoQy-2F1nG9RGcw_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8=
+FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOl=
+vqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nh=
+GpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2Bpr=
+Cj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHo=
+a-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5=
+JviqODaBHBSYiGaqV5gACVQT3v8Ij8mEUgfz1M-2F07WonTzHrBG9NJ2OPsHb-2BmwReeuqbmqd=
+TYZIpwaNe0SmFO-2BTyn9xMsmomPn6axAAoSLHBXXvV-2FRGWDTomUSgreTE3zOISWSy-2Bhls9=
+vg1AFVe9AUbV5OSzzhO65C5lByx5qsVKtVURH4yRbQ-2FhxHdEYY4B6EDLLSXfY7uv-2BAoIKcv=
+GVIgMpWNR-2Fi3xQRGCVtMUUrKEbWBWtOMVjww-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3D521v_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYtkRBEnPQd=
+hliPNgUhVCHv9mulnZYoNpLQDNpqR1ScOSkn1n-2BWw1jHtUgNbgNsITB-2BQqE-2Bs6jpCo7GQ=
+s9gR-2B13xT2au-2F3Ewnld4Hcrz1lRyKZDRUoSG8CyraSNjZ4FnE6ToeBCG02TyMfo07gdiGTd=
+3CMTzlG97KXOsQyHcDxo4FfRnJtpR2wPm72ofiocdNFgz0VJ2DwTU5KD8gKmvRdN48HgohGXGOW=
+aj61qutZfJE-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$105K-$128K / yr. (est.) =20
+ =20
+Full-Time =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5OfoJwtHwlP4jQ-2BNLH=
+v6wE37w-3D-3DxDLX_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3=
+whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG=
+8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZj=
+I1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BP=
+ABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1=
+MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYioWV-2FLTwlV46=
+ct7MPwJ1zz511-2FJMuTZH-2FoHGu4eOmgHpOGdJP6b5a7W2KHU0JntQhED87tDwd8ArzdJ75Kf=
+gYUquzNFC1PmvS08L-2FlHt922njAkRXtil33hno664NI9U3Qifw-2Fon3HkmlGOaOr-2F0vLm1=
+1vMYXG1UySVBeUJRK9P2J4D2pNvHGTkK08k6uLRHqzoPjAIL10NBnJLrxrlkQfVZ-2FihLrbDTR=
+-2BO64CX5gyc-3D
+logo.webp) | Iterable =20
+---|--- =20
+[Senior Software Engineer
+(Channels)](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMUDdsRkq9ffrJz3iOFAZQvKeYmJn7DCkw6ZBKZzedNNEvDG9NkWjGf17PisTGS4pR=
+LOgzFMWv-2BBsZIxBKsKL9pNdC0rqVhtj5aARahWNjhVofQj1qrGNS1-2FOMzv6f7CCJzfQSmRe=
+ITnMA6yXFl66bb3p0J5Ey5pdIlUDXKy0wX7jMsCxYfTUj9Q9nvFJi6ll4Wmi8CltvORXD5IiK-2=
+FaE3BevtZUqKS6NUE0j7ZbI4U3w5FAe_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6=
+havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd=
+9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4c=
+cDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSF=
+AhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcR=
+rNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY=
+-2BGh7-2B2bxPZ0LeRg-2FBgKx07NOAba48r-2FN7jfnusTI8ip4FuS6p2NW7wkFz9Ry0NyCQDT=
+Wt7mI2-2BNM8dFVhKVv1WYQJnLW8-2FSNmrvyYtSYKG6ZovDMGDFSGAC-2FB-2B5UnAy3b3rUgB=
+qZ8eFCsCd0qSAlioHOOUfRpshGH7VuVuewrLTkkxQRSEeblo8f3o5AIrSEEPaxWXn2n5xUbGzF8=
+R3sZQENBWUgR905BdXSvEsB1Ag-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DCxK7_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYvBZ-2B4tA=
+YSgaZEBfjLDA-2FIirB8Vd9fTaR8HIM7ZIU5Uor-2B4wZdpLEOp4ROKaObWmoHQFL9wGYkzqfyQ=
+C4sAnyiBqx9PiHjkn32kjQrg8aLcTJ9-2B5gwMXn2B2awjGg4CT2y4O5sN7FhO1-2BvHcc4dMeJ=
+1WGyqj4VPjPNb6wdDDI4WnP-2BRgb8WRYDx4lwQnqybrUGB8288eOfSQijhLxDR6ekCAzzpbQHh=
+YIJelksIUB9is-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+about $134K / yr. =20
+ =20
+Full-Time  Health Insurance  Dental Insurance =20
+[ More jobs =E2=9E=9E ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0=
+K5UxOWo0al-2F8UCG6e-2FMTqsJWlwpRrgKgIaUDzN8xlSYhE2eDtkyhPszC8a9qFRz9g2_f-2B=
+7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23O=
+nnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKs=
+qoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MB=
+F4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnI=
+N5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2Bqx=
+Wj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYzRcS3kZ97PsD1-2FLPQbNluX8xWRSy5MP3yq=
+qpKjkQaeky9660BjlyRuqUb1Yt5rwqvFPyPo6DfdZB3WTzXISZj1b0Jl9bet5VdmQ0HpnaMurKj=
+1b2kHUxvVl1bqf24d4bbYYwy40rrUrI614q-2BQJWGLu-2BNWM3HwnerEGTsJE6wSECz1HGb9zm=
+QjhKVRfXlMZXMmZdzoWer8zplWhgCXVaAl7px6zPunyByzudP-2B-2FpKi0-3D
+opportunities/?tok=3D8341f42e-ed7e-4ad9-b450-c7141755a480&subscription_id=
+=3D537579552&segment_id=3D16&tr=3D9974c9c7c7a74f048eb784f9e61760afemailgen1=
+&utm_source=3Djobalert&utm_term=3Dplain&utm_campaign=3Dmore-
+jobs-btn&utm_medium=3Demail) =20
+![ ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e=
+-2FMYQYh-2Bz5P4iwtaHhxN-2BGXG-2BTL4wwjw9dnHS6yawDlKrlF1w5_f-2B7n9rAduQ4P4uW=
+pDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdE=
+Mg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU=
+2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd=
+-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfy=
+q62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6y=
+qtPqptmqqPXij5JviqODaBHBSYSj-2FPy3-2FFNmHjYE1po82igAYX8PJpLvyV7ueOGq1jkry77=
+c-2FuKZvPvyIf1pDzU1gRgen6HscBpViTKncJrOqRxRYjCW-2Ffu1TxGY-2BqxzYnX6Mt5W1Xd3=
+teNNOXpJwL3IgTwVRN9wurqafiQ2-2FP4SFw5rR-2FXOzcYTNADojZXpaLbqCIz97BgjCaztig-=
+2Bbr5K9-2FAdUAHBuFtRgRRvhanLu3yvAYqiOYr1gJA0sSb18JwQOM-3D GIG JOBS
+
+You dig a flexible schedule? One of these jobs might be a good fit! =20
+ =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5Of-2Fv9bi-2FxClFvQt=
+0MOpvD2uBf-2FziQu0Yfl8bUOP9QwaqA-3D8pZQ_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8Fetl=
+kZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-=
+2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo=
+59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4U=
+JTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2B=
+RWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5Jviq=
+ODaBHBSYFXlbZi1usHstfh99Q5NWBPrlBvmDWfXOGdLJ7lxxmSXV9iUC4PWCulcAmejIeiWt06f=
+bdSoWFgL92g81sm7oEr76sLg1sjZ8hAKUrUuhWnEmf2UkN0mQXOu-2FiDrnIOUGs9KDd9AR-2Ff=
+1GnW8Lpj5-2Fo342yWHpBiWHbLwp4mmXDkHs1Twpfs6zY8lSw4KuzvSur9lcTtsLhR-2ByglC8V=
+TAobYiavmVGdZA5Sp3oIXfsbX4-3D
+| Uber =20
+---|--- =20
+[Earn on Your Schedule - Drive with
+Uber](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6=
+e-2FMZdWc9O2SfNBX5H2Zy8vjm9GH6m2DNVPYVMlkwMjkoct0Fv4unsWWqHXomcH8AiyIM0vjxL=
+BBnzhwI1T7fYK0m7aL0Ol9ytljCGdTEOg-2FpIgfwqn2okEKu26vABKSIE35FMd4c7-2FCdkjiY=
+CrvS61hcui-2FFAANnM9hNfuBZEcwM-2B-2FxnAyawDFRpzJu1IplXLiy-2B1uKnCtSwNYkTgCT=
+NPFGBA-3DgHJj_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXN=
+WZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkE=
+ZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-=
+2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBh=
+XsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT=
+-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYLM8Ei8oij6OqTJu8if=
+hVp6xw1pvKtlS0tJmZeHQ2lenp3TilppkkumI9e3if40PaCwlLwjTH6V6UyrwasTPtm2fhhCkFA=
+vFMLpmm2YNQzHau6utPr9P22k8YJMUOCn-2FqsBnQdxiVpT8WPAHWAMxDbe6M2OzrQRfNLlOvtu=
+Tn7OaEZAf6dOI-2BzGN0H0dpWFsUDDgzD6socFnz1npFJqAPb-2FLgSfk2eC9b5tu3m0-2FVYF4=
+-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3Da6c5_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY6-2BE5k51=
+wTqMMQ8wzHw77map4bzFt1rfgCco9l7ACMe-2BV5Ym0611Wzx-2F6AGlr5r5bRJwFRmi0lF-2F0=
+zxKHksnJ1Dlw1vEPHI0Q-2FGmIP1bwYeabm2F03EuGJ99irFdd0I2O5khxSx8eO-2F1EdS55Jhu=
+ZVoMbx6KC5pDPDAQV5KUAzC4g27xpb3Ccer7Xh6gxTtevsKNyVrroBfaYI4b2R2qciPwwesXM8w=
+cyZ0Q36ZfHtOY-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$56K-$68K / yr. (est.) =20
+ =20
+New  Full-Time  Outstanding Work-Life Balance  Positive Culture &
+Values =20
+|  |  ![LE](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2=
+F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WI0d0Yg7Zi-2Bp34zJNEwz5OfbfgquPnkmov6fVHAV=
+uvtCg-3D-3DluBS_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3wh=
+XNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8V=
+kEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1=
+o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPAB=
+BhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1Me=
+kT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYJgOqvHBbkg80ze-2=
+BH4qIriaq-2F6YRABQ32CIAGfcbx9XumDN0E1CyUpZbfHOLVe7CGgQ-2FSKyVd-2FgZWld-2BMB=
+9UML9nO7z4cByvke2EoOxjB9itSQtwVxxR02XuVgjHjs5JO-2BZScDG77-2FUMD99Eu1TGuX1Mn=
+oBt1tMFtgL-2F6STwuajbeeL174nlGS3f4ft0lb8owYbYpcVErI5L2X15E8FVBua4At1Pd-2B9D=
+g0v3zwOivo60-3D
+logo.webp) | DoorDash =20
+---|--- =20
+[Acheteur DoorDash -
+Livreur](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8U=
+CG6e-2FMdgBBeofAO63k6o6p7jnSAV-2F-2BZl3mx-2F1KZ5ewe4p-2BAI3iXSpHMKxL2jAsRDG=
+-2Fsbke8GB9YWdeamUcB8cmx-2F4UaOGpadDYSBnyjqTpr5UUCOHGxcFVZ0eDtVSt1deBBZbFEr=
+Jg5c5f5kSGrMZgMQzYfnvB1ekgJ-2F762L-2Bm2OsCGXSOFJKXezo6WZ0gILHUSptq2baCnsHZo=
+jcvH5fj-2B4tvsk-3D8cJ9_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYae-2Be8k-=
+2BWETWGU6NHmU0-2FwBSZCivniONM3hyat2JmwHOjs1VESxwxEPaBY5vyjRiCF9FJgb-2Fs8tNC=
+65wo0ocSbfyq6jgdgX9sIN6lZSbgqAUbncT1WHsfRLXAV6xyY6-2FylsPEpr52IfAbPgtMMA2yT=
+Bun1HdKcUXPDr3q1HzJYJWAGcRP3881nJITcQ6Zvatq3F8ARpOvz5vOz8rids2ni6bCL9y4BZAi=
+fB0rDUK-2FDmE-3D =20
+|  ![Location: ](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo=
+0al-2F8UCG6e-2FMeQOYUh3i-2BrlYV1yx8Ap1WJhH-2Bg6oB26AioJMgqvkHkm-2BbAeeKsclI=
+8xF2RN9ce5bA-3D-3DraTL_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKS=
+VIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx=
+8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2=
+BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk=
+3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsem=
+lGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYfd1vVOx53=
+yJojxRypC-2BUgrnWi1wikHTyoIBpRGVhycM4X1ioQqOM9mbFMhY1Y3PQxr0ryweEi31JXxe8Su=
+Flk3QHMHDg5XiE9XObkL9-2FBa-2BudXS2ZEHBaCwL9QKq2ULppYtZAKuT3urkVWY-2FZg42s-2=
+BZk9ucmu7NWOC8lg3Ij1C6wCAgoGNYJOE-2B8usGFdM-2BKbrp57CHHLdAJl7z7kjwzW3Mxzig5=
+YM-2FETdaZqnv1Xp8-3D |
+
+Boston, MA =20
+ =20
+---|--- =20
+ =20
+$39K-$48K / yr. (est.) =20
+ =20
+Full-Time  Outstanding Work-Life Balance =20
+![](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-=
+2FMSKU3cVG9A-2Fbn6rpKR1bB9Z6jz-2B6Wa2ht2LuzcHmwxDIVK-2FQ2V-2BawgoEt6bfDfV3J=
+xmsImpamm29prABJU5LarXL8mDpb-2FKUhO4tWRQa8Yif7VYPkH4lohIKg7LZAHfJMYI5xeCsh0=
+J2W0ORXdT4sOC44BHd0C-2BPTNr81nzPp5JxQ3UfKBMDwMegT9rSQETwgxIq0MSQCRYmcNp6vt1=
+krK0-3DRRRB_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZ=
+nPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZI=
+Vhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B=
+8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXs=
+Tv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2=
+BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYPV2szOa4Av1U-2FoOREq=
+1poS0CeC6ywcKGn-2Bz9TGYS-2Bd8OdIOPqs1Ku5NDKetgqCzz1DhOLNZIkVR1oSFS78vDF3X-2=
+FRjKHAAK-2FDtCR-2BPQkwHrkVNHhauJ1oIZNh2CSOtgYVJKXinh5BiW2oXZd8410kDmrYzU9Qg=
+-2F9-2FZJkis8mRaitY9AQ284zQbjpWJwdRF-2BBJtAQ9SXVJRacsfZ0oXkal27Lwyc4A391v3z=
+QTLWXmv4-3D
+|
+![](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-=
+2FMSKU3cVG9A-2Fbn6rpKR1bB9aaXW63SNaVo6E8PxwK9o1bH9NzeySTLQCwST8oSSCTpwd7-2F=
+AQsyctAyOo204ziCB-2FU9iV3bXXwYXDdUBbZwOe9JdkxTzrBwjWBLz4XumWXrpQXg4qz7IRYdE=
+0E0kOpa7Viuee3ZX7Yai5Hn4fu-2FPhpf9Wl9Ri6XO1uVGxHE6KVeap9ml2LZ7DjAVAqCVS9LJw=
+-3D4lkG_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk=
+5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7=
+N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbj=
+DqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6D=
+ItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqY=
+yBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYe4t8M2amgip-2BB0dgLwxqDS=
+ujhRBh5D6W0x8kblXRtcLXmh97o-2B2kNydELTkOhue23ss5jqScQEVUT7ugjXWf78LQbTwickF=
+nof4dte8q6jyefBO8Odu9nNKuHRlwhgpMk3WCIJOeNa5igE3ezX3-2BljQ5AkhU9n8tGIU8cz-2=
+Bbv31xIFqn090P-2FFRzK3aN5gFOSP3XQi5bbfs2dE35DkNIieMKNTN8NvYnRbZkZUSHvAk-3D
+|
+![](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-=
+2FMSKU3cVG9A-2Fbn6rpKR1bB9YPPcBkU4sg47JL-2FN-2FJ6-2BHgssiLGW9TlOZRXOwZpfiTc=
+LivITSj8Uz2tYSqBF6M96r7wqSWlnGvCkLT4VV8sHP70nmcoxUJFSETVIajRQpCOCFGTYyuC0lU=
+0ZlWNBx34-2F8UIm7mSgv-2B2Bpl7gBaTHi3iWg5xrm7K-2FXY0AYlR6cIlzZ-2FFClb3z6ZQs3=
+wGKDuMDU-3DCK-V_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3wh=
+XNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8V=
+kEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1=
+o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPAB=
+BhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1Me=
+kT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYPdFTlCvMk1oD-2BJ=
+7I7V1JohnECBUT66xF-2B6LRGhacL6jMlA8bTeY84-2B0J4sCqKOb-2B8CzSr2zoPVKlGtJHHlK=
+LCpdWYcVohMRn1wWcoGARJcTTvtCcAXF-2BfKN7OGOMJBKLXX8zc26xZALkMrGJ3lj3AqjJ91vY=
+8Pn2uTadHdzgaJyrm2CJGpmLc-2FEDKpECsvaSKxq-2BUuUfIB77vruvx-2Blrd5LLJnLbLn6UQ=
+J13L37tv-2Fc-3D
+|
+![](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-=
+2FMSKU3cVG9A-2Fbn6rpKR1bB9Y02ktC149L9HFpv5e68ZEh5jqpCsXxJYX9J6S8a4-2F81FVjs=
+q06Y99P22oFIbPB588FGYxQsLlqj-2BywI8QF7S8UrPXO-2B9pn2lUtbnYjifV9isL3KOsCJ9OZ=
+lYw-2FkFDrCctHVhMHFqCQoOVrNGzFGuw62EvENrliKe6DejHKuS-2FecclWs4oXe8i-2BSRV3M=
+fQ8hFg-3D0O2l_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXN=
+WZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkE=
+ZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-=
+2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBh=
+XsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT=
+-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYxLXOMdj9cixV2GG2-2=
+B0-2Bk65AGS4ZyA3ukSQFUs13lkjDTJXpNOf3-2FswUDGRE1jc28ZjteWqMcl0cq-2BV1qGwV8Y=
+yA-2FP7HBRqyFC39YXE17sh7KGRj3gE6tBDnZGMbY7ViiMpYnN3r91P76o3a6469OgAevw4Zpvt=
+fMqTe3iYbiQKGJQFtKB0NpVvOGJKGsgDM3YgZYRRrCkYF1EogxcbWvAIfzm8e3rNFfeZgKq5rQp=
+3g-3D
+|
+![](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-=
+2FMSKU3cVG9A-2Fbn6rpKR1bB9ZOZ8d-2BjFVNaMu-2Bd6n5nrx69gCagK4tle6VccoSF-2BOe3=
+iSzffGqeh8FrBPNkk3ayMqdg8dBfVyMSUnJhZOPRzkDoutmhFGGGLvAo-2B3ON0hsJ-2Fb3OaUC=
+bTeA7mU8jAu6YYPBaqJgQuc3WXWX4-2FQTH6BhiftwJF1MkT2zEDSdlPZNxbCt0wOqFwdF1HXWV=
+OqYeIs-3DxDgK_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXN=
+WZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkE=
+ZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-=
+2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBh=
+XsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT=
+-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYwJFPHH4sfrTvCCvZNn=
+7lqIEYp8K5d3pLzhmctkyMBVACnVQ7LE122jBQJyyT6uh31PjdKU3kC1eI9DTAPfFEQrHpXjlpJ=
+9fi7q-2Fb-2BBf7fuOIOImdTUnn2ZWB3TcxIbSmdvgJ970ISs7KBDDBaqMd4zKc6t5M41wkkv-2=
+F2Hd7WorRVHv2KfKzRehBbSYBQ-2BRtMgbHuvUQdxVNAQyoPyPTjzE4SuHz-2F3Lh8VMKJyRoz1=
+kk-3D =20
+---|---|---|---|--- =20
+![](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-=
+2FMSKU3cVG9A-2Fbn6rpKR1bB9bxWDareVRBM65fP9LIjXMWUSWviJAjOeQppILM-2FaO8abDRX=
+dNgPRsp-2FwC8k3MtuGG-2BTO0v3Fm6uZeDUzCpC3D2E1mrEUi0-2FMqD47apaDyv0-2BWTrY-2=
+BjivZpdK59W0h7eZSbiuFWyFG-2BDywolqkgtLJVj-2FWZPIQlRgJSSiutyUe-2BZ0Epusgpa4w=
+891fJjGmqLZg-3DB2at_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIP=
+S3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WU=
+gG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2Bhp=
+ZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2=
+BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGf=
+i1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYfe9ZuwoC8WnN=
+vyocmPzjCkQ14c3Coea1ksZmBLUZH43L8PGU0Zc2gCEfukOd8DyGCcUiCiV1R1NCr8DAFF5fNHZ=
+a-2F6m0EW6kDlgn8LXzik5Ju0KdaQeseetvQaovXRCGT21JqUAEXi2EMEwLvTnVSWRx8WZFvTQ7=
+fmRXWysUTnUwVkfqV4NA9fhkG4-2Fve0rbhzCvF95uZ8Og8DgfMTxs1J6-2FkiIi-2FcrV42LYT=
+NsFDTQ-3D =20
+--- =20
+[
+![](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-=
+2FMSKU3cVG9A-2Fbn6rpKR1bB9Z4XRRpCqhZCHrdGt-2BxO3ZHEXcEJJeYZVMlwURlThJ7eRPWA=
+rIb0pHE2d2Pva5RWKTQGbKOd1h3vcUzLIkLrtyYltluFZ-2FTo7lc5cus1VnbFj2v8MGgzgNFGB=
+WfdfJwUghGYeRY2lp-2F0jpimcK0b8b9Y4zB-2FrKN6PTNJge-2Bdn8o4a9N-2FfDX7zZ1telLm=
+8Xd7YIxGGP-2Bpp9k-2F9xu8FbzmEWcA3uAyvSgDmrfcwJA0Uct7Q-3D-3DxDbH_f-2B7n9rAdu=
+Q4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxa=
+IRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBai=
+X-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2=
+BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw=
+7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8=
+nEDK6yqtPqptmqqPXij5JviqODaBHBSYPZm827Zj-2FvBrijXKEsbxRbFdDaQq6U8c0kTsmfe1i=
+8DPtzDQV1xeAllpCV4PKdj7sJ32P0VC9Y73ACWKrBi5tIaA-2F-2FGhLP8BaMenM-2BCRlzz8hC=
+hh9-2FELYMsbrvn8RhTolEZuVMKq6wqJbr7FF31bX2VqpyxidnZsA1vIlHy3q2AtULV5X6l7dZV=
+XDXhuFHuNH20KQrpmrRiAbOxeXA-2BC3cMiRYfbgz3yCqFDKuvR4X4-3D
+](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2F=
+MYkVelWoS2NIk-2FyPhR-2BoEtlJyi9UhEVHH-2FKa2xvKG8nhl2uAfJWPqYln98L5lRt3kTI4-=
+2F4FQG70f-2BdtCkm7vMHMTSaLRVfBEF-2F7Zww0fhHeE4tKlLzFgVhMWAngPaBDC3-2BsS6ZW5=
+nq-2BpJ-2FEBPS-2BzYfzu-2Bf4-2Be3rcc-2FHfLJk-2FxniWm1t2OqM3l3wjQ3N5GToc2oNf-=
+2FpYp1WDfaGUbHxOtt-2FU-3DPQX6_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6ha=
+vPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u=
+0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccD=
+rBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAh=
+xnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrN=
+QARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYiz=
+axj1qtOH9gPh-2FFhBgDa1GqQLMLdm-2BLItGyHwK7M0ZMwTTZt-2F56PCEkMIs4cKObX9DbCqD=
+grwn4szjrwg7mKq0Dc6vGfSi8djpzndnMij3ejFa6nHD5tqQVYLLpQa4WYezFwyVgjM9TeVtV4r=
+4cSO-2BkOyU61BLQ-2BX7VRacMrBDAUhsJMAPbZ0wvNIg0jVAAvuLA1rqexpgEPEVIn4dimoWm6=
+82kgoOPcp3RvJUwEyY-3D =20
+[
+![](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-=
+2FMSKU3cVG9A-2Fbn6rpKR1bB9Z4XRRpCqhZCHrdGt-2BxO3ZHEXcEJJeYZVMlwURlThJ7eRPWA=
+rIb0pHE2d2Pva5RWKTQGbKOd1h3vcUzLIkLrtyYltluFZ-2FTo7lc5cus1VnbFj2v8MGgzgNFGB=
+WfdfJwUghGYeRY2lp-2F0jpimcK0b8b9Y4zB-2FrKN6PTNJge-2Bdn8o4a9N-2FfDX7zZ1telLm=
+8Xd7YLI5CmlVaRs-2FEIWJK0JoRVXM5BgUIJI3x4-2Bk7kTe61OVg-3D-3D7l2R_f-2B7n9rAdu=
+Q4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxa=
+IRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBai=
+X-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2=
+BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw=
+7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8=
+nEDK6yqtPqptmqqPXij5JviqODaBHBSYd8TDnoHzm7S-2BtkDUpamoBPqcD4-2FZUKAK3B2-2Bh=
+UxXJPCGTd3QDEKGuSblh4-2BEhQg-2BtyryK2UCU2YKhOdYMQzqk8cKsi8VTkS4VcP-2BZPIGN2=
+wCAGcZRTmDiMDPREKZJwCNHjxealMjdW-2FbFX3ZbqbGg32hFcER2YcZtt70z1F-2F3-2FX9REt=
+8IvNODMpyG6t0I4vslsZWnKVUERpyWjP5-2BnLYgdx6BylCUdHlGpT3Qu0f9Qk-3D
+](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2F=
+MYkVelWoS2NIk-2FyPhR-2BoEtlJyi9UhEVHH-2FKa2xvKG8nhl2uAfJWPqYln98L5lRt3kTI4-=
+2F4FQG70f-2BdtCkm7vMHMTSaLRVfBEF-2F7Zww0fhHeE4tKlLzFgVhMWAngPaBDC3-2BsS6ZW5=
+nq-2BpJ-2FEBPS-2BzYfzu-2Bf4-2Be3rcc-2FHfLJk-2FxniWm1t2OqM3l3wjQ3N5GToc2oNf-=
+2FpYp1WDfaGUbHxOtt-2FU-3D_jeF_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6ha=
+vPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u=
+0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccD=
+rBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAh=
+xnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrN=
+QARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYIt=
+X979NkRkAAznycYtxPAACBJA6WC8wBDK6pd-2F61-2FYr0FJL3XVvKGPd-2FyZvc2RXMc42XnBN=
+UZ8VZwp3EynL8dKdMZAy7j8dY8N9nWwCgso21c-2B-2FmRcZCojEOE0HIl70GyN58oSKM3TBfCm=
+XYN4RRIpwi3l42FZdiiyJW3bzptcePVmic9-2BXs9DCCTpRy35o09rvG2-2F-2Bei5sbnZQ79xW=
+OGXrgF0FCuHa-2B5dypWUPZ5Q0-3D =20
+[
+![](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-=
+2FMSKU3cVG9A-2Fbn6rpKR1bB9ZtGxW317hPbd-2FCYhnKRzNhulBnm-2FvJOLS-2FJmh1497SJ=
+-2B-2BJXjFYTwaPJR5HD2gLOaur2spJATFNkpveSlYAyEbTfBXLMjNhpSV1Pdor51z9QiEnYaR0=
+TRY2rkDx1ZxbzGgZCcBFIBUqZPZwf3XYf9e5kP3RqzsYRWlXl2EZmmaHbP2jYX0MjmFMixYtEFI=
+GNR4-3D_kdi_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZ=
+nPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZI=
+Vhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B=
+8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXs=
+Tv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2=
+BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYMvOp4ll2va3cKlzpFeKN=
+nqGJZVTHiTEhGB4-2ByXAnDsUsw90JLWcRRVmrpxfjvR3vGIpm4-2FdMw7-2BlJdT-2BANaRqmZ=
+GtLeLhTLffH9mwmPI8nD9w4vsMPcXqoweuDUA6PC592eCWEoSmVYpK9hYldR4TU6vV7Ua7-2Bhs=
+CkoRx-2F8U6Z9Y5ngjVMrqfafKTu3By96s7sZj8N197l85u6Pd-2FFM4VphNg7Ymd-2FA3x99ge=
+FGof58-3D
+](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2F=
+MYkVelWoS2NIk-2FyPhR-2BoEtl5Hk3hXOjRTjG1aPXOscK6Sy6GqpPAhqRIiHSfCjIb3mljOFI=
+8Y5VCh7KLxHektmAiN1VsISuJaanfVYeHUyHEBC8b-2BJ-2BqJsCTamDYCHWLPoCKVQVM9gFCxg=
+6IjARvkKbY9-2FEORUTTD7JqwT4C76MskjKs283ckgcCp6ZmK92mUdvd0a7UjRAISZkwlHP2jJ8=
+-3DyNMC_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk=
+5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7=
+N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbj=
+DqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6D=
+ItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqY=
+yBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYWDlxxQch7WDMqFSvpZVB-2Bi=
+ufi7L5bHaz6st6Y3OND-2FVilPC0-2FnKfEtlzWBl8usPhlXDB7oHJVQr2ZDIpRuQzDyt41x7RD=
+Z8XIwaRe5N0BKC7d4fHfV3E5-2BbO4l-2BJF6ZePmrhQdSzawzZ6uKFKN3hLqaTOPO2yxb3vlig=
+66WzzN7y7LH9zQB7Zogw4qlst7I6Dwk6BcqL1VH0ZdYxfX7waoC31E-2Bl-2BtQ7dae-2BxurZs=
+gg-3D
+|  [
+![](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-=
+2FMSKU3cVG9A-2Fbn6rpKR1bB9Y5biwgtg43AiTGdiqc3miDyHYt0AIAiWJ1bDIP-2BdmWa7eRw=
+xcmufBe603HVRwDcYbANM1k7stZoOIUZUTDJ-2FfeLJsUpo-2F7VvVhk4-2FZpN9TSqzOhawYaa=
+Asmbdaw-2BciJMbZL6A4ns9rfMxlF-2F76X95v-2BeTBa9hq4L43phdEF8Ff-2FiBhEHWRUaQ-2=
+BHq7-2FmptXrjY-3DT_Yz_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSV=
+IPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8=
+WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2B=
+hpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3=
+-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmseml=
+Gfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY7CPmSb349r=
+ZuwBPXcmj5UliAwDVNcCQEJbvo3A5CQVr-2FzETu1g2FmI6dnGWyKQ-2BjYb4xWEXKdAthU6W3j=
+QSmBcplkbIwdBbmyFa4IQ-2B4On3Xs0obyE0JU4Vex2virI9EBUaMYc-2Bng896-2BV0iaJwZgh=
+FP7-2B9Ddu6qKbkxxVJfD9V8ImlCJHD7KoaKwZvanlUVlkLxtmdmYCDyNVYblaFvnxbTlJIy28q=
+gv9CWgP0K3ng-3D
+](https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2F=
+MYkVelWoS2NIk-2FyPhR-2BoEtkzFNu1gbkRY9ZBTtqDe8ysJbyV-2FBuvKQFh0SRTR0ev1wjJH=
+df60UeUxGfBA7W7FsPOg3oYDgqvB1ULiVMvTeXbrlSsWYnGgEp3-2FXRofmQVyfPm5LtPWbQTC1=
+R-2BrOd-2B-2BY5BcsVeGQpseXmXFxODH8No88XYsOOIwKA5KUCEA9yG0fM0QgKw7JfsJszRMqL=
+v30U-3DkzUn_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZ=
+nPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZI=
+Vhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B=
+8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXs=
+Tv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2=
+BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYLVQaRGVb-2FoZ-2FxEgA=
+YZQn-2FkXoAp1n1ldBUeNn4tZ6mcE0myTFzbiOR8tMZxiRj71PwcMGmVuHoudDH4Hz3cNCr-2B0=
+ENzrk6WljnJBhrpv7H0LEOqBqSR2xUCYPto8-2FQ4TmBdEZq-2BG7ksTN47gOdOOBcCkwBcZjag=
+ZG2-2BTkEAxDaXlcESDyBejIIHMbUBoX32OJ82Qj-2BESCnypaulEtTrafzkpW2uuYXDAjuY2vn=
+RZk4gk-3D
+
+
+--9836a11a1999567a21ec451e0faf0e2c611e3ac5c7998ba2eff2b18dff03
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<html><head><style type=3D"text/css"> @media only screen and (max-width: 48=
+0px) { .lihide { display: none !important; } .lishow { display: table-row !=
+important; } } </style></head><body bgcolor=3D"#ffffff" style=3D"font-famil=
+y:Arial,sans-serif"><span style=3D"font-size:0px;line-height:1px;mso-line-h=
+eight-rule:exactly;display:none;max-width:0px;max-height:0px;opacity:0;over=
+flow:hidden;mso-hide:all;"> MSP Hire, Inc=E2=80=A4 , Transmit Security and =
+Shield AI are hiring now &zwnj;&nbsp;<wbr>&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj; <wbr>&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj; <wbr>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj; <wbr>&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj; <wbr>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj; <wbr>&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj; <wbr>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj; </span><center><table w=
+idth=3D"100%" style=3D"width:100%;max-width:600px;border-bottom:1px solid #=
+E0E0E0"><tbody><tr><td><img src=3D"https://cdn.lensa.com/img/email/logo-len=
+sa-blue-v2.png" style=3D"width:60px;height:auto;color:#000000 !important;pa=
+dding:10px 0;text-align:center" alt=3D""></td><td><img width=3D"1px" height=
+=3D"1px" alt=3D"" src=3D"https://lensa.com/messaging/webhook/events/t/eyJhb=
+GciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm92aWRlciI6ImxlbnNhX2VtYWlsIiwiZXZlbnR=
+fdHlwZSI6Im9wZW5lZCIsInVpZCI6ImM5NzEwYmNkODhjMjRiZmI4YjE4NzNkZjIwNmRkMGE2Ii=
+wic3Vic2NyaXB0aW9uX2lkIjo1Mzc1Nzk1NTIsImVtYWlsIjoibWFkZWludWsxNEBnbWFpbC5jb=
+20iLCJtYWlsX3R5cGUiOiJqb2JhbGVydCIsInNlbmRfZGF0ZSI6IjIwMjYtMDQtMTUgMTQ6MDA6=
+MDAifQ.qf9aixzjBEdsagxm89hIykGRJwnKUrOp6cgSRRabmT4"></td></tr></tbody></tab=
+le><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ style=3D"width:100%;max-width:600px"><tbody><tr><td colspan=3D2 bgcolor=3D=
+"#ffffff" style=3D"padding:0 0 8px;border-bottom:1px solid #E0E0E0" align=
+=3D"center"><div style=3D"font-size:16px;line-height:1.5;font-weight:400;wi=
+dth:100%;max-width:552px;text-align:left;font-family:Arial,sans-serif"><!--=
+[if mso]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96/o:=
+PixelsPerInch /o:OfficeDocumentSettings </xml><center><table><tr><td width=
+=3D"600"><style> td, span {font-family: Arial, sans-serif !important;} a {t=
+ext-decoration: none;font-weight: bold;} </style><![endif]--><table align=
+=3D"center" style=3D"line-height:normal;max-width:600px;padding:5px;font-si=
+ze:12px;font-weight:400;font-family:'Helvetica'"><tr><td><p style=3D"font-w=
+eight:300;line-height:1;margin:0;padding:0 0 10px;color:#5a5a5a"> Software =
+engineer within 25 miles of Boston, MA =E2=80=94 <a href=3D"https://sg3emai=
+l.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMa56ggCq9dPD1wo0A=
+dR-2B590jY4d7YS0rT93kA-2Feksa7QBwHvLMqVu-2BOqvRgicADCsenDrka-2FMur6ZBU9kwa8=
+VqsZD2xh6rEo8tyeG-2BOGltcE305eDz0XVXbg23D8HzXk-2B4JX8raZDJhtsKC9SlWQ1jGwoTJ=
+u5wIqodd2Cb8PVjXlyNP16q5cihQMIalyOcjAxIR8w3ngfCYC6lpGHxJN-2B34-3DlI5y_f-2B7=
+n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23On=
+nUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsq=
+oBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF=
+4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN=
+5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxW=
+j8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY0uaL7XM1uumqgP6wihjlqQ4wQUu1XGCN1uo7i=
+BxiDVyoWEY-2FrEp-2BRv9GIGpTgB5yVYiEvX3WZJN3HmLUP8oD3Jn1YizAFp0LTjJ4uvTJupOu=
+4ChoA2hx6R0N4YGcbxPtPp6cL-2F0J-2F8EhssAJSjSRb-2Bs2s-2BbBNHtQV3MqBbxbThHKrGG=
+wutexFbaGxwRZ0ImbxuKUQT-2F7OghLlI7-2FuXTTzjHBZodXCWeH-2FPBm-2FQn9yYI-3D" st=
+yle=3D"color:#0682e0;text-decoration:underline;white-space:no-wrap;">edit s=
+ettings</a></p></td></tr><tr><td style=3D"padding:8px 0 16px;"><div style=
+=3D"font-size:20px;font-family:Arial;font-weight:700;line-height:1.1"> Your=
+ Job Alerts for Wednesday, April 15 </div></td></tr><tr><td></td></tr><tr><=
+td style=3D"padding-bottom:8px"><table style=3D"border:1px solid #DDE1E6;bo=
+rder-radius:8px;display:inline-block;border-collapse:collapse"><tr><td styl=
+e=3D"width:552px;height:48px;background-color:#f2f4f8;border-radius:8px 8px=
+ 0 0"><table style=3D"height:40px;border-spacing:0"><tr><!--[if mso]><td ro=
+wspan=3D2 style=3D"margin-left:10px"></td><![endif]--><td rowspan=3D2 style=
+=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://cdn.lensa.com/img/compan=
+ylogo_placeholder.png" style=3D"width:32px;height:32px;display:block;border=
+-radius:16px;object-fit:contain;background-color:#fff;" width=3D"32" height=
+=3D"32"></td><td colspan=3D2 style=3D"color:#393939;font-weight:600;font-si=
+ze:14px;padding:0">MSP Hire, Inc=E2=80=A4</td></tr></table></td></tr><tr><t=
+d style=3D"padding:12px 0px 0px 12px;"><a href=3D"https://sg3email.lensa.co=
+m/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMTHe-2BgRwxQA9WnCoEpV0nxnKy=
+Tk-2FjMbJMawHM-2BOVmaWrYiyFTXLzAw3X7RwMjuw6BzJXSbtT-2BSjtZGA89I-2BgxkEZZpXA=
+-2FRB7iUUCKeTLtGdF0CLPj8qe1tEovgkhkfeQNDqg8TRYbY9E7zXp0FmtXpp4nTbACfyCTmm6O=
+mejnUiJCzsz8Uvy30RBZ9QeWClmr9EU1lTSaJ8NYjB7E8dutaI-3DO3D1_f-2B7n9rAduQ4P4uW=
+pDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdE=
+Mg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU=
+2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd=
+-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfy=
+q62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6y=
+qtPqptmqqPXij5JviqODaBHBSYxWgYxDYLZWpg-2FnPV2AIRKG-2FGx-2Bk5sZcec7xa0b8c04r=
+-2FUOMspYP-2Fpu6iUptcIG8pP1ZgxuOJg5nqYbtBNOyyDB8XJMZory-2Fn90BRPbOzBis6NYas=
+GaIAWpzbk-2BFAFk2t36-2F0CKFzkPqHMSSFi6hcAKdPZQvxoGK5qELPIzfA7f50VIbncgc4u2Y=
+ZB7wMVzpUDHavlYNBAL4O2M680YbMwyzNkIxJM9e4790Dqa4htYs-3D" style=3D"color:#06=
+82E0;text-decoration:none;font-weight:bold;font-size:16px;">M365 Architect<=
+/a></td></tr><tr><td style=3D"min-height:21px;padding:4px 0 0 12px;"><table=
+ style=3D"border-spacing:0"><tr><td style=3D"padding-right:2px;"><img alt=
+=3D"Location: " src=3D"https://cdn.lensa.com/icon_location.png" style=3D"di=
+splay:inline-block;vertical-align:text-bottom;" width=3D"16" height=3D"16">=
+</td><td><div style=3D"font-size:12px;font-weight:400;font-family:'Arial';c=
+olor:#393939;">Burlington, MA</div></td></tr></table></td></tr><tr><td styl=
+e=3D"padding:4px 0 0 12px;"><div style=3D"color:#4D5358">about $200K / yr.<=
+/div></td></tr><tr><td style=3D"max-width:550px;padding:8px 0 10px 12px"><s=
+pan style=3D"display:inline-block;margin:3px 0;padding:4px 8px;border-radiu=
+s:8px;background:#DDE1E6;color:#21272A;vertical-align:middle">Full-Time</sp=
+an>&nbsp; </td></tr></table></td></tr><tr><td style=3D"padding-bottom:8px">=
+<table style=3D"border:1px solid #DDE1E6;border-radius:8px;display:inline-b=
+lock;border-collapse:collapse"><tr><td style=3D"width:552px;height:48px;bac=
+kground-color:#f2f4f8;border-radius:8px 8px 0 0"><table style=3D"height:40p=
+x;border-spacing:0"><tr><!--[if mso]><td rowspan=3D2 style=3D"margin-left:1=
+0px"></td><![endif]--><td rowspan=3D2 style=3D"padding:0 12px"><img alt=3D"=
+LE" src=3D"https://cdn.lensa.com/img/company-logos/LQ/transmit-security-log=
+o.webp" style=3D"width:32px;height:32px;display:block;border-radius:16px;ob=
+ject-fit:contain;background-color:#fff;" width=3D"32" height=3D"32"></td><t=
+d colspan=3D2 style=3D"color:#393939;font-weight:600;font-size:14px;padding=
+:0">Transmit Security</td></tr></table></td></tr><tr><td style=3D"padding:1=
+2px 0px 0px 12px;"><a href=3D"https://sg3email.lensa.com/ls/click?upn=3Du00=
+1.-2F0K5UxOWo0al-2F8UCG6e-2FMU3pQdYlJFHPUDmc7WZNkTVoHL1W7Y-2B65G-2BJJcdjWN1=
+jv6bDbGtLumu4KbKMlOQnVRznjLOAU3Yi-2BqRaguVzMnU-2BaApk8Th-2BmUMtLIySLq3hGpVK=
+fOkgxfehnDjtvyXLFoJ91BX4iaB1OhFCBelw60Z3slffxE2dVASi7IPtieB8PzsXH38mLtNp-2F=
+Lfq3p-2FIGpdax6uWT5KCllfG95RIc-2Fc-3Doh-i_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8Fe=
+tlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvq=
+O-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGp=
+Vo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj=
+4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-=
+2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5Jv=
+iqODaBHBSYzpnqPvmxR15-2FtymAY7ASMDiXf9UhYeA2toPsmiVVUm-2FKfBN6cIXBHzB7W6m8H=
+YKHwWw-2FJ67ZC9RaJUWyIh6-2FrBn74DPD-2B4mkYgsGK1pyO7oYvQys2ynwY3RtKgj4D9MIC0=
+-2FkL3TNNn-2BhQnyKJ8mvvsLCAMKCtKWCQ-2FrWERf0Ge-2B7uu2fxx67r01VneNBWLaSTzOtP=
+1icVsnwwEMWh9jgMTz-2Fr-2FWAnp6DLXkTaQb7OrY-3D" style=3D"color:#0682E0;text-=
+decoration:none;font-weight:bold;font-size:16px;">Solutions Architect</a></=
+td></tr><tr><td style=3D"min-height:21px;padding:4px 0 0 12px;"><table styl=
+e=3D"border-spacing:0"><tr><td style=3D"padding-right:2px;"><img alt=3D"Loc=
+ation: " src=3D"https://cdn.lensa.com/icon_location.png" style=3D"display:i=
+nline-block;vertical-align:text-bottom;" width=3D"16" height=3D"16"></td><t=
+d><div style=3D"font-size:12px;font-weight:400;font-family:'Arial';color:#3=
+93939;">Boston, MA</div></td></tr></table></td></tr><tr><td style=3D"paddin=
+g:4px 0 0 12px;"><div style=3D"color:#4D5358">$141K-$173K / yr. (est.)</div=
+></td></tr><tr><td style=3D"max-width:550px;padding:8px 0 10px 12px"><span =
+style=3D"display:inline-block;margin:3px 0;padding:4px 8px;border-radius:8p=
+x;background:#DDE1E6;color:#21272A;vertical-align:middle">Full-Time</span>&=
+nbsp; <span style=3D"display:inline-block;margin:3px 0;padding:4px 8px;bord=
+er-radius:8px;background:#DDE1E6;color:#21272A;vertical-align:middle">Visio=
+n Insurance</span>&nbsp; <span style=3D"display:inline-block;margin:3px 0;p=
+adding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-=
+align:middle">Vacation & Paid Time Off</span>&nbsp; </td></tr></table></td>=
+</tr><tr><td style=3D"padding-bottom:8px"><table style=3D"border:1px solid =
+#DDE1E6;border-radius:8px;display:inline-block;border-collapse:collapse"><t=
+r><td style=3D"width:552px;height:48px;background-color:#f2f4f8;border-radi=
+us:8px 8px 0 0"><table style=3D"height:40px;border-spacing:0"><tr><!--[if m=
+so]><td rowspan=3D2 style=3D"margin-left:10px"></td><![endif]--><td rowspan=
+=3D2 style=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://cdn.lensa.com/=
+img/company-logos/LQ/shield-ai-logo.webp" style=3D"width:32px;height:32px;d=
+isplay:block;border-radius:16px;object-fit:contain;background-color:#fff;" =
+width=3D"32" height=3D"32"></td><td colspan=3D2 style=3D"color:#393939;font=
+-weight:600;font-size:14px;padding:0">Shield AI</td></tr></table></td></tr>=
+<tr><td style=3D"padding:12px 0px 0px 12px;"><a href=3D"https://sg3email.le=
+nsa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMcJGHoMcBzO7XJc6suG9z=
+3-2FBqBkqaEgd84swQ2y9wMDGMNia6PDDA268rtqI8Ib0n3yK46U2j96zNe3gNhwmYQl1vvA4TN=
+wK9tRFu5nHlqD9PzICwG6CiDtBIJUWajgD3ojQQEDGLhS2PMgMG-2FsTNp39G2PfaLmcOpYaS3X=
+cM71MloFDTIDHi7dTM4yAmfqOHGdz7tXzIIb7FmAlTinMgR8-3DwZDb_f-2B7n9rAduQ4P4uWpD=
+Fm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg=
+6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2y=
+J5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2=
+FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq6=
+2jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqt=
+PqptmqqPXij5JviqODaBHBSYqArPy-2Bh9VQwPBmWAtIr0xBxb8lW-2BkJ4afNu7lFBJqX5qFJ-=
+2BYVKMLi1MwxGkIFDbmK0XZLp80olLOYb6gUwIrTfrbImBLAJMK0RgqfSPOjI4-2BPYhf4eX68i=
+JRPAAse3NimxqiYHwQkI6Ap3Bo4VF9-2By-2BBBhqIEm3rI-2Fpw4fmewxT8E0lB0LyudKdyWD5=
+7magPQ87duiFHE2TdrmiYB7nSrdLyMnRjET7E8osv6FfRz-2BQ-3D" style=3D"color:#0682=
+E0;text-decoration:none;font-weight:bold;font-size:16px;">Senior Staff Engi=
+neer, Autonomy - Tactical Behaviors</a></td></tr><tr><td style=3D"min-heigh=
+t:21px;padding:4px 0 0 12px;"><table style=3D"border-spacing:0"><tr><td sty=
+le=3D"padding-right:2px;"><img alt=3D"Location: " src=3D"https://cdn.lensa.=
+com/icon_location.png" style=3D"display:inline-block;vertical-align:text-bo=
+ttom;" width=3D"16" height=3D"16"></td><td><div style=3D"font-size:12px;fon=
+t-weight:400;font-family:'Arial';color:#393939;">Boston, MA</div></td></tr>=
+</table></td></tr><tr><td style=3D"padding:4px 0 0 12px;"><div style=3D"col=
+or:#4D5358">$145K-$177K / yr. (est.)</div></td></tr><tr><td style=3D"max-wi=
+dth:550px;padding:8px 0 10px 12px"><span style=3D"display:inline-block;marg=
+in:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A=
+;vertical-align:middle">Full-Time</span>&nbsp; </td></tr></table></td></tr>=
+<tr><td style=3D"padding-bottom:8px"><table style=3D"border:1px solid #DDE1=
+E6;border-radius:8px;display:inline-block;border-collapse:collapse"><tr><td=
+ style=3D"width:552px;height:48px;background-color:#f2f4f8;border-radius:8p=
+x 8px 0 0"><table style=3D"height:40px;border-spacing:0"><tr><!--[if mso]><=
+td rowspan=3D2 style=3D"margin-left:10px"></td><![endif]--><td rowspan=3D2 =
+style=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://cdn.lensa.com/img/c=
+ompany-logos/LQ/cd-projekt-red-logo.webp" style=3D"width:32px;height:32px;d=
+isplay:block;border-radius:16px;object-fit:contain;background-color:#fff;" =
+width=3D"32" height=3D"32"></td><td colspan=3D2 style=3D"color:#393939;font=
+-weight:600;font-size:14px;padding:0">CD PROJEKT RED</td></tr></table></td>=
+</tr><tr><td style=3D"padding:12px 0px 0px 12px;"><a href=3D"https://sg3ema=
+il.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMc6Ww3joHtMbBve4=
+N7qtpeup-2Fhbn8fH87RFyaxVXNfLMiIxz6efU-2BTFLGUkabt6k9j9Tnws-2BsLxWD3e4dH-2B=
+EtgynrSxjIDj-2F-2FMW-2FbbBO1BxCLO7mxMz3wJCgAcGsgxTqDvfCjiAEsaQlg57L-2FNUbgQ=
+pND4HCabCrXUawRCfOhwuWcLFLlaBKfON0-2FAl7qIjDWm4ulc7H46ezjsyVnUlvV90-3D36wN_=
+f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093=
+F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUz=
+HsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKX=
+I6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhz=
+ICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-=
+2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYkIDrzS1EDdjOK1VYH5b0Y-2FMCqHQwmx=
+D0hZUO1lixbTQ-2Bvywt4BHUSYG9FTMR2mGz6wAWragRGrkoZm2GPfMHv1XxqVfZoiVjelbg8QJ=
+EIMbNZFTokQB0rpvja1FbnP3pb3oRhDT6SSZvwAA-2BU7OxNR5yl-2FZKdengNfdPH6A7faf9Kf=
+FTdrce649iW4Zk82NB7vp3WaoN7QgSrfxW2MH3HOaKb5NcgJOTl8L301LFlzo-3D" style=3D"=
+color:#0682E0;text-decoration:none;font-weight:bold;font-size:16px;">Lead A=
+I Engineer</a></td></tr><tr><td style=3D"min-height:21px;padding:4px 0 0 12=
+px;"><table style=3D"border-spacing:0"><tr><td style=3D"padding-right:2px;"=
+><img alt=3D"Location: " src=3D"https://cdn.lensa.com/icon_location.png" st=
+yle=3D"display:inline-block;vertical-align:text-bottom;" width=3D"16" heigh=
+t=3D"16"></td><td><div style=3D"font-size:12px;font-weight:400;font-family:=
+'Arial';color:#393939;">Boston, MA</div></td></tr></table></td></tr><tr><td=
+ style=3D"padding:4px 0 0 12px;"><div style=3D"color:#4D5358">$168K-$257K /=
+ yr.</div></td></tr><tr><td style=3D"max-width:550px;padding:8px 0 10px 12p=
+x"><span style=3D"display:inline-block;margin:3px 0;padding:4px 8px;border-=
+radius:8px;background:#DDE1E6;color:#21272A;vertical-align:middle">Full-Tim=
+e</span>&nbsp; <span style=3D"display:inline-block;margin:3px 0;padding:4px=
+ 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-align:midd=
+le">Vision Insurance</span>&nbsp; <span style=3D"display:inline-block;margi=
+n:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;=
+vertical-align:middle">Dental Insurance</span>&nbsp; </td></tr></table></td=
+></tr><tr><td style=3D"padding-bottom:8px"><table style=3D"border:1px solid=
+ #DDE1E6;border-radius:8px;display:inline-block;border-collapse:collapse"><=
+tr><td style=3D"width:552px;height:48px;background-color:#f2f4f8;border-rad=
+ius:8px 8px 0 0"><table style=3D"height:40px;border-spacing:0"><tr><!--[if =
+mso]><td rowspan=3D2 style=3D"margin-left:10px"></td><![endif]--><td rowspa=
+n=3D2 style=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://cdn.lensa.com=
+/img/company-logos/LQ/klaviyo-logo.webp" style=3D"width:32px;height:32px;di=
+splay:block;border-radius:16px;object-fit:contain;background-color:#fff;" w=
+idth=3D"32" height=3D"32"></td><td colspan=3D2 style=3D"color:#393939;font-=
+weight:600;font-size:14px;padding:0">Klaviyo</td></tr><tr style=3D"font-siz=
+e:10px;font-weight:700;color:#fbb33d"><td style=3D"font-size:12px;color:bla=
+ck;width:14px">5.0&nbsp;</td><td> =E2=98=85=E2=98=85=E2=98=85=E2=98=85=E2=
+=98=85 </td></tr></table></td></tr><tr><td style=3D"padding:12px 0px 0px 12=
+px;"><a href=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0=
+al-2F8UCG6e-2FMZN6SI55NzR-2BOu-2FWmpdeOO0sA300SzHU5l1h5zy38OlaqgGQvAomGM6Tg=
+yS2UI1cmjeBNZoweSC13H1dewG499nrM6k2VYa1u9XYsB0zug4bjwRK4axFjVJX5v-2B-2FMGm-=
+2FSAttIIYTZvfYdnK6ugjioClFmNtBPFtTQreedepGPar0mxnXaYiETvpNKG7FwbRCKYXxDKfNZ=
+0QRSmtWXdud8EY-3DoTip_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSV=
+IPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8=
+WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2B=
+hpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3=
+-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmseml=
+Gfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYuMSpQ92R0g=
+0ZOrTrNGt54CnuYhe2XBvoprKY3s6GhawFr6Y2viBryaAU4s7i89S5w0S1aMCnNl3Vz68pr9qj2=
+wD-2B6KS-2FG92Wz0jm-2BjFZnHSWSwbpGp8C7iSCmuGFD2aaOU23pKj9qOkB2-2F-2F-2Bgdwa=
+lI0cactwwMNfx7zWuNEGTN39xrw6zhWRchFr02mERNm27T5QjJPNe-2FAcWGDyC6TrFnwEL-2Bj=
+MYASapi60HVZX2n8-3D" style=3D"color:#0682E0;text-decoration:none;font-weigh=
+t:bold;font-size:16px;">Lead Solutions Architect, GSIs</a></td></tr><tr><td=
+ style=3D"min-height:21px;padding:4px 0 0 12px;"><table style=3D"border-spa=
+cing:0"><tr><td style=3D"padding-right:2px;"><img alt=3D"Location: " src=3D=
+"https://cdn.lensa.com/icon_location.png" style=3D"display:inline-block;ver=
+tical-align:text-bottom;" width=3D"16" height=3D"16"></td><td><div style=3D=
+"font-size:12px;font-weight:400;font-family:'Arial';color:#393939;">Boston,=
+ MA</div></td></tr></table></td></tr><tr><td style=3D"padding:4px 0 0 12px;=
+"><div style=3D"color:#4D5358">about $157K / yr.</div></td></tr><tr><td sty=
+le=3D"max-width:550px;padding:8px 0 10px 12px"><span style=3D"display:inlin=
+e-block;margin:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6;c=
+olor:#21272A;vertical-align:middle">Full-Time</span>&nbsp; <span style=3D"d=
+isplay:inline-block;margin:3px 0;padding:4px 8px;border-radius:8px;backgrou=
+nd:#DEFBE6;color:#21272A;vertical-align:middle">=E2=9C=93 Remarkable Profes=
+sional Growth</span>&nbsp; <span style=3D"display:inline-block;margin:3px 0=
+;padding:4px 8px;border-radius:8px;background:#DEFBE6;color:#21272A;vertica=
+l-align:middle">=E2=9C=93 Excellent Salary & Benefits</span>&nbsp; </td></t=
+r></table></td></tr><tr><td style=3D"padding-bottom:8px"><table style=3D"bo=
+rder:1px solid #DDE1E6;border-radius:8px;display:inline-block;border-collap=
+se:collapse"><tr><td style=3D"width:552px;height:48px;background-color:#f2f=
+4f8;border-radius:8px 8px 0 0"><table style=3D"height:40px;border-spacing:0=
+"><tr><!--[if mso]><td rowspan=3D2 style=3D"margin-left:10px"></td><![endif=
+]--><td rowspan=3D2 style=3D"padding:0 12px"><img alt=3D"LE" src=3D"https:/=
+/cdn.lensa.com/img/companylogo_placeholder.png" style=3D"width:32px;height:=
+32px;display:block;border-radius:16px;object-fit:contain;background-color:#=
+fff;" width=3D"32" height=3D"32"></td><td colspan=3D2 style=3D"color:#39393=
+9;font-weight:600;font-size:14px;padding:0">Counsel Health</td></tr></table=
+></td></tr><tr><td style=3D"padding:12px 0px 0px 12px;"><a href=3D"https://=
+sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMU3pQdYlJF=
+HPUDmc7WZNkTURO4i39dcWLX-2ByXYhb-2BpWAar55vA6nzd-2F-2B27g4-2FeSj4bdNIIUZz-2=
+FdoOEhWk9mP9OJJuo2x9Tlrow6y1baYs26D3cZnavvpWBrKw3Pm-2FmrPBS-2F4GQf1dXzU2RHr=
+xLTnsDjN6JekIgBCFx2RUGza4NX5sDcMgmUq-2BFv0Qbc-2BymHM6QzggaTZLtuk6QY7MvYijWE=
+-3DhY9K_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk=
+5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7=
+N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbj=
+DqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6D=
+ItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqY=
+yBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY5ma5ctTk1pgbmhHJjUHTWy-2=
+FjtcdfCrrvJ4mXFcwBn-2F17VV-2F7YD-2Be2LZSrgF3-2FRIWI1Z00tXsu-2BC8RI5XiLviUlq=
+uix3ex5zpMKqi2fvYA5aBPlCdOZUzMLipUX-2BaFQBdgkirlAtzeXsVtBFM4Er2ZjLsTKGuFbXL=
+SGFrFABMzShWpf-2BphbOv4fWvrbGB94EKn9H3NTc30ddHOClPODR6NOfJ4M0ECrZMS2-2FoXRC=
+S-2Bgo-3D" style=3D"color:#0682E0;text-decoration:none;font-weight:bold;fon=
+t-size:16px;">Software Engineer</a></td></tr><tr><td style=3D"min-height:21=
+px;padding:4px 0 0 12px;"><table style=3D"border-spacing:0"><tr><td style=
+=3D"padding-right:2px;"><img alt=3D"Location: " src=3D"https://cdn.lensa.co=
+m/icon_location.png" style=3D"display:inline-block;vertical-align:text-bott=
+om;" width=3D"16" height=3D"16"></td><td><div style=3D"font-size:12px;font-=
+weight:400;font-family:'Arial';color:#393939;">Boston, MA</div></td></tr></=
+table></td></tr><tr><td style=3D"padding:4px 0 0 12px;"><div style=3D"color=
+:#4D5358">$160K-$225K / yr.</div></td></tr><tr><td style=3D"max-width:550px=
+;padding:8px 0 10px 12px"><span style=3D"display:inline-block;margin:3px 0;=
+padding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical=
+-align:middle">Full-Time</span>&nbsp; <span style=3D"display:inline-block;m=
+argin:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6;color:#212=
+72A;vertical-align:middle">Dental Insurance</span>&nbsp; <span style=3D"dis=
+play:inline-block;margin:3px 0;padding:4px 8px;border-radius:8px;background=
+:#DDE1E6;color:#21272A;vertical-align:middle">Vision Insurance</span>&nbsp;=
+ </td></tr></table></td></tr><tr><td style=3D"padding-bottom:8px"><table st=
+yle=3D"border:1px solid #DDE1E6;border-radius:8px;display:inline-block;bord=
+er-collapse:collapse"><tr><td style=3D"width:552px;height:48px;background-c=
+olor:#f2f4f8;border-radius:8px 8px 0 0"><table style=3D"height:40px;border-=
+spacing:0"><tr><!--[if mso]><td rowspan=3D2 style=3D"margin-left:10px"></td=
+><![endif]--><td rowspan=3D2 style=3D"padding:0 12px"><img alt=3D"LE" src=
+=3D"https://cdn.lensa.com/img/companylogo_placeholder.png" style=3D"width:3=
+2px;height:32px;display:block;border-radius:16px;object-fit:contain;backgro=
+und-color:#fff;" width=3D"32" height=3D"32"></td><td colspan=3D2 style=3D"c=
+olor:#393939;font-weight:600;font-size:14px;padding:0">Blitzy AI</td></tr><=
+/table></td></tr><tr><td style=3D"padding:12px 0px 0px 12px;"><a href=3D"ht=
+tps://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMUDd=
+sRkq9ffrJz3iOFAZQvJgJ7U4G31j6yG2vj5S0YeMAxr-2FPoQyEtM-2FUZUIA2iCv0ViVY285IS=
+JLokJAWB3-2Bxaznr00WgDGhjdPz3ERtHURKtCqN9YWarpJ4IVi3bnEljJ-2Fys6W3Irk6h0JbD=
+13ECl0OZc-2FFrn4FyoBXG395h-2Ffix3-2BF3lULF-2BNcW6gU9mLg0WRcflSB2plzlsxWh0iU=
+yg-3DFhYa_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnP=
+Kk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVh=
+p7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8c=
+bjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv=
+6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2Bt=
+qYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY5iudiP3jKftc1Cw-2FIMSn=
+z7beDERehv-2BAwEhpxieJbVlPOw65zj08nF6ZFaLtBnJIUhCKAbPwFJbPnT-2BKuE1B1vkMwS-=
+2FI68CK1eCMaMYkvsZUnJdGMoPzmXwlZtNY-2BXGQJdb7-2Fr1yluqhWCUhxMuJ96w-2F9FGXbK=
+9-2FHg2F6E4NHP0h7EfrUX3hFpmXzmWG8ECpbqCUhSrV7t4eY9lmAPmQQnwprGoxy928PnX4z6I=
+oPwo-3D" style=3D"color:#0682E0;text-decoration:none;font-weight:bold;font-=
+size:16px;">Forward Deployed Software Engineer</a></td></tr><tr><td style=
+=3D"min-height:21px;padding:4px 0 0 12px;"><table style=3D"border-spacing:0=
+"><tr><td style=3D"padding-right:2px;"><img alt=3D"Location: " src=3D"https=
+://cdn.lensa.com/icon_location.png" style=3D"display:inline-block;vertical-=
+align:text-bottom;" width=3D"16" height=3D"16"></td><td><div style=3D"font-=
+size:12px;font-weight:400;font-family:'Arial';color:#393939;">Boston, MA</d=
+iv></td></tr></table></td></tr><tr><td style=3D"padding:4px 0 0 12px;"><div=
+ style=3D"color:#4D5358">$175K-$200K / yr.</div></td></tr><tr><td style=3D"=
+max-width:550px;padding:8px 0 10px 12px"><span style=3D"display:inline-bloc=
+k;margin:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6;color:#=
+21272A;vertical-align:middle">Full-Time</span>&nbsp; </td></tr></table></td=
+></tr><tr><td style=3D"padding-bottom:8px"><table style=3D"border:1px solid=
+ #DDE1E6;border-radius:8px;display:inline-block;border-collapse:collapse"><=
+tr><td style=3D"width:552px;height:48px;background-color:#f2f4f8;border-rad=
+ius:8px 8px 0 0"><table style=3D"height:40px;border-spacing:0"><tr><!--[if =
+mso]><td rowspan=3D2 style=3D"margin-left:10px"></td><![endif]--><td rowspa=
+n=3D2 style=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://cdn.lensa.com=
+/img/companylogo_placeholder.png" style=3D"width:32px;height:32px;display:b=
+lock;border-radius:16px;object-fit:contain;background-color:#fff;" width=3D=
+"32" height=3D"32"></td><td colspan=3D2 style=3D"color:#393939;font-weight:=
+600;font-size:14px;padding:0">Amazon Development Center U=E2=80=A4S=E2=80=
+=A4, Inc=E2=80=A4</td></tr></table></td></tr><tr><td style=3D"padding:12px =
+0px 0px 12px;"><a href=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.-2=
+F0K5UxOWo0al-2F8UCG6e-2FMaq65Aqf8JybmT1-2FQwsh1QKQ0Wev7OYJRojkseJflY8w5KaXV=
+aGn7HP0Dj-2B6wLr9JQ6nr0TDoFWpPnviauhXexi8kr1IqecyuHgm01c0R9NhqPqM-2Fak3nu87=
+yn1tgEfjuTAQQLae5I9IMdWWdK0HTe9uQx8L0uwMc78tfQpdik2Rw83CUD8xa9vTYKpRdiEiYom=
+bgDy2kdWNDBEU7mPaYQw-3DR6Rt_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havP=
+iUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-=
+2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrB=
+zat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxn=
+GrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQA=
+RmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYekOh=
+mMKORs7BMGHtWcOjuTBh72T5B5YgDqvWvmjHbbyqO8ZKikkXUGvU2l8IFwcdL2H1e-2Fuy1nnZy=
+7P0c2YUwm7g37NZMjz-2BN9aeLJB3sa68jLBauf26Iw-2FSo10fZECoQtiYjQiyJiRwvoEXNM2t=
+-2BdvXWukFP3o-2BJ-2FqxbVmk0xjKfOGivg2BrMOAdqo6uXr-2FuI4PFj3-2FqIb7u8TflZFng=
+h978Av4IGqwfon94OcrNhg-3D" style=3D"color:#0682E0;text-decoration:none;font=
+-weight:bold;font-size:16px;">Sr. SDE, AWS Transform Migrations</a></td></t=
+r><tr><td style=3D"min-height:21px;padding:4px 0 0 12px;"><table style=3D"b=
+order-spacing:0"><tr><td style=3D"padding-right:2px;"><img alt=3D"Location:=
+ " src=3D"https://cdn.lensa.com/icon_location.png" style=3D"display:inline-=
+block;vertical-align:text-bottom;" width=3D"16" height=3D"16"></td><td><div=
+ style=3D"font-size:12px;font-weight:400;font-family:'Arial';color:#393939;=
+">Boston, MA</div></td></tr></table></td></tr><tr><td style=3D"padding:4px =
+0 0 12px;"><div style=3D"color:#4D5358">$168K-$227K / yr.</div></td></tr><t=
+r><td style=3D"max-width:550px;padding:8px 0 10px 12px"><span style=3D"disp=
+lay:inline-block;margin:3px 0;padding:4px 8px;border-radius:8px;background:=
+#DDE1E6;color:#21272A;vertical-align:middle">Full-Time</span>&nbsp; <span s=
+tyle=3D"display:inline-block;margin:3px 0;padding:4px 8px;border-radius:8px=
+;background:#DDE1E6;color:#21272A;vertical-align:middle">Vacation & Paid Ti=
+me Off</span>&nbsp; <span style=3D"display:inline-block;margin:3px 0;paddin=
+g:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-align=
+:middle">Flexible Spending Account (FSA)</span>&nbsp; </td></tr></table></t=
+d></tr><tr><td style=3D"padding-bottom:8px"><table style=3D"border:1px soli=
+d #DDE1E6;border-radius:8px;display:inline-block;border-collapse:collapse">=
+<tr><td style=3D"width:552px;height:48px;background-color:#f2f4f8;border-ra=
+dius:8px 8px 0 0"><table style=3D"height:40px;border-spacing:0"><tr><!--[if=
+ mso]><td rowspan=3D2 style=3D"margin-left:10px"></td><![endif]--><td rowsp=
+an=3D2 style=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://cdn.lensa.co=
+m/img/company-logos/LQ/houghton-mifflin-harcourt-logo.webp" style=3D"width:=
+32px;height:32px;display:block;border-radius:16px;object-fit:contain;backgr=
+ound-color:#fff;" width=3D"32" height=3D"32"></td><td colspan=3D2 style=3D"=
+color:#393939;font-weight:600;font-size:14px;padding:0">Houghton Mifflin Ha=
+rcourt Co</td></tr><tr style=3D"font-size:10px;font-weight:700;color:#fbb33=
+d"><td style=3D"font-size:12px;color:black;width:14px">4.2&nbsp;</td><td> =
+=E2=98=85=E2=98=85=E2=98=85=E2=98=85=E2=98=86 </td></tr></table></td></tr><=
+tr><td style=3D"padding:12px 0px 0px 12px;"><a href=3D"https://sg3email.len=
+sa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMdNNGy-2FTm-2BHFEB7rTj=
+iMXmpsR0Y0tzMsj-2BL7ou-2BQdCHqQbwTc6wXkV9m1YhCNMlD4RO5Y6HV-2F6HetMWJF5Q4qjx=
+LBkqf5mf870jbg6zfFPTuVRRcEhRg2F6VKqYqVTHaKThzBStgCSmtGVheuzI7axXnPdATZVfTZj=
+qAoGFAoq5Y-2F3bfO2NO7kGNM-2BUKwzxtljaCSyudkNpG7tHcKhcNyOs-3DoWrZ_f-2B7n9rAd=
+uQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdx=
+aIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBa=
+iX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-=
+2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BC=
+w7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF=
+8nEDK6yqtPqptmqqPXij5JviqODaBHBSYUl-2By-2BmNH4U0td6QDohIIcj27Mw7alCPSb5C-2B=
+79vX4ZT7JoJ2P88HZFu-2B-2Bs6gYZpd0P5vDD2YQeExJpkDweBe3Ndn-2Fh6KJkXJyA-2Bprv8=
+AA2mkYgrWRI4D0p5vSFhjx9tzE-2B6b-2FKhTZcDch7hW3wEwA6htU33ah7QNT7UaldspcOEAbm=
+kxS9oy05Xu51Z4mQPaI9KXkel5RAUodadh8hc5ZVVx0-2FpccrEihoJclVwrEb0-3D" style=
+=3D"color:#0682E0;text-decoration:none;font-weight:bold;font-size:16px;">St=
+aff Software Engineer</a></td></tr><tr><td style=3D"min-height:21px;padding=
+:4px 0 0 12px;"><table style=3D"border-spacing:0"><tr><td style=3D"padding-=
+right:2px;"><img alt=3D"Location: " src=3D"https://cdn.lensa.com/icon_locat=
+ion.png" style=3D"display:inline-block;vertical-align:text-bottom;" width=
+=3D"16" height=3D"16"></td><td><div style=3D"font-size:12px;font-weight:400=
+;font-family:'Arial';color:#393939;">Boston, MA</div></td></tr></table></td=
+></tr><tr><td style=3D"padding:4px 0 0 12px;"><div style=3D"color:#4D5358">=
+$122K-$149K / yr. (est.)</div></td></tr><tr><td style=3D"max-width:550px;pa=
+dding:8px 0 10px 12px"><span style=3D"display:inline-block;margin:3px 0;pad=
+ding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-al=
+ign:middle">Full-Time</span>&nbsp; <span style=3D"display:inline-block;marg=
+in:3px 0;padding:4px 8px;border-radius:8px;background:#DEFBE6;color:#21272A=
+;vertical-align:middle">=E2=9C=93 Excellent Salary & Benefits</span>&nbsp; =
+<span style=3D"display:inline-block;margin:3px 0;padding:4px 8px;border-rad=
+ius:8px;background:#DEFBE6;color:#21272A;vertical-align:middle">=E2=9C=93 S=
+olid Professional Growth</span>&nbsp; </td></tr></table></td></tr><tr><td s=
+tyle=3D"padding-bottom:8px"><table style=3D"border:1px solid #DDE1E6;border=
+-radius:8px;display:inline-block;border-collapse:collapse"><tr><td style=3D=
+"width:552px;height:48px;background-color:#f2f4f8;border-radius:8px 8px 0 0=
+"><table style=3D"height:40px;border-spacing:0"><tr><!--[if mso]><td rowspa=
+n=3D2 style=3D"margin-left:10px"></td><![endif]--><td rowspan=3D2 style=3D"=
+padding:0 12px"><img alt=3D"LE" src=3D"https://cdn.lensa.com/img/company-lo=
+gos/LQ/xometry-logo.webp" style=3D"width:32px;height:32px;display:block;bor=
+der-radius:16px;object-fit:contain;background-color:#fff;" width=3D"32" hei=
+ght=3D"32"></td><td colspan=3D2 style=3D"color:#393939;font-weight:600;font=
+-size:14px;padding:0">Xometry</td></tr></table></td></tr><tr><td style=3D"p=
+adding:12px 0px 0px 12px;"><a href=3D"https://sg3email.lensa.com/ls/click?u=
+pn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMaq65Aqf8JybmT1-2FQwsh1QIWKLTN5kbkzTGx3=
+6168xko3SLCroHQuMffQnShiY97lbFP5cCBFAqseBmgV18rT9s65JmNvkjYt41EJiT8iInuwtOx=
+7cIfaZSNjoyy7iFCTzUJpnimCGNzoaWNRn3QKJcX7-2FMiU1fak-2FcqAY5a-2FeqdXDkVMR6aw=
+ANl8wASeektKggJdvD1G1qVFu4WFY-2F3-2BIA-3D09tK_f-2B7n9rAduQ4P4uWpDFm2mbTeI6n=
+S8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3V=
+OlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7=
+nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2B=
+prCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1a=
+Hoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXi=
+j5JviqODaBHBSYaEUIB7Ll-2FaFmxXyTTYPpeai7H3lFSENZJah8Ulcb4uUI-2Bkh2ff6S-2Fzf=
+Z4MEzfMLJj1jeKe1n3RilLZta-2B5IW7eT0HdPOmNARFj4RZNqTTOaC4M-2FUgI1PeEruq16G1-=
+2Fg4ndofSNr0TxD-2Fp1UyCLlsS75k0tUG1DErYh4MFP6VSNOuEvcgqQI3fuo4dWG8ypgBKGtT-=
+2B6UGXPfmKYSIdcsn-2F5BEV3HxVI0fHiz8qJdc-2FDg-3D" style=3D"color:#0682E0;tex=
+t-decoration:none;font-weight:bold;font-size:16px;">Staff Software Engineer=
+</a></td></tr><tr><td style=3D"min-height:21px;padding:4px 0 0 12px;"><tabl=
+e style=3D"border-spacing:0"><tr><td style=3D"padding-right:2px;"><img alt=
+=3D"Location: " src=3D"https://cdn.lensa.com/icon_location.png" style=3D"di=
+splay:inline-block;vertical-align:text-bottom;" width=3D"16" height=3D"16">=
+</td><td><div style=3D"font-size:12px;font-weight:400;font-family:'Arial';c=
+olor:#393939;">Waltham, MA</div></td></tr></table></td></tr><tr><td style=
+=3D"padding:4px 0 0 12px;"><div style=3D"color:#4D5358">$160K-$195K / yr. (=
+est.)</div></td></tr><tr><td style=3D"max-width:550px;padding:8px 0 10px 12=
+px"><span style=3D"display:inline-block;margin:3px 0;padding:4px 8px;border=
+-radius:8px;background:#DDE1E6;color:#21272A;vertical-align:middle">Full-Ti=
+me</span>&nbsp; </td></tr></table></td></tr><tr><td style=3D"padding-bottom=
+:8px"><table style=3D"border:1px solid #DDE1E6;border-radius:8px;display:in=
+line-block;border-collapse:collapse"><tr><td style=3D"width:552px;height:48=
+px;background-color:#f2f4f8;border-radius:8px 8px 0 0"><table style=3D"heig=
+ht:40px;border-spacing:0"><tr><!--[if mso]><td rowspan=3D2 style=3D"margin-=
+left:10px"></td><![endif]--><td rowspan=3D2 style=3D"padding:0 12px"><img a=
+lt=3D"LE" src=3D"https://cdn.lensa.com/img/company-logos/LQ/the-computer-me=
+rchant-logo.webp" style=3D"width:32px;height:32px;display:block;border-radi=
+us:16px;object-fit:contain;background-color:#fff;" width=3D"32" height=3D"3=
+2"></td><td colspan=3D2 style=3D"color:#393939;font-weight:600;font-size:14=
+px;padding:0">The Computer Merchant, LTD=E2=80=A4</td></tr></table></td></t=
+r><tr><td style=3D"padding:12px 0px 0px 12px;"><a href=3D"https://sg3email.=
+lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMcJIxTkVXJAfRQEEYLh=
+0HL-2BPMnfVA5b4nBVunSRDTCpySAGtUs-2BL6CsxjjIZP9xi5G3qvWl3HnzvUMwG54-2FfBo3D=
+Mxm3dGSGb0KKKBmVWpGWmDd2qz8AFLdbGJRQE2oh-2BgB-2BNiSUHO1vBL44QsdxMGBFJQj21Nj=
+1OYeLl4LbI8UC4rhshipFeVSEWxirejlTU-2FxChMgv8FoRovWqqoZIn6E-3D1EIt_f-2B7n9rA=
+duQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYd=
+xaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcB=
+aiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo=
+-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2B=
+Cw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQ=
+F8nEDK6yqtPqptmqqPXij5JviqODaBHBSYSyt77tTZ0ihFQbe-2BCs29xBkpirR88dxL4X8Q09Y=
+EM0orUBJQVxotAKFx6panTMLPQMn-2Ftc65k-2F8lJU-2BuLpul8k8lMuTddixv-2BdKOjKoQT-=
+2FUgpX856tQJ2JWFVeoa9V4mruSOXQFL-2FSJdlD3Pca8bFcFMhYomyfX3ait4hTn85xDkniAKV=
+k9ZRgUMO9-2BPkWkQzlepiSIA7SlD0vnKbTt1qS2ffwNOFvLiRaL8FX0kwtA-3D" style=3D"c=
+olor:#0682E0;text-decoration:none;font-weight:bold;font-size:16px;">Senior =
+PowerBI Developer</a></td></tr><tr><td style=3D"min-height:21px;padding:4px=
+ 0 0 12px;"><table style=3D"border-spacing:0"><tr><td style=3D"padding-righ=
+t:2px;"><img alt=3D"Location: " src=3D"https://cdn.lensa.com/icon_location.=
+png" style=3D"display:inline-block;vertical-align:text-bottom;" width=3D"16=
+" height=3D"16"></td><td><div style=3D"font-size:12px;font-weight:400;font-=
+family:'Arial';color:#393939;">Everett, MA</div></td></tr></table></td></tr=
+><tr><td style=3D"padding:4px 0 0 12px;"><div style=3D"color:#4D5358">$63-$=
+65 / hr.</div></td></tr><tr><td style=3D"max-width:550px;padding:8px 0 10px=
+ 12px"><span style=3D"display:inline-block;margin:3px 0;padding:4px 8px;bor=
+der-radius:8px;background:#DDE1E6;color:#21272A;vertical-align:middle">Full=
+-Time</span>&nbsp; <span style=3D"display:inline-block;margin:3px 0;padding=
+:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-align:=
+middle">Flexible Spending Account (FSA)</span>&nbsp; <span style=3D"display=
+:inline-block;margin:3px 0;padding:4px 8px;border-radius:8px;background:#DD=
+E1E6;color:#21272A;vertical-align:middle">Sick Days</span>&nbsp; </td></tr>=
+</table></td></tr><tr><td style=3D"padding-bottom:8px"><table style=3D"bord=
+er:1px solid #DDE1E6;border-radius:8px;display:inline-block;border-collapse=
+:collapse"><tr><td style=3D"width:552px;height:48px;background-color:#f2f4f=
+8;border-radius:8px 8px 0 0"><table style=3D"height:40px;border-spacing:0">=
+<tr><!--[if mso]><td rowspan=3D2 style=3D"margin-left:10px"></td><![endif]-=
+-><td rowspan=3D2 style=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://c=
+dn.lensa.com/img/company-logos/LQ/coinbase-logo.webp" style=3D"width:32px;h=
+eight:32px;display:block;border-radius:16px;object-fit:contain;background-c=
+olor:#fff;" width=3D"32" height=3D"32"></td><td colspan=3D2 style=3D"color:=
+#393939;font-weight:600;font-size:14px;padding:0">Coinbase</td></tr><tr sty=
+le=3D"font-size:10px;font-weight:700;color:#fbb33d"><td style=3D"font-size:=
+12px;color:black;width:14px">3.7&nbsp;</td><td> =E2=98=85=E2=98=85=E2=98=85=
+=E2=98=86=E2=98=86 </td></tr></table></td></tr><tr><td style=3D"padding:12p=
+x 0px 0px 12px;"><a href=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.=
+-2F0K5UxOWo0al-2F8UCG6e-2FMSJK5Wp3fQZ-2B3010iAdD-2FcSwyOvD2996K6Xj9LKMaSFpM=
+ScQP2C3Sqgq4kbka5EZ6DlPaAQOUtIroJ-2B7H5C6bVJrqw6gcPSQbNU7-2Bw5VI77sZtwVWKh4=
+K4tUkSYHLrl2NGMMM-2B3LYv4Gy-2B7UPnXY6FTa5HKtO7gYp0-2FyVmtvKqdj8zvVX3vOfSq7u=
+FGb-2FqcggPeuie0m1vPMeHF6LZmU-2BJU-3DcjwB_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8Fe=
+tlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvq=
+O-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGp=
+Vo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj=
+4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-=
+2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5Jv=
+iqODaBHBSYbR3V8TQU9WHq-2Bxd7bT5i4C-2BmqpZ9J4Pdix-2FBrkB4Rsh-2F9hPjRMSjst2Gf=
+-2BIxrL-2FXmc97O4JKblvUIZ1z-2BpL-2FxWdIAmEPSUIK1tbxW-2Bi9Y3a00NZZ1dFpsuN3IK=
+O5fiCBve7LRcA9gD02GKatUpbu-2FcqkjHFeFTOuoDgwqYOkmwm47y4w2sMCC6lr8OnAjJx2uIN=
+UqFif-2BLTh2g6M6WJjfYBzVRseU-2B7OmRXn-2BoHjPWY-3D" style=3D"color:#0682E0;t=
+ext-decoration:none;font-weight:bold;font-size:16px;">Senior Software Engin=
+eer (EAA)</a></td></tr><tr><td style=3D"min-height:21px;padding:4px 0 0 12p=
+x;"><table style=3D"border-spacing:0"><tr><td style=3D"padding-right:2px;">=
+<img alt=3D"Location: " src=3D"https://cdn.lensa.com/icon_location.png" sty=
+le=3D"display:inline-block;vertical-align:text-bottom;" width=3D"16" height=
+=3D"16"></td><td><div style=3D"font-size:12px;font-weight:400;font-family:'=
+Arial';color:#393939;">Boston, MA</div></td></tr></table></td></tr><tr><td =
+style=3D"padding:4px 0 0 12px;"><div style=3D"color:#4D5358">about $186K / =
+yr.</div></td></tr><tr><td style=3D"max-width:550px;padding:8px 0 10px 12px=
+"><span style=3D"display:inline-block;margin:3px 0;padding:4px 8px;border-r=
+adius:8px;background:#DDE1E6;color:#21272A;vertical-align:middle">Full-Time=
+</span>&nbsp; <span style=3D"display:inline-block;margin:3px 0;padding:4px =
+8px;border-radius:8px;background:#DEFBE6;color:#21272A;vertical-align:middl=
+e">=E2=9C=93 Good Salary & Benefits</span>&nbsp; <span style=3D"display:inl=
+ine-block;margin:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6=
+;color:#21272A;vertical-align:middle">Positive Culture & Values</span>&nbsp=
+; <span style=3D"display:inline-block;margin:3px 0;padding:4px 8px;border-r=
+adius:8px;background:#DDE1E6;color:#21272A;vertical-align:middle">401K Plan=
+</span>&nbsp; </td></tr></table></td></tr><tr><td style=3D"padding-bottom:8=
+px"><table style=3D"border:1px solid #DDE1E6;border-radius:8px;display:inli=
+ne-block;border-collapse:collapse"><tr><td style=3D"width:552px;height:48px=
+;background-color:#f2f4f8;border-radius:8px 8px 0 0"><table style=3D"height=
+:40px;border-spacing:0"><tr><!--[if mso]><td rowspan=3D2 style=3D"margin-le=
+ft:10px"></td><![endif]--><td rowspan=3D2 style=3D"padding:0 12px"><img alt=
+=3D"LE" src=3D"https://cdn.lensa.com/img/company-logos/LQ/franklin-templeto=
+n-logo.webp" style=3D"width:32px;height:32px;display:block;border-radius:16=
+px;object-fit:contain;background-color:#fff;" width=3D"32" height=3D"32"></=
+td><td colspan=3D2 style=3D"color:#393939;font-weight:600;font-size:14px;pa=
+dding:0">Franklin Templeton</td></tr><tr style=3D"font-size:10px;font-weigh=
+t:700;color:#fbb33d"><td style=3D"font-size:12px;color:black;width:14px">3.=
+7&nbsp;</td><td> =E2=98=85=E2=98=85=E2=98=85=E2=98=86=E2=98=86 </td></tr></=
+table></td></tr><tr><td style=3D"padding:12px 0px 0px 12px;"><a href=3D"htt=
+ps://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMcJIx=
+TkVXJAfRQEEYLh0HL-2FCw1cZqd4tfByoDq3rVNl1qiRkmyRVMdgbxPlpsuOn89xO331KAU2Nza=
+YxNYJdhbjGMSi02UoMrcTLFJ3p6lEqMumJJ-2B2c1i-2FLZzyVZ5qWYEqx8-2B7ujqaSBOgA0X3=
+SloQn0C6Gs14X5kfWnC658xyd2oFCu97-2BmGAWeHoE86rkbuFb9dQd2KTxUzvBHBn8Sqc-3Da1=
+En_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z=
+093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqn=
+QUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQn=
+RKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofx=
+XhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKv=
+O9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYuRPmR-2FWPpBaVO2U766hAeqUie8O=
+FqmPLOBkSJFMzlMR7AnPgmDsEK8TEUH1lpZVfp3E1aMCwCyuQ9Kn3HTiglWR8miU86dxo1k7yvZ=
+hUrPGgfXcCbNbFpFH8-2Fh2V6rzEGWWlosTIc2RsqJCwZnMls4ll4GzTmU9Nw4G1TS-2BIjL34h=
+U8JGi1s7I-2BIVr-2BddJleG4X-2Bmp-2F3jOImfI1H7qaSrDXkJEZcj7EtrhRb7BAxplk-3D" =
+style=3D"color:#0682E0;text-decoration:none;font-weight:bold;font-size:16px=
+;">Senior Software Engineer</a></td></tr><tr><td style=3D"min-height:21px;p=
+adding:4px 0 0 12px;"><table style=3D"border-spacing:0"><tr><td style=3D"pa=
+dding-right:2px;"><img alt=3D"Location: " src=3D"https://cdn.lensa.com/icon=
+_location.png" style=3D"display:inline-block;vertical-align:text-bottom;" w=
+idth=3D"16" height=3D"16"></td><td><div style=3D"font-size:12px;font-weight=
+:400;font-family:'Arial';color:#393939;">Boston, MA</div></td></tr></table>=
+</td></tr><tr><td style=3D"padding:4px 0 0 12px;"><div style=3D"color:#4D53=
+58">about $178K / yr.</div></td></tr><tr><td style=3D"max-width:550px;paddi=
+ng:8px 0 10px 12px"><span style=3D"display:inline-block;margin:3px 0;paddin=
+g:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-align=
+:middle">Full-Time</span>&nbsp; <span style=3D"display:inline-block;margin:=
+3px 0;padding:4px 8px;border-radius:8px;background:#DEFBE6;color:#21272A;ve=
+rtical-align:middle">=E2=9C=93 Good Salary & Benefits</span>&nbsp; <span st=
+yle=3D"display:inline-block;margin:3px 0;padding:4px 8px;border-radius:8px;=
+background:#DDE1E6;color:#21272A;vertical-align:middle">Outstanding Work-Li=
+fe Balance</span>&nbsp; <span style=3D"display:inline-block;margin:3px 0;pa=
+dding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-a=
+lign:middle">Stock Options</span>&nbsp; </td></tr></table></td></tr><tr><td=
+ style=3D"padding-bottom:8px"><table style=3D"border:1px solid #DDE1E6;bord=
+er-radius:8px;display:inline-block;border-collapse:collapse"><tr><td style=
+=3D"width:552px;height:48px;background-color:#f2f4f8;border-radius:8px 8px =
+0 0"><table style=3D"height:40px;border-spacing:0"><tr><!--[if mso]><td row=
+span=3D2 style=3D"margin-left:10px"></td><![endif]--><td rowspan=3D2 style=
+=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://cdn.lensa.com/img/compan=
+y-logos/LQ/planit-group-logo.webp" style=3D"width:32px;height:32px;display:=
+block;border-radius:16px;object-fit:contain;background-color:#fff;" width=
+=3D"32" height=3D"32"></td><td colspan=3D2 style=3D"color:#393939;font-weig=
+ht:600;font-size:14px;padding:0">PlanIT Group, LLC</td></tr></table></td></=
+tr><tr><td style=3D"padding:12px 0px 0px 12px;"><a href=3D"https://sg3email=
+.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMWyNmUfzaybywhr8IO=
+vdo-2B7eystYfexZxfUNmBTXFPJeCTDzf8wvxZcN9zKcWEw5P9lip40roHLHdjmATElTi6AYBS0=
+pYoURs7eSxP2aaQ3LZhRCVE5ObseN5EKViuzhztxghFunuRy-2BjJcndcAs-2Bh-2Fa-2FE6koU=
+i79B41HOhcpida4HBCE-2BfnfbNYQSgcTSYeCWHQN4uH7JDcQhrBTuvhXR4-3DLGCN_f-2B7n9r=
+AduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUY=
+dxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBc=
+BaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Om=
+o-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2=
+BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8A=
+QF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYgGRxr1-2FLJLm3bzboZzXbfEOSyrg7B7fVfF6Bb6=
+-2FMojjkxddVH9GbBhIfXEJC4uHX05VVoYBymJH05FNvN0beCG9frwyqRJgS43MQHk0BYWubdnS=
+YQNKKWd4lmJaylTdSR9wxuaw9YoWmTuTcRij08ytmMs9LLnzTMHRPvSSl9IMAHAm5A9mi5g-2Bm=
+3Xj2dJdD40K1dBLSFPAV9lmqm0saz-2BlxcSkg-2BWa0mMtn5FOVDs0-3D" style=3D"color:=
+#0682E0;text-decoration:none;font-weight:bold;font-size:16px;">Senior Softw=
+are Engineer</a></td></tr><tr><td style=3D"min-height:21px;padding:4px 0 0 =
+12px;"><table style=3D"border-spacing:0"><tr><td style=3D"padding-right:2px=
+;"><img alt=3D"Location: " src=3D"https://cdn.lensa.com/icon_location.png" =
+style=3D"display:inline-block;vertical-align:text-bottom;" width=3D"16" hei=
+ght=3D"16"></td><td><div style=3D"font-size:12px;font-weight:400;font-famil=
+y:'Arial';color:#393939;">Boston, MA</div></td></tr></table></td></tr><tr><=
+td style=3D"padding:4px 0 0 12px;"><div style=3D"color:#4D5358">$102K-$125K=
+ / yr. (est.)</div></td></tr><tr><td style=3D"max-width:550px;padding:8px 0=
+ 10px 12px"><span style=3D"display:inline-block;margin:3px 0;padding:4px 8p=
+x;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-align:middle"=
+>Full-Time</span>&nbsp; </td></tr></table></td></tr><tr><td style=3D"paddin=
+g-bottom:8px"><table style=3D"border:1px solid #DDE1E6;border-radius:8px;di=
+splay:inline-block;border-collapse:collapse"><tr><td style=3D"width:552px;h=
+eight:48px;background-color:#f2f4f8;border-radius:8px 8px 0 0"><table style=
+=3D"height:40px;border-spacing:0"><tr><!--[if mso]><td rowspan=3D2 style=3D=
+"margin-left:10px"></td><![endif]--><td rowspan=3D2 style=3D"padding:0 12px=
+"><img alt=3D"LE" src=3D"https://cdn.lensa.com/img/companylogo_placeholder.=
+png" style=3D"width:32px;height:32px;display:block;border-radius:16px;objec=
+t-fit:contain;background-color:#fff;" width=3D"32" height=3D"32"></td><td c=
+olspan=3D2 style=3D"color:#393939;font-weight:600;font-size:14px;padding:0"=
+>NaSPA, Inc=E2=80=A4</td></tr><tr style=3D"font-size:10px;font-weight:700;c=
+olor:#fbb33d"><td style=3D"font-size:12px;color:black;width:14px">3.9&nbsp;=
+</td><td> =E2=98=85=E2=98=85=E2=98=85=E2=98=85=E2=98=86 </td></tr></table><=
+/td></tr><tr><td style=3D"padding:12px 0px 0px 12px;"><a href=3D"https://sg=
+3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMZdWc9O2SfNB=
+X5H2Zy8vjm-2F5Mns-2FT-2FR9stn2GNUngJwLqQpq5ReIrP-2FoWvG3aqHkTZzdCSFb8pmEOaJ=
+47SGnSWox8AZbf4CYsOCoDYrq7wjn-2FmWO6tP72-2BjSe-2FxgWXR7Zh032MaohgFxxGChcqWn=
+YPpsLkQCkZUJvhtkoUKwdBYXvPlDR8GUjedF0E4-2Fmp6TX8TquIsBIz1EnGgoA57TBrY-3DiNj=
+U_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z0=
+93F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQ=
+UzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnR=
+KXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxX=
+hzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO=
+9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYGhzYTtSGuDRCSnVSoAEd1758YDxCnK=
+ZDyGExxMMSjHbJxmhcoXK1x3R6EpWaiaQIkghTfqnG6oaGvHI4d-2FkLX-2BSk9YO-2FQTvXEG4=
+kWXsLdUmUjMTkqc8i-2BCzd-2Fwb1Gr5yyqDkY6mhsvEq7kT4vcOmoucdHgt6NNv5nNupQgT3ah=
+gUJdjvEECusphwKLr14vDlR3GNVfx42CLoUVKCqMkoMyq4pbTs3FiFEjROqFhzzXA-3D" style=
+=3D"color:#0682E0;text-decoration:none;font-weight:bold;font-size:16px;">Se=
+nior Software Engineer, Prepared</a></td></tr><tr><td style=3D"min-height:2=
+1px;padding:4px 0 0 12px;"><table style=3D"border-spacing:0"><tr><td style=
+=3D"padding-right:2px;"><img alt=3D"Location: " src=3D"https://cdn.lensa.co=
+m/icon_location.png" style=3D"display:inline-block;vertical-align:text-bott=
+om;" width=3D"16" height=3D"16"></td><td><div style=3D"font-size:12px;font-=
+weight:400;font-family:'Arial';color:#393939;">Boston, MA</div></td></tr></=
+table></td></tr><tr><td style=3D"padding:4px 0 0 12px;"><div style=3D"color=
+:#4D5358">about $141K / yr.</div></td></tr><tr><td style=3D"max-width:550px=
+;padding:8px 0 10px 12px"><span style=3D"display:inline-block;margin:3px 0;=
+padding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical=
+-align:middle">Full-Time</span>&nbsp; <span style=3D"display:inline-block;m=
+argin:3px 0;padding:4px 8px;border-radius:8px;background:#DEFBE6;color:#212=
+72A;vertical-align:middle">=E2=9C=93 Solid Professional Growth</span>&nbsp;=
+ <span style=3D"display:inline-block;margin:3px 0;padding:4px 8px;border-ra=
+dius:8px;background:#DEFBE6;color:#21272A;vertical-align:middle">=E2=9C=93 =
+Good Salary & Benefits</span>&nbsp; <span style=3D"display:inline-block;mar=
+gin:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272=
+A;vertical-align:middle">401K Plan</span>&nbsp; </td></tr></table></td></tr=
+><tr><td style=3D"padding-bottom:8px"><table style=3D"border:1px solid #DDE=
+1E6;border-radius:8px;display:inline-block;border-collapse:collapse"><tr><t=
+d style=3D"width:552px;height:48px;background-color:#f2f4f8;border-radius:8=
+px 8px 0 0"><table style=3D"height:40px;border-spacing:0"><tr><!--[if mso]>=
+<td rowspan=3D2 style=3D"margin-left:10px"></td><![endif]--><td rowspan=3D2=
+ style=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://cdn.lensa.com/img/=
+companylogo_placeholder.png" style=3D"width:32px;height:32px;display:block;=
+border-radius:16px;object-fit:contain;background-color:#fff;" width=3D"32" =
+height=3D"32"></td><td colspan=3D2 style=3D"color:#393939;font-weight:600;f=
+ont-size:14px;padding:0">Robin Powered, Inc=E2=80=A4</td></tr></table></td>=
+</tr><tr><td style=3D"padding:12px 0px 0px 12px;"><a href=3D"https://sg3ema=
+il.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMUDdsRkq9ffrJz3i=
+OFAZQvJrp3ru4NVqrFHuz6-2F8Ta4xSQ7L9qJjjGnMOktzVcaY1bT09humP4mxoUw1Y85b4-2Fl=
+yEBsCfKyVxQ8dCMcw9LhgwJnDC-2Fyuj7PnzShLPRre4I2lHkGcrW3z6qmtKhaJtmy9BCDBxNob=
+GKMTLcJDkUbSeUUHNMAF0JXQ94N9NpWbnbI9Uf8DedXo8Iw1-2BKvtY3k-3DEzN__f-2B7n9rAd=
+uQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdx=
+aIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBa=
+iX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-=
+2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BC=
+w7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF=
+8nEDK6yqtPqptmqqPXij5JviqODaBHBSY5tCmpBHTkmURgWJ-2B-2Fmwln-2F-2B2Mld-2B0URq=
+2upfqNGKr27bgN-2BFGAKxxK85g5s563l39DUqJN4dPU2G02f2pQ5TmWh38Xo5-2F9WVxuLIcXo=
+XFU2UKDMldoE-2BI1mbewlBp92lt2tjdm-2Ff1FAlFyeBVjaR5ZmW9ZyhkeSIU-2BfmFumwbjZF=
+phnvslomcJj1QEMWxTW5eu2ozCUrNAeMO7rbQl13GwCRx-2FPwbQBMaceY9L-2BuI2Q-3D" sty=
+le=3D"color:#0682E0;text-decoration:none;font-weight:bold;font-size:16px;">=
+Senior Software Engineer</a></td></tr><tr><td style=3D"min-height:21px;padd=
+ing:4px 0 0 12px;"><table style=3D"border-spacing:0"><tr><td style=3D"paddi=
+ng-right:2px;"><img alt=3D"Location: " src=3D"https://cdn.lensa.com/icon_lo=
+cation.png" style=3D"display:inline-block;vertical-align:text-bottom;" widt=
+h=3D"16" height=3D"16"></td><td><div style=3D"font-size:12px;font-weight:40=
+0;font-family:'Arial';color:#393939;">Boston, MA</div></td></tr></table></t=
+d></tr><tr><td style=3D"padding:4px 0 0 12px;"><div style=3D"color:#4D5358"=
+>$110K-$134K / yr. (est.)</div></td></tr><tr><td style=3D"max-width:550px;p=
+adding:8px 0 10px 12px"><span style=3D"display:inline-block;margin:3px 0;pa=
+dding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-a=
+lign:middle">Full-Time</span>&nbsp; <span style=3D"display:inline-block;mar=
+gin:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272=
+A;vertical-align:middle">Life Insurance</span>&nbsp; <span style=3D"display=
+:inline-block;margin:3px 0;padding:4px 8px;border-radius:8px;background:#DD=
+E1E6;color:#21272A;vertical-align:middle">Disability Insurance</span>&nbsp;=
+ </td></tr></table></td></tr><tr><td style=3D"padding-bottom:8px"><table st=
+yle=3D"border:1px solid #DDE1E6;border-radius:8px;display:inline-block;bord=
+er-collapse:collapse"><tr><td style=3D"width:552px;height:48px;background-c=
+olor:#f2f4f8;border-radius:8px 8px 0 0"><table style=3D"height:40px;border-=
+spacing:0"><tr><!--[if mso]><td rowspan=3D2 style=3D"margin-left:10px"></td=
+><![endif]--><td rowspan=3D2 style=3D"padding:0 12px"><img alt=3D"LE" src=
+=3D"https://cdn.lensa.com/img/companylogo_placeholder.png" style=3D"width:3=
+2px;height:32px;display:block;border-radius:16px;object-fit:contain;backgro=
+und-color:#fff;" width=3D"32" height=3D"32"></td><td colspan=3D2 style=3D"c=
+olor:#393939;font-weight:600;font-size:14px;padding:0">The Association of T=
+echnology, Management and Applied Engineering</td></tr></table></td></tr><t=
+r><td style=3D"padding:12px 0px 0px 12px;"><a href=3D"https://sg3email.lens=
+a.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMWyNmUfzaybywhr8IOvdo-2=
+B7440RF1-2BvFfKRLuGJfrsjcyROd6g2Wrc81IMeeuQKyZukHDNPFY-2FI6vI4HzIuCzERkGu4K=
+yOzVRGAmOX1JZ1QEQriWYYqWpI2h3vGJWwqXYiVmmBVYCqqx-2FL1clvxINgaGJ74B-2FPSbpNm=
+Shf1VPsuM5-2FIQfL0uw-2BLFn2p0Cg0fOKyeFq0lYZQE8v3zMpob25g-3DjYrK_f-2B7n9rAdu=
+Q4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxa=
+IRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBai=
+X-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2=
+BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw=
+7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8=
+nEDK6yqtPqptmqqPXij5JviqODaBHBSYFFaw0TMew62wNsTTX5pM1cSJfFAT8-2FhsJ7CL7Bj0u=
+2i0EWrWhNKpPIkMRhQLXfrKuUke2-2Bno4LfCAPEbeR-2B6qkHsSCKfCQhwl1j-2BtFRKEKPDOf=
+CjEfc640GL7tXasR-2BXpIyv0jbpBJAK5VTd3UOJrwEwtzoh-2FaztDtxTQnieGsnBW4H2lr9DC=
+uli5EWPvEY-2FPRJsGFWU-2FW291RXg2JpgjD9QXgrZ-2FlJl3lqVSwDrv3o-3D" style=3D"c=
+olor:#0682E0;text-decoration:none;font-weight:bold;font-size:16px;">Senior =
+Software Engineer, Prepared</a></td></tr><tr><td style=3D"min-height:21px;p=
+adding:4px 0 0 12px;"><table style=3D"border-spacing:0"><tr><td style=3D"pa=
+dding-right:2px;"><img alt=3D"Location: " src=3D"https://cdn.lensa.com/icon=
+_location.png" style=3D"display:inline-block;vertical-align:text-bottom;" w=
+idth=3D"16" height=3D"16"></td><td><div style=3D"font-size:12px;font-weight=
+:400;font-family:'Arial';color:#393939;">Boston, MA</div></td></tr></table>=
+</td></tr><tr><td style=3D"padding:4px 0 0 12px;"><div style=3D"color:#4D53=
+58">about $141K / yr.</div></td></tr><tr><td style=3D"max-width:550px;paddi=
+ng:8px 0 10px 12px"><span style=3D"display:inline-block;margin:3px 0;paddin=
+g:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-align=
+:middle">Full-Time</span>&nbsp; <span style=3D"display:inline-block;margin:=
+3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;ve=
+rtical-align:middle">401K Plan</span>&nbsp; <span style=3D"display:inline-b=
+lock;margin:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6;colo=
+r:#21272A;vertical-align:middle">Dental Insurance</span>&nbsp; </td></tr></=
+table></td></tr><tr><td style=3D"padding-bottom:8px"><table style=3D"border=
+:1px solid #DDE1E6;border-radius:8px;display:inline-block;border-collapse:c=
+ollapse"><tr><td style=3D"width:552px;height:48px;background-color:#f2f4f8;=
+border-radius:8px 8px 0 0"><table style=3D"height:40px;border-spacing:0"><t=
+r><!--[if mso]><td rowspan=3D2 style=3D"margin-left:10px"></td><![endif]-->=
+<td rowspan=3D2 style=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://cdn=
+.lensa.com/img/company-logos/LQ/ssc-technologies-logo.webp" style=3D"width:=
+32px;height:32px;display:block;border-radius:16px;object-fit:contain;backgr=
+ound-color:#fff;" width=3D"32" height=3D"32"></td><td colspan=3D2 style=3D"=
+color:#393939;font-weight:600;font-size:14px;padding:0">SS&C Technologies, =
+Inc=E2=80=A4</td></tr></table></td></tr><tr><td style=3D"padding:12px 0px 0=
+px 12px;"><a href=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5U=
+xOWo0al-2F8UCG6e-2FMesiSSGZmeLEYppTGXCUn53nsXyKG0L2ZNnvLmG-2BYM1xoY9fMKxa-2=
+B6VG4cxFiO-2BQqpG7vPARM9Yv6a-2BkCOIXApypU3wINCe-2FStxx5Zcw2hs6VMbzVyzdeQLuK=
+7uN7hDz5WVyH-2F5FiXZUUzUes9ZiOZ05Jzqsa1BIASURvj10UDrfA8gee72PVHWQdjREYcAJfa=
+CUFvMxOGouv3CVzwqCxWI-3Derg3_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6hav=
+PiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0=
+-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDr=
+Bzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhx=
+nGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQ=
+ARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY31B=
+xeBYfY9koQMn5drrZkfDozuXXvDBGyT88SNdRvA1XWkX2pzfH2Ua-2BET-2Bf1EO-2Bd56o7LZa=
+xPAyNoI8q1LoKeCLiOpBoQeLIQVELnXzyevcsrLHGJ63R0i3lnp7unVUoZXg8tGd1rOJbo8knSs=
+R1xL94JqS5CbB1P-2BS92EPSwKAtAZ4E3PCY0XxN7nKrqtAoFzhwg7afEZKNJxwjSVVnR22KqMw=
+FaO-2F9FjWjVmNzKk-3D" style=3D"color:#0682E0;text-decoration:none;font-weig=
+ht:bold;font-size:16px;">Senior Software Engineer</a></td></tr><tr><td styl=
+e=3D"min-height:21px;padding:4px 0 0 12px;"><table style=3D"border-spacing:=
+0"><tr><td style=3D"padding-right:2px;"><img alt=3D"Location: " src=3D"http=
+s://cdn.lensa.com/icon_location.png" style=3D"display:inline-block;vertical=
+-align:text-bottom;" width=3D"16" height=3D"16"></td><td><div style=3D"font=
+-size:12px;font-weight:400;font-family:'Arial';color:#393939;">Boston, MA</=
+div></td></tr></table></td></tr><tr><td style=3D"padding:4px 0 0 12px;"><di=
+v style=3D"color:#4D5358">$120K-$147K / yr. (est.)</div></td></tr><tr><td s=
+tyle=3D"max-width:550px;padding:8px 0 10px 12px"><span style=3D"display:inl=
+ine-block;margin:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6=
+;color:#21272A;vertical-align:middle">Full-Time</span>&nbsp; <span style=3D=
+"display:inline-block;margin:3px 0;padding:4px 8px;border-radius:8px;backgr=
+ound:#DDE1E6;color:#21272A;vertical-align:middle">Employee Assistance Progr=
+am</span>&nbsp; <span style=3D"display:inline-block;margin:3px 0;padding:4p=
+x 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-align:mid=
+dle">Vacation & Paid Time Off</span>&nbsp; </td></tr></table></td></tr><tr>=
+<td style=3D"padding-bottom:8px"><table style=3D"border:1px solid #DDE1E6;b=
+order-radius:8px;display:inline-block;border-collapse:collapse"><tr><td sty=
+le=3D"width:552px;height:48px;background-color:#f2f4f8;border-radius:8px 8p=
+x 0 0"><table style=3D"height:40px;border-spacing:0"><tr><!--[if mso]><td r=
+owspan=3D2 style=3D"margin-left:10px"></td><![endif]--><td rowspan=3D2 styl=
+e=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://cdn.lensa.com/img/compa=
+nylogo_placeholder.png" style=3D"width:32px;height:32px;display:block;borde=
+r-radius:16px;object-fit:contain;background-color:#fff;" width=3D"32" heigh=
+t=3D"32"></td><td colspan=3D2 style=3D"color:#393939;font-weight:600;font-s=
+ize:14px;padding:0">Sophia Genetics SA</td></tr></table></td></tr><tr><td s=
+tyle=3D"padding:12px 0px 0px 12px;"><a href=3D"https://sg3email.lensa.com/l=
+s/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMZdWc9O2SfNBX5H2Zy8vjm-2FPFpwW=
+xXavdiby1ZczKitmuNFjYd7Fvh2cbbhUwp8SybYT6l0MvYXD50U8a9GG0YmRto3g66UK8Q7k-2B=
+HS5BlCob44PdgTO8Oz4yG2-2BsW-2F8x1UryYiMA1VHLT-2Fx8ylClcwsmUcsNjiAqgAPg8z7T1=
+FRm76HVHdXSWXzEO8twFXxfdHUh7x9GXdn-2Bwf7piAl90s-3DrGiV_f-2B7n9rAduQ4P4uWpDF=
+m2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6=
+ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ=
+5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2F=
+B-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62=
+jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtP=
+qptmqqPXij5JviqODaBHBSYUCxvBQZ0YnOCqOkJ-2F7UMQF1ViEAQhf5JKraXJrigvLCjqHfZaP=
+z-2B606IOkM6WMh-2FTP-2BmZrYQEmoPd43yW8NkyDE0WUdZWVFNLp6-2B5dqG2kCVfs5JAfy8O=
+-2B7xzfp-2FDLnFlyaVwKlDCbEtEICHlpuopeUiyxU6Ia-2BItXweXuNEPEaHAzpZ10bma8wHcD=
+tAOjgr3jEbZDrPDJ2ZupDIBfVddKQMQ1XO6nHG4E2z1PRHWCU-3D" style=3D"color:#0682E=
+0;text-decoration:none;font-weight:bold;font-size:16px;">Senior Software En=
+gineer</a></td></tr><tr><td style=3D"min-height:21px;padding:4px 0 0 12px;"=
+><table style=3D"border-spacing:0"><tr><td style=3D"padding-right:2px;"><im=
+g alt=3D"Location: " src=3D"https://cdn.lensa.com/icon_location.png" style=
+=3D"display:inline-block;vertical-align:text-bottom;" width=3D"16" height=
+=3D"16"></td><td><div style=3D"font-size:12px;font-weight:400;font-family:'=
+Arial';color:#393939;">Boston, MA</div></td></tr></table></td></tr><tr><td =
+style=3D"padding:4px 0 0 12px;"><div style=3D"color:#4D5358">$105K-$128K / =
+yr. (est.)</div></td></tr><tr><td style=3D"max-width:550px;padding:8px 0 10=
+px 12px"><span style=3D"display:inline-block;margin:3px 0;padding:4px 8px;b=
+order-radius:8px;background:#DDE1E6;color:#21272A;vertical-align:middle">Fu=
+ll-Time</span>&nbsp; </td></tr></table></td></tr><tr><td style=3D"padding-b=
+ottom:8px"><table style=3D"border:1px solid #DDE1E6;border-radius:8px;displ=
+ay:inline-block;border-collapse:collapse"><tr><td style=3D"width:552px;heig=
+ht:48px;background-color:#f2f4f8;border-radius:8px 8px 0 0"><table style=3D=
+"height:40px;border-spacing:0"><tr><!--[if mso]><td rowspan=3D2 style=3D"ma=
+rgin-left:10px"></td><![endif]--><td rowspan=3D2 style=3D"padding:0 12px"><=
+img alt=3D"LE" src=3D"https://cdn.lensa.com/img/company-logos/LQ/iterable-l=
+ogo.webp" style=3D"width:32px;height:32px;display:block;border-radius:16px;=
+object-fit:contain;background-color:#fff;" width=3D"32" height=3D"32"></td>=
+<td colspan=3D2 style=3D"color:#393939;font-weight:600;font-size:14px;paddi=
+ng:0">Iterable</td></tr></table></td></tr><tr><td style=3D"padding:12px 0px=
+ 0px 12px;"><a href=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K=
+5UxOWo0al-2F8UCG6e-2FMUDdsRkq9ffrJz3iOFAZQvKeYmJn7DCkw6ZBKZzedNNEvDG9NkWjGf=
+17PisTGS4pRLOgzFMWv-2BBsZIxBKsKL9pNdC0rqVhtj5aARahWNjhVofQj1qrGNS1-2FOMzv6f=
+7CCJwEm00OZ4ZtB3isA9xywWXKu11-2FTdT-2F-2BuHZha3389VEXW1F2ILWKVYNtRoIr7HPfYu=
+zyjJ1wnTve0bgiV-2F7RmF8-3D_z7O_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6h=
+avPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9=
+u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4cc=
+DrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFA=
+hxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRr=
+NQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSY7=
+-2BCmxnpZAmpJRM-2FWJbKZ6ZLxX0hDK5a-2F8MmnpZCD2U09CZ06rW-2ByIk4LsOO3ZStlegOX=
+j5CV475rwQ3sFC4YGIyTiuhDQq8Mea1hPTupoXl5ZsYiJGeyk3AiTPq8ufeysI4lhix3Hk0M1UD=
+wngFAr3OKXcbQaIbM4j4o93OxaI2q6okAJ3yXyTVHCgTMyi1Mh3ub1WuUCPC3-2FfafkAx5g46j=
+HmJu4pw8OhZg0seIYOQ-3D" style=3D"color:#0682E0;text-decoration:none;font-we=
+ight:bold;font-size:16px;">Senior Software Engineer (Channels)</a></td></tr=
+><tr><td style=3D"min-height:21px;padding:4px 0 0 12px;"><table style=3D"bo=
+rder-spacing:0"><tr><td style=3D"padding-right:2px;"><img alt=3D"Location: =
+" src=3D"https://cdn.lensa.com/icon_location.png" style=3D"display:inline-b=
+lock;vertical-align:text-bottom;" width=3D"16" height=3D"16"></td><td><div =
+style=3D"font-size:12px;font-weight:400;font-family:'Arial';color:#393939;"=
+>Boston, MA</div></td></tr></table></td></tr><tr><td style=3D"padding:4px 0=
+ 0 12px;"><div style=3D"color:#4D5358">about $134K / yr.</div></td></tr><tr=
+><td style=3D"max-width:550px;padding:8px 0 10px 12px"><span style=3D"displ=
+ay:inline-block;margin:3px 0;padding:4px 8px;border-radius:8px;background:#=
+DDE1E6;color:#21272A;vertical-align:middle">Full-Time</span>&nbsp; <span st=
+yle=3D"display:inline-block;margin:3px 0;padding:4px 8px;border-radius:8px;=
+background:#DDE1E6;color:#21272A;vertical-align:middle">Health Insurance</s=
+pan>&nbsp; <span style=3D"display:inline-block;margin:3px 0;padding:4px 8px=
+;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-align:middle">=
+Dental Insurance</span>&nbsp; </td></tr></table></td></tr><tr><td bgcolor=
+=3D"#ffffff" style=3D"text-align:left;font-family:Arial;color:#000000;paddi=
+ng-top:10px;"><a href=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.-2F=
+0K5UxOWo0al-2F8UCG6e-2FMTqsJWlwpRrgKgIaUDzN8xmIcaFUqTppPD3k0X1rp93mXoQ-2FS8=
+lq3ZxHu97Y67UQtTNdflq4a3isQ8HRdZFWfr7D3eS-2BQtd05gdoCqZW1Ra9CCcmwHsejUxzOuW=
+lKzptvfIOIEDwijcBUaewgrsaKNCQFwT8bSZJR9nrsy9x3k5EDsCIamRAPC2kiTAnzZlZVxBRBa=
+GIpb7Qb2hSCRbGAn257QX9S9CU1KXrYFA55u9UgiFYUHa3xYhkrxiI7Jk46ZL9SjyaBknBfHPEC=
+SWE0qX4Rhv-2FNO1wVZoKEuhpdpONOWAV7lScq8vdpo17bcjjLQ-3D-3D4N4h_f-2B7n9rAduQ4=
+P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIR=
+rTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-=
+2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR=
+-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7x=
+ixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nE=
+DK6yqtPqptmqqPXij5JviqODaBHBSYUzqV8JUmDfZbnJC6jcUA5Z7NGdyGp-2FG6L9TX66ObeWb=
+YW-2FIm3R52-2F8kZVnJW2YNE58Z2UVA-2FDv6Vhu-2FE-2FkA6HHglqIbHFrxHYwK5k-2Fv6eF=
+oHP7WZdYP6cDXezHbgQl-2FkhmGjGglLZFuIXoO236B79OfSfGXAnqPPHr3hStUb16I6BJRMgmi=
+efF9Jm6FJkL5Yvv2nb5Lqq5uA64Qlpeqhmi1QD6rvYNnoA-2BxRUKFkpeg-3D" style=3D"bac=
+kground-color:#0072C3;font-size:14px;font-family:Helvetica,Arial,sans-serif=
+;font-weight:bold;padding:12px;color:#ffffff;border-radius:24px;display:inl=
+ine-block;width:170px;text-align:center;margin:0 0 16px 0;text-decoration:n=
+one"><span>More jobs &#10142;</span></a></td></tr><tr><td><img alt=3D" " sr=
+c=3D"https://cdn.lensa.com/clock_small.png" style=3D"width:13px;height:13px=
+;margin-right:4px;display:inline-block;vertical-align:text-top" width=3D"13=
+" height=3D"13"><span style=3D"color:#f43196;font-weight:700;">&#32;GIG JOB=
+S</span><p style=3D"margin:3px 0;color:#333333;font-weight:600">&#32;You di=
+g a flexible schedule? One of these jobs might be a good fit!</p></td></tr>=
+<tr><td style=3D"padding-bottom:8px"><table style=3D"border:1px solid #DDE1=
+E6;border-radius:8px;display:inline-block;border-collapse:collapse"><tr><td=
+ style=3D"width:552px;height:48px;background-color:#f2f4f8;border-radius:8p=
+x 8px 0 0"><table style=3D"height:40px;border-spacing:0"><tr><!--[if mso]><=
+td rowspan=3D2 style=3D"margin-left:10px"></td><![endif]--><td rowspan=3D2 =
+style=3D"padding:0 12px"><img alt=3D"LE" src=3D"https://cdn.lensa.com/img/c=
+ompany-logos/LQ/uber-logo.webp" style=3D"width:32px;height:32px;display:blo=
+ck;border-radius:16px;object-fit:contain;background-color:#fff;" width=3D"3=
+2" height=3D"32"></td><td colspan=3D2 style=3D"color:#393939;font-weight:60=
+0;font-size:14px;padding:0">Uber</td></tr></table></td></tr><tr><td style=
+=3D"padding:12px 0px 0px 12px;"><a href=3D"https://sg3email.lensa.com/ls/cl=
+ick?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMZdWc9O2SfNBX5H2Zy8vjm9GH6m2DNVPYV=
+MlkwMjkoct0Fv4unsWWqHXomcH8AiyIM0vjxLBBnzhwI1T7fYK0m7aL0Ol9ytljCGdTEOg-2FpI=
+gfwqn2okEKu26vABKSIE35AzuD2k-2FTWAF6K8Ecilu6brImeerkmccBnjDR-2FYtJAdh9BLDTU=
+l2HbtgpK86BZVHJg-3D-3DrkBq_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPi=
+UTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2=
+BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBz=
+at-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnG=
+rpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQAR=
+msemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYXqnji=
+Vs9tc8CIRfa4lv6vLsyrA3Li-2BX7Tldi2djnj54-2BzSQWcgYt8BCQFnH4KZ-2BWo9YPjFlryi=
+PKHxNBz4Fe2yN-2BS9XFD78T8qlwfVwd-2BsVDWzgScn34kFZzLfEmUUomMDsuA7-2Bhs2Q4rC3=
+ubupPnNzMU3SDnAH2bLY5OC-2F-2FpCqNbc9leTidRDoAXgEsWc-2FKYgYSfF02-2FofBtSqS-2=
+BZ08LLPUMme5BWWuDH3eVxOT8-2FI-3D" style=3D"color:#f43196;text-decoration:no=
+ne;font-weight:bold;font-size:16px;">Earn on Your Schedule - Drive with Ube=
+r</a></td></tr><tr><td style=3D"min-height:21px;padding:4px 0 0 12px;"><tab=
+le style=3D"border-spacing:0"><tr><td style=3D"padding-right:2px;"><img alt=
+=3D"Location: " src=3D"https://cdn.lensa.com/icon_location.png" style=3D"di=
+splay:inline-block;vertical-align:text-bottom;" width=3D"16" height=3D"16">=
+</td><td><div style=3D"font-size:12px;font-weight:400;font-family:'Arial';c=
+olor:#393939;">Boston, MA</div></td></tr></table></td></tr><tr><td style=3D=
+"padding:4px 0 0 12px;"><div style=3D"color:#4D5358">$56K-$68K / yr. (est.)=
+</div></td></tr><tr><td style=3D"max-width:550px;padding:8px 0 10px 12px"><=
+span style=3D"display:inline-block;margin:3px 0;padding:4px 8px;border-radi=
+us:8px;background:#FBB33D;color:#FFFFFF;vertical-align:middle">New</span>&n=
+bsp; <span style=3D"display:inline-block;margin:3px 0;padding:4px 8px;borde=
+r-radius:8px;background:#DDE1E6;color:#21272A;vertical-align:middle">Full-T=
+ime</span>&nbsp; <span style=3D"display:inline-block;margin:3px 0;padding:4=
+px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertical-align:mi=
+ddle">Outstanding Work-Life Balance</span>&nbsp; <span style=3D"display:inl=
+ine-block;margin:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6=
+;color:#21272A;vertical-align:middle">Positive Culture & Values</span>&nbsp=
+; </td></tr></table></td></tr><tr><td style=3D"padding-bottom:8px"><table s=
+tyle=3D"border:1px solid #DDE1E6;border-radius:8px;display:inline-block;bor=
+der-collapse:collapse"><tr><td style=3D"width:552px;height:48px;background-=
+color:#f2f4f8;border-radius:8px 8px 0 0"><table style=3D"height:40px;border=
+-spacing:0"><tr><!--[if mso]><td rowspan=3D2 style=3D"margin-left:10px"></t=
+d><![endif]--><td rowspan=3D2 style=3D"padding:0 12px"><img alt=3D"LE" src=
+=3D"https://cdn.lensa.com/img/company-logos/LQ/doordash-logo.webp" style=3D=
+"width:32px;height:32px;display:block;border-radius:16px;object-fit:contain=
+;background-color:#fff;" width=3D"32" height=3D"32"></td><td colspan=3D2 st=
+yle=3D"color:#393939;font-weight:600;font-size:14px;padding:0">DoorDash</td=
+></tr></table></td></tr><tr><td style=3D"padding:12px 0px 0px 12px;"><a hre=
+f=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e=
+-2FMdgBBeofAO63k6o6p7jnSAV-2F-2BZl3mx-2F1KZ5ewe4p-2BAI3iXSpHMKxL2jAsRDG-2Fs=
+bke8GB9YWdeamUcB8cmx-2F4UaOGpadDYSBnyjqTpr5UUCOHGxcFVZ0eDtVSt1deBBZbFACK-2F=
+9rOEAoCLmaUMmrgZVZsv2sjqucX5Z-2BQeGF2Hqo1E3svVy2SXyyiv75RmI5FIw-3D-3D84BY_f=
+-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F=
+23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzH=
+sKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI=
+6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzI=
+CnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2=
+BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYNnlhy9Ixx4pvb-2BLvi6YP7R0vd05dO5S=
+Wpfn232yq2eoTrjH5Vl0zW9U1jXY9xBIDxW-2BSIpsP3-2Biy-2F-2FMQBEG3KiMnYYo5XcZ3fp=
+TCP4-2FLxoSxYgT1ApIuuS1-2BUzxTeecVFbO0CJdn43UbsiwlJXwIHQCOTHFbVK7iguHANuP1U=
+nhZaLsbzrgPLStRNo7VZSJpePdOJlcSymWuqjKhB6rhXul3T9-2FPiwLi6mFZja-2Be2G8-3D" =
+style=3D"color:#f43196;text-decoration:none;font-weight:bold;font-size:16px=
+;">Acheteur DoorDash - Livreur</a></td></tr><tr><td style=3D"min-height:21p=
+x;padding:4px 0 0 12px;"><table style=3D"border-spacing:0"><tr><td style=3D=
+"padding-right:2px;"><img alt=3D"Location: " src=3D"https://cdn.lensa.com/i=
+con_location.png" style=3D"display:inline-block;vertical-align:text-bottom;=
+" width=3D"16" height=3D"16"></td><td><div style=3D"font-size:12px;font-wei=
+ght:400;font-family:'Arial';color:#393939;">Boston, MA</div></td></tr></tab=
+le></td></tr><tr><td style=3D"padding:4px 0 0 12px;"><div style=3D"color:#4=
+D5358">$39K-$48K / yr. (est.)</div></td></tr><tr><td style=3D"max-width:550=
+px;padding:8px 0 10px 12px"><span style=3D"display:inline-block;margin:3px =
+0;padding:4px 8px;border-radius:8px;background:#DDE1E6;color:#21272A;vertic=
+al-align:middle">Full-Time</span>&nbsp; <span style=3D"display:inline-block=
+;margin:3px 0;padding:4px 8px;border-radius:8px;background:#DDE1E6;color:#2=
+1272A;vertical-align:middle">Outstanding Work-Life Balance</span>&nbsp; </t=
+d></tr></table></td></tr></table><table cellpadding=3D"0" cellspacing=3D"0"=
+ border=3D"0" width=3D"40" height=3D"6"><tbody><tr><td><img src=3D"https://=
+sli.lensa.com/imp?s=3D124603000&li=3Dnew_jobalert_1&m=3Db74a6346d15acb6d5b7=
+9f0218f11cfee&p=3D9695f969-f9b6-425d-888b-042db10c41f7&lctg=3Dnew_jobalert_=
+1&stpe=3Dpixel" width=3D"2" height=3D"6" border=3D"0" /></td><td><img src=
+=3D"https://sli.lensa.com/imp?s=3D124603001&li=3Dnew_jobalert_1&m=3Db74a634=
+6d15acb6d5b79f0218f11cfee&p=3D9695f969-f9b6-425d-888b-042db10c41f7&lctg=3Dn=
+ew_jobalert_1&stpe=3Dpixel" width=3D"2" height=3D"6" border=3D"0" /></td><t=
+d><img src=3D"https://sli.lensa.com/imp?s=3D124603002&li=3Dnew_jobalert_1&m=
+=3Db74a6346d15acb6d5b79f0218f11cfee&p=3D9695f969-f9b6-425d-888b-042db10c41f=
+7&lctg=3Dnew_jobalert_1&stpe=3Dpixel" width=3D"2" height=3D"6" border=3D"0"=
+ /></td><td><img src=3D"https://sli.lensa.com/imp?s=3D124603003&li=3Dnew_jo=
+balert_1&m=3Db74a6346d15acb6d5b79f0218f11cfee&p=3D9695f969-f9b6-425d-888b-0=
+42db10c41f7&lctg=3Dnew_jobalert_1&stpe=3Dpixel" width=3D"2" height=3D"6" bo=
+rder=3D"0" /></td><td><img src=3D"https://sli.lensa.com/imp?s=3D124603004&l=
+i=3Dnew_jobalert_1&m=3Db74a6346d15acb6d5b79f0218f11cfee&p=3D9695f969-f9b6-4=
+25d-888b-042db10c41f7&lctg=3Dnew_jobalert_1&stpe=3Dpixel" width=3D"2" heigh=
+t=3D"6" border=3D"0" /></td></tr></tbody></table><table align=3D"center" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" data-lt-version=3D"3.0.0"><t=
+r><td align=3D"left" colspan=3D"2" style=3D"line-height:1px;padding:0 0 4px=
+"><img src=3D"https://sli.lensa.com/imp?s=3D1085413&li=3Dnew_jobalert_1&m=
+=3Db74a6346d15acb6d5b79f0218f11cfee&p=3D9695f969-f9b6-425d-888b-042db10c41f=
+7&lctg=3Dnew_jobalert_1&stpe=3Dstatic" border=3D"0" style=3D"display:block;=
+max-height:10px !important" /></td></tr><tr><td colspan=3D"2" style=3D"line=
+-height: 1px"><a href=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.-2F=
+0K5UxOWo0al-2F8UCG6e-2FMYkVelWoS2NIk-2FyPhR-2BoEtlJyi9UhEVHH-2FKa2xvKG8nhl2=
+uAfJWPqYln98L5lRt3kTI4-2F4FQG70f-2BdtCkm7vMHMTSaLRVfBEF-2F7Zww0fhHeE4tKlLzF=
+gVhMWAngPaBDC3-2BsS6ZW5nq-2BpJ-2FEBPS-2BzYfzu-2Bf4-2Be3rcc-2FHfLJk-2FxniWm1=
+t2OqM3l3wjQ3N5GToc2niVYwlQgmXrJnome75FJAM-3DVmBK_f-2B7n9rAduQ4P4uWpDFm2mbTe=
+I6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKh=
+L3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2Bg=
+Ae7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv=
+-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4=
+x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqq=
+PXij5JviqODaBHBSYTom9V6DhOoN6wK6NFkudBZ5GULTQuX7MiuYxR3DCPNzsvF8KCvpr-2Bo7e=
+vbFDOfvR1upSXc6-2BIY4imQroO7YzmfsvMxHDFHVPi33zJr1bC3Tmhe5-2BvVbGNn60afSfGTq=
+tIPFhisrwsX6JzYRZ1dOBbeDLEv5lO-2FpYn9UqR-2B-2ByUC-2BoPRn4qUgjYrTVlDaenednHl=
+1q9Hws4IU9A4XmrL-2BwBcyszyQAP4ySz99ZCawxpls-3D" rel=3D"nofollow" target=3D"=
+_blank"><img src=3D"https://sli.lensa.com/imp?s=3D1085409&li=3Dnew_jobalert=
+_1&m=3Db74a6346d15acb6d5b79f0218f11cfee&p=3D9695f969-f9b6-425d-888b-042db10=
+c41f7&lctg=3Dnew_jobalert_1&stpe=3Ddefault&li_coord=3Ddesktop&collapse_widt=
+h=3D520" border=3D"0" width=3D"520" style=3D"display:block;width: 100% !imp=
+ortant;max-width:520px !important" class=3D"lihide"/></a></td></tr><!--[if =
+!mso]>--><tr style=3D"display: none" class=3D"lishow"><td colspan=3D"2" sty=
+le=3D"line-height: 1px"><a href=3D"https://sg3email.lensa.com/ls/click?upn=
+=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMYkVelWoS2NIk-2FyPhR-2BoEtlJyi9UhEVHH-2FK=
+a2xvKG8nhl2uAfJWPqYln98L5lRt3kTI4-2F4FQG70f-2BdtCkm7vMHMTSaLRVfBEF-2F7Zww0f=
+hHeE4tKlLzFgVhMWAngPaBDC3-2BsS6ZW5nq-2BpJ-2FEBPS-2BzYfzu-2Bf4-2Be3rcc-2FHfL=
+Jk-2FxniWm1t2OqM3l3wjQ3N5GToc2niVYwlQgmXrJnome75FJAM-3DtVHn_f-2B7n9rAduQ4P4=
+uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrT=
+dEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2F=
+YU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2=
+Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xix=
+fyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK=
+6yqtPqptmqqPXij5JviqODaBHBSYXpEF7GhL2PSVh19P7VD5Bp-2BwJunsYjlLJ4UZpt4aoqQyL=
+CWk39FWDP1-2FZUB-2F6pJUcTwzN5mn4fU8-2B-2BZNxkQJJbwNr7hkPl-2BH1votnYeec9zsvW=
+cF06MBC05MTfp4dTLVUaPzBE08l7TAKEiVGS9E68i9Qkd-2BlH0E6SUFLN7oZq5Ul2kgsEnH9Mq=
+7jkR754z76hsrMj8C-2BzLO2cC7EOGqRrT6V4qqZ6kIC5Z-2Beio6vhc-3D" rel=3D"nofollo=
+w" target=3D"_blank"><img src=3D"https://sli.lensa.com/imp?s=3D1085409&li=
+=3Dnew_jobalert_1&m=3Db74a6346d15acb6d5b79f0218f11cfee&p=3D9695f969-f9b6-42=
+5d-888b-042db10c41f7&lctg=3Dnew_jobalert_1&stpe=3Ddefault&li_coord=3Dmobile=
+&collapse_width=3D480" border=3D"0" width=3D"480" style=3D"display: block !=
+important;width: 100% !important;max-width: 480px !important;"/></a></td></=
+tr><!--<![endif]--><tr><td align=3D"left" style=3D"line-height:1px;padding:=
+4px 0 0"><a style=3D"display:block;max-width:116px;max-height:15px" href=3D=
+"https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FM=
+YkVelWoS2NIk-2FyPhR-2BoEtl5Hk3hXOjRTjG1aPXOscK6Sy6GqpPAhqRIiHSfCjIb3mljOFI8=
+Y5VCh7KLxHektmAiN1VsISuJaanfVYeHUyHEBC8b-2BJ-2BqJsCTamDYCHWLPoCKVQVM9gFCxg6=
+IjARvkKbY9-2FEORUTTD7JqwT4C76MskjKs283ckgcCp6ZmK92mUX4QdbGnsDtYFolwyn-2Fjn6=
+A-3DqoJy_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPK=
+k5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp=
+7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cb=
+jDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6=
+DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2Btq=
+YyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYGR16wZeZs1y1sa77q2LH2mY=
+PLiv6ldUjXuqtr9e3v3j3fmX8-2FmnLF13tIY1mwqLdgzZWMHu02vEHe72gu9vOUDgODowdc-2B=
+npCa4YY7Kw-2B7EuxpBqfkcBpTcZ5JJCHRcjRUEp9sNTbZ7h-2Bg1YivUxpgPsyFZKh-2Bxhfkr=
+Al48TZUCnuNlhwKQdyd2ZrLh3XxG4C1oSGMwK4-2FIFLL-2BNrmnX6a20sMKBDa3pOfWRmTf6gf=
+o-3D" rel=3D"nofollow" target=3D"_blank"><img src=3D"https://sli.lensa.com/=
+imp?s=3D1085410&li=3Dnew_jobalert_1&m=3Db74a6346d15acb6d5b79f0218f11cfee&p=
+=3D9695f969-f9b6-425d-888b-042db10c41f7&lctg=3Dnew_jobalert_1&stpe=3Dstatic=
+" border=3D"0" style=3D"display:block;min-height:1px"/></a></td><td align=
+=3D"right" style=3D"line-height:1px;padding:4px 0 0"><a style=3D"display: b=
+lock; max-width: 19px; max-height: 15px;" href=3D"https://sg3email.lensa.co=
+m/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMYkVelWoS2NIk-2FyPhR-2BoEtk=
+zFNu1gbkRY9ZBTtqDe8ysJbyV-2FBuvKQFh0SRTR0ev1wjJHdf60UeUxGfBA7W7FsPOg3oYDgqv=
+B1ULiVMvTeXbrlSsWYnGgEp3-2FXRofmQVyfPm5LtPWbQTC1R-2BrOd-2B-2BY5BcsVeGQpseXm=
+XFxODH8No88XYsOOIwKA5KUCEA9yG0SJ23bnC5E-2Bts7KW6Y-2Fmq38-3DS7Gk_f-2B7n9rAdu=
+Q4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxa=
+IRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBai=
+X-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2=
+BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw=
+7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8=
+nEDK6yqtPqptmqqPXij5JviqODaBHBSYunQxDHcb7X-2BW4ZbUp1G2qwzpTpwK8C-2F5b-2BZok=
+57vWnbXy4fKG4WWGPUfQ-2B3wJ0sVzEj7SYms2ZWvAW36tj0V-2BSL1qGxwAGYCOsib1vA3o2L-=
+2By22m9G63wwUr3SNAG21JOYhwV0uVQKpGhBaEYP6hmIKyrJpb8yV9LTWqKntyeYx5Azn73AfZc=
+X-2BxmxN8E5GsksGIZmRZC4FaCrUUXwlx0xEG-2BEfHUMQ6l6fOGuAqnOg-3D" rel=3D"nofol=
+low" target=3D"_blank"><img src=3D"https://sli.lensa.com/imp?s=3D1085412&li=
+=3Dnew_jobalert_1&m=3Db74a6346d15acb6d5b79f0218f11cfee&p=3D9695f969-f9b6-42=
+5d-888b-042db10c41f7&lctg=3Dnew_jobalert_1&stpe=3Dstatic" border=3D"0" styl=
+e=3D"display:block;min-height:1px"/></a></td></tr></table><!--[if mso]></td=
+></tr></table></center><![endif]--></div></td></tr></tbody></table><div><ta=
+ble border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"max-width:600=
+px" width=3D100%><tbody><tr><td style=3D"padding:16px 0;max-width:600px;fon=
+t-size:14px;line-height:1.5;text-align:left;color:#929094 !important;font-w=
+eight:400;font-family:Arial,sans-serif"><p> This email has been sent to you=
+ by <a href=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0a=
+l-2F8UCG6e-2FMVRmZSHp50lC0PHX7iFDjQpDFk4EnCqBvOuYqabJDberwtMZ8-2FxWqxzNT6te=
+FCzWgK9-2F6EFSTKR-2FMDKohMjpjqgtdLukPaXrhPbwuvolrKSNaOfij0THUkUStP5HbSkB2Ko=
+ZJIHW4IJ5YARkr8nvuDsAzSRGMe2oJiSRsNk9O2kqDNyU_f-2B7n9rAduQ4P4uWpDFm2mbTeI6n=
+S8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3V=
+OlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7=
+nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2B=
+prCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1a=
+Hoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXi=
+j5JviqODaBHBSYil09pfn-2FD-2FSBGbNCwdC6TxLzW5pvLjiE2l4Evr-2BQMcoDhLkEt7T75yd=
+Nucn3W-2BMubb1ngMO8jBqxfmOGlUoT27g2Ngw8WJocn521MvASgwNtV25NI7jMSW2LNBtc-2BO=
+OTcrysezZrWRAqm-2BU9udFOGIooLnuyogoAogapmt4GZLTWeEez21CTOgHNJugVZ6BzNZVSQQV=
+9gpuTCebZsyX9nyIixqd9NirmOc1NsbhUEXk-3D" style=3D"color:#929094;text-decora=
+tion:underline;white-space:no-wrap">Lensa Inc</a>. <img alt=3D"Trustpilot 4=
+.2" width=3D"136" height=3D"16" src=3D"https://cdn.lensa.com/img/email/trus=
+tpilot-footer.png" valign=3D"middle"><br> To edit your settings, schedule n=
+otifications, or <a href=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.=
+-2F0K5UxOWo0al-2F8UCG6e-2FMa56ggCq9dPD1wo0AdR-2B590jY4d7YS0rT93kA-2Feksa7Qa=
+Abd48-2BmB-2FC-2B632et8mn7Nbn-2BJ30C9O7FvQ9ctUbFNd367F2musHzLPYKBZyYnUrqyVh=
+Bnoc30aJ8gGh9F7rZ91a4YZNfIjQWLzFS3ej1ZdxiHSRA3MNfy0pLg-2BRb84UkXkzmO0iJZNGZ=
+ZPt50NgB5Q5U6HrZn7RaJV-2BRg6h-2FRw-3DIKw0_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8Fe=
+tlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvq=
+O-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGp=
+Vo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj=
+4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-=
+2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5Jv=
+iqODaBHBSYWEf7mlp-2BL2dHAEvjlKilYvs-2B5ylJd4aNqVRzD1Ar70OxDfiwrGkBU-2BKuieM=
+FaGarYqMrpIw38fbJr0FKIZ19LoxaXov6NNKQK3kiZUe07D-2BavupYq2Xc2mXXe73409UuOHJR=
+ni0b1Zla5KNdl3cxpl9LphdAz6xURQmKI9NCEMIKxSQ96goGQzbEP9A14ftSbAcil6HeNhC7Wmu=
+7-2Bu8xukHEl-2FeTJS-2FPofB3PrhTSxY-3D" style=3D"color:#929094;text-decorati=
+on:underline;white-space:no-wrap">unsubscribe</a>, visit <a href=3D"https:/=
+/sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMa56ggCq9=
+dPD1wo0AdR-2B593ce-2FHJFOyAl7ViBYjhkY6pmulnlFbdanICV0FwtCZdntuhipwa1SIr3K4E=
+lImKfkPoJqDPu-2BVnFqRKNCfzeyrgQ-2FjZOZvgrrsAARkBEqcVG7jIFUeYtbTl6zLDUwYgpN9=
+XiwRmI29Yo3ie72fPCX51BWdWAYqfuebaaw4A3yOo8A-3D-3DiKts_f-2B7n9rAduQ4P4uWpDFm=
+2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6c=
+tVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5=
+c-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB=
+-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62j=
+MoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPq=
+ptmqqPXij5JviqODaBHBSYlgvaehmB5j-2F7P2WeEihvKVvP7B5dy2cu9GBaHo1-2FJFc4-2FF6=
+i8m-2B1BZ4vIn-2FWwTkI9Os8MKzQbE3QZFjHV-2F9clw0E3KruKotauP8JjGbOBDPlU67xHjLD=
+ciZ5WpA-2BErIVVVtGUaRgZYKdfTh24xYU-2FOjfqiklDvsIU8Vfajr-2BzPKizOio29-2FzqRS=
+YSo4tnXwwPOGq8Y63EdmqujH-2F145-2BGnbbJZBS-2FrFA8B-2BmcFyGVk8-3D" style=3D"c=
+olor:#929094;text-decoration:underline;white-space:no-wrap">your account pa=
+ge</a><br><span style=3D"font-size:14px">17 West Gay Street, Suite 50, West=
+ Chester, PA 19380</span></p><p style=3D"color:#929094"> If you have any qu=
+estions, mail us at <a href=3D"mailto:support@lensa.com" style=3D"color:#92=
+9094;text-decoration:underline">support@lensa.com</a> we'd love to help! </=
+p><p style=3D"color:#929094"><a style=3D"font-size:12px;color:#929094;text-=
+decoration:underline" href=3D"https://sg3email.lensa.com/ls/click?upn=3Du00=
+1.-2F0K5UxOWo0al-2F8UCG6e-2FMfnNbJfEH1-2F3Tozr-2FcR1Us5pUE9r2ZeZ393fc1yzp7M=
+SNeVbyRNB8RvOaOiOnnWc8P6ZrVnmdJ3j1CMjOpxhIGuZT0wMwQcdyJU-2BVksncUF-2Fs7jWLX=
+4XlxQyp1yI1-2FJtNgLztKFhKiJ6vpdLhCsIy4IvmJPrNkz-2BQGQ1l1o917Wj0ojm8VAbvRcn4=
+RjXOsMclQ-3D-3DIEC3_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8FetlkZb1zZB6havPiUTKSVIP=
+S3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WU=
+gG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpVo59ja0L4ccDrBzat-2Bhp=
+ZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2=
+BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2BRWJw7qcRrNQARmsemlGf=
+i1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5JviqODaBHBSYIXZ-2Bov-2B8=
+54Gw0niququE7-2BP0E9dHDM0vGthBfqlzi0miEDLYv5Qi5ynW248kU2807l34s2WDP569xyZJ0=
+WSTx9KN6ac4t1k5u52n8ekJUPrkOooQ977Q0Gbc0Jmorf-2FzobuIRT3w4tGxLB05nJHmsXGokU=
+0ocFKYYfoM393rJv1ulk-2BDT2nZiVSaV-2BMfKn-2FNHKsel1IZ0xiIReRBGhXrQ-2FCuOkErm=
+hkPedB0Zv0jKkQ-3D">Privacy Policy</a> &nbsp; <a style=3D"font-size:12px;col=
+or:#929094;text-decoration:underline" href=3D"https://sg3email.lensa.com/ls=
+/click?upn=3Du001.-2F0K5UxOWo0al-2F8UCG6e-2FMfnNbJfEH1-2F3Tozr-2FcR1Us7-2FW=
+FxD3SwMlh-2BCN0qtOaIab9iF2UIVQwPjMpjn1IRnsa1RokIfOaazMh-2BTuva3Ijpkdzocsl3m=
+JeI7ozZse3-2F7a5QZV2wsCQpg02VNsgasFnHzO-2BBJRbv97ogDdmLc0CQMv-2FF-2B7EHoIZh=
+8hV3-2FMLxDTTAyXbwNO8-2B3ey2Q-2BSE8IA-3D-3Dik3C_f-2B7n9rAduQ4P4uWpDFm2mbTeI=
+6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL=
+3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgA=
+e7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-=
+2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x=
+1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqP=
+Xij5JviqODaBHBSYc-2BwvR3lMSlj8rC9BOZn63zyjbmrLHEdDSNxMfrDykfZFLGw92orfgFKmO=
+498efJbhjx9NuVv905rFHRRze7f-2F9I-2F7NiX5dmsssI6ZLPxNHwHlxnxyFtkCIHoQOafS5yr=
+WHId-2B-2Bn5-2F2yw9E9LMNbHz-2FXxVaRfpJDw9dZKVhMvQ7es5eg7-2FRuV8qx24yyXKatbA=
+gtrRoc2pLtgehNwHxdpDj8vSTRVQCIDTYKwhDEbaxw-3D">Your Privacy Choices <img sr=
+c=3D"https://cdn.lensa.com/img/email/privacy-choices.png" style=3D"height:1=
+2px;padding:0 0 0.5px 2px;vertical-align:text-bottom" alt=3D"Privacy Choice=
+s Icon"></a> &nbsp; <a style=3D"font-size:12px;color:#929094;text-decoratio=
+n:underline" href=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0K5U=
+xOWo0al-2F8UCG6e-2FMfnNbJfEH1-2F3Tozr-2FcR1Us5pUE9r2ZeZ393fc1yzp7MSNeVbyRNB=
+8RvOaOiOnnWc8P6ZrVnmdJ3j1CMjOpxhIGuZT0wMwQcdyJU-2BVksncUF-2Fs7jWLX4XlxQyp1y=
+I1-2FJtNvKZAyNK0RcaoU4kBgoZF4bcCbj8c8-2Bp4PzVwZT0-2FHxBwcx8OAyN5ngYSDuQy9cf=
+s-2FSPaeFNmLIIPG56bZ-2BpojvNqxLHBOJeQEYNygjzyZuSOPnh_f-2B7n9rAduQ4P4uWpDFm2=
+mbTeI6nS8FetlkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ct=
+VJKhL3VOlvqO-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c=
+-2BgAe7nhGpVo59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-=
+2Fxv-2BprCj4UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jM=
+oAl4x1aHoa-2BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqp=
+tmqqPXij5JviqODaBHBSYyYK7FYwEkv2w-2FrkWJ-2FZtrr6OjpfIeBqetmDGIy6e5SzGzYR5dF=
+r0wV9nkzOk3OcNvnd5HjvJ4eLLO9fR2XW5ScgMWWFdt92ceZAJQXKXrcMf1K98vsWWXhNewrgjU=
+kWlLmmnm-2B0k6T-2B6ApInwKFsz36onDUDgvcxF4GMlVnKqYYuTfXaYl6BmeTRbdjpcHokd3x0=
+icx2q9rG-2BMx5Txu0ABRMJ6wS0XfSGWMOnVXrXQM-3D">Notice of personal informatio=
+n collected</a> &nbsp; <a style=3D"font-size:12px;color:#929094;text-decora=
+tion:underline" href=3D"https://sg3email.lensa.com/ls/click?upn=3Du001.-2F0=
+K5UxOWo0al-2F8UCG6e-2FMRr-2F7sjjBoi05VOshJQXO379Zf62TRwKkButZJCL90LsYTsdouM=
+1TUQmFoVNsBZW9kGLstfqPQ1yoEVoT9L3oNiaFHr4OWmDDzygDnDYu-2BokTkyaD7jxsIFUVdGW=
+nxjtwupIlWX6onh-2BLhk-2BuQQ-2BAbM-3DXBwI_f-2B7n9rAduQ4P4uWpDFm2mbTeI6nS8Fet=
+lkZb1zZB6havPiUTKSVIPS3whXNWZnPKk5cZ9z093F23OnnUYdxaIRrTdEMg6ctVJKhL3VOlvqO=
+-2F0QV2rd9u0-2BhBx8WUgG8VkEZIVhp7N1gqnQUzHsKsqoBcBaiX-2FYU2yJ5c-2BgAe7nhGpV=
+o59ja0L4ccDrBzat-2BhpZjI1o-2B8cbjDqqQnRKXI6MBF4Omo-2BR-2Bd-2FB-2Fxv-2BprCj4=
+UJTKcACSFAhxnGrpJk3-2BPABBhXsTv6DItofxXhzICnIN5-2BCw7xixfyq62jMoAl4x1aHoa-2=
+BRWJw7qcRrNQARmsemlGfi1MekT-2BtqYyBpKvO9-2BqxWj8AQF8nEDK6yqtPqptmqqPXij5Jvi=
+qODaBHBSYhoH3xw88Zb23dWcL82bowjbSHmUNgp1Aq1mz-2FJ1-2FN-2BHhEau0lukFCn2-2BDu=
+hiq7NASdpZVT27-2BsME2lBbQvsdWXW0B9qHbUryprMrYKR3lHZY3tQswZDgtGFyDLt4GqXd2TS=
+KpzmE2e6WoAKifANA7eGQ3Lmf8y9F-2Bh4h0KBoYbJKBgq7cGcAjMo5-2F6ZXsZ-2F6UGdZc8xW=
+3-2BRTpH0WrcJ5ZvokS3rdielDc2VxwstHVHI-3D">FAQ</a></p></td></tr></tbody></ta=
+ble></div></center><img src=3D"https://measurements.lensa.com/sov2-lensa?pi=
+d=3D5290&event_type=3Dopen&lc_md5=3Db74a6346d15acb6d5b79f0218f11cfee&uc_md5=
+=3Dc3db102c9861cb3d9c35ab0f18e8c69c&lc_sha1=3D5df434cfc0753d5fea3bf7195144c=
+e03a80b57f6&uc_sha1=3D5e4bdec1864c2e3964a928ad1c67cab37c3e7a9d&lc_sha256=3D=
+ad0551fbe1717255407a193ad2abee63e9b46f125adb87562e2eb93ca4860c04&uc_sha256=
+=3D8eccc34da2046973b06b1f6101cf118cfd6f62b5be9c0235853810a1db7bd640&lc_doma=
+in_sha1=3D526472e87484a6e5cbddc84f4c4c21c477919045" height=3D"1" width=3D"1=
+" border=3D"0" style=3D"display:none;overflow:hidden" alt=3D"" /><img borde=
+r=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://measurements.lensa=
+.com/neu-lensa?sid=3D9112304678&em=3D5df434cfc0753d5fea3bf7195144ce03a80b57=
+f6"/><img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://mea=
+surements.lensa.com/trav-lensa/0.gif?emailMd5Lower=3Db74a6346d15acb6d5b79f0=
+218f11cfee&emailSha1Lower=3D5df434cfc0753d5fea3bf7195144ce03a80b57f6&emailS=
+ha256Lower=3Dad0551fbe1717255407a193ad2abee63e9b46f125adb87562e2eb93ca4860c=
+04" /><img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://me=
+asurements.lensa.com/trav-lensa/1.gif?emailMd5Lower=3Db74a6346d15acb6d5b79f=
+0218f11cfee&emailSha1Lower=3D5df434cfc0753d5fea3bf7195144ce03a80b57f6&email=
+Sha256Lower=3Dad0551fbe1717255407a193ad2abee63e9b46f125adb87562e2eb93ca4860=
+c04" /><img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://m=
+easurements.lensa.com/trav-lensa/2.gif?emailMd5Lower=3Db74a6346d15acb6d5b79=
+f0218f11cfee&emailSha1Lower=3D5df434cfc0753d5fea3bf7195144ce03a80b57f6&emai=
+lSha256Lower=3Dad0551fbe1717255407a193ad2abee63e9b46f125adb87562e2eb93ca486=
+0c04" /><img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://=
+measurements.lensa.com/trav-lensa/3.gif?emailMd5Lower=3Db74a6346d15acb6d5b7=
+9f0218f11cfee&emailSha1Lower=3D5df434cfc0753d5fea3bf7195144ce03a80b57f6&ema=
+ilSha256Lower=3Dad0551fbe1717255407a193ad2abee63e9b46f125adb87562e2eb93ca48=
+60c04" /><img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https:/=
+/measurements.lensa.com/trav-lensa/4.gif?emailMd5Lower=3Db74a6346d15acb6d5b=
+79f0218f11cfee&emailSha1Lower=3D5df434cfc0753d5fea3bf7195144ce03a80b57f6&em=
+ailSha256Lower=3Dad0551fbe1717255407a193ad2abee63e9b46f125adb87562e2eb93ca4=
+860c04" /><img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https:=
+//measurements.lensa.com/trav-lensa/5.gif?emailMd5Lower=3Db74a6346d15acb6d5=
+b79f0218f11cfee&emailSha1Lower=3D5df434cfc0753d5fea3bf7195144ce03a80b57f6&e=
+mailSha256Lower=3Dad0551fbe1717255407a193ad2abee63e9b46f125adb87562e2eb93ca=
+4860c04" /><img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https=
+://measurements.lensa.com/trav-lensa/6.gif?emailMd5Lower=3Db74a6346d15acb6d=
+5b79f0218f11cfee&emailSha1Lower=3D5df434cfc0753d5fea3bf7195144ce03a80b57f6&=
+emailSha256Lower=3Dad0551fbe1717255407a193ad2abee63e9b46f125adb87562e2eb93c=
+a4860c04" /><img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"http=
+s://measurements.lensa.com/trav-lensa/7.gif?emailMd5Lower=3Db74a6346d15acb6=
+d5b79f0218f11cfee&emailSha1Lower=3D5df434cfc0753d5fea3bf7195144ce03a80b57f6=
+&emailSha256Lower=3Dad0551fbe1717255407a193ad2abee63e9b46f125adb87562e2eb93=
+ca4860c04" /><img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"htt=
+ps://measurements.lensa.com/trav-lensa/8.gif?emailMd5Lower=3Db74a6346d15acb=
+6d5b79f0218f11cfee&emailSha1Lower=3D5df434cfc0753d5fea3bf7195144ce03a80b57f=
+6&emailSha256Lower=3Dad0551fbe1717255407a193ad2abee63e9b46f125adb87562e2eb9=
+3ca4860c04" /><img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"ht=
+tps://measurements.lensa.com/trav-lensa/9.gif?emailMd5Lower=3Db74a6346d15ac=
+b6d5b79f0218f11cfee&emailSha1Lower=3D5df434cfc0753d5fea3bf7195144ce03a80b57=
+f6&emailSha256Lower=3Dad0551fbe1717255407a193ad2abee63e9b46f125adb87562e2eb=
+93ca4860c04" /><img src=3D"https://sg3email.lensa.com/wf/open?upn=3Du001.du=
+2yfmofzcMQe3ejDE6Udco3o-2FgNipjQ6S4FstrBtMJEGP58W-2FfyaIn8TvfNOoER8BNMvmiqe=
+7Kn-2F4l4v3Qa-2B60RtR-2FbiYcbAZ9-2BGhUOT-2FqJV1dVprQqKlmrKhoDDRb2yK8VOBbL7V=
+26FgIhI5y4TAOtuxKgLwpqnMALmL-2Be6OwMTnuK4Woe-2BVXolFxlEmnnzAXd23Vm9Bf2D9qkI=
+3UBNW2X4a-2FV07WmYE1WPj870BchRa4zlLvuOvFj5Do-2FEasYv5rzANQQ94BZH7eBV7hC-2BN=
+NsEpZGlDL4kzSSuBxNLJxOQOPdHUbX7wMz1mKnTEnlgCsmPcfmJJO0UcVADnqxNIOta-2F1WiCv=
+V-2BHVM8GsXnv7I-2BfOv3K6svA-2BYPniSuBbHf5k8VCoWQpL-2BwRIke8iUGIPkrwuUOR0V7S=
+eQKSMaIIX3vwmz5HTwao7aHJJJ3GbgDdaFj4DxcZt4JvEqwLjRMlRrvLRBYatEY1IxMYq6fZH-2=
+FofT9yEawDEpvbxoa79dRLo4yS0Pt8o1mLMRX4Qd8XzMnlktOh0x7xEsd0KBkeN2DpNdBYXWQXE=
+swJf5ZfP7ttm8UhMjhgiV3L76bm4D88vXRmcmgqtukp0WV2N11b5j5P-2Bz5Qc5cYGRqzqkmqau=
+y" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !impo=
+rtant;width:1px !important;border-width:0 !important;margin-top:0 !importan=
+t;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !impor=
+tant;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 !=
+important;padding-left:0 !important;"/></body></html>
+--9836a11a1999567a21ec451e0faf0e2c611e3ac5c7998ba2eff2b18dff03--

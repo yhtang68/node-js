@@ -1,13 +1,21 @@
 import fs from 'fs';
 import path from 'path';
+import { JOB_FILTERS, JOB_SOURCES } from './config';
+import { JobFilterConfig, JobSourceConfig, SalaryRangeUsdYear } from './types';
+import { jobMeetsMinSalaryUsdYear } from './utils/salary';
+import { ReviewData } from './generateReview';
 
 interface ReviewJob {
   index: number;
+  key?: string;
   title: string;
   company: string;
   location: string;
   details: string[];
   link: string;
+  salary?: SalaryRangeUsdYear;
+  postedDate?: string;
+  rating?: string;
 }
 
 interface ReviewEmail {
@@ -17,52 +25,65 @@ interface ReviewEmail {
 }
 
 interface ReviewSummary {
-  source: string;
+  sourceId: string;
+  sourceEmail: string;
+  displayName: string;
   totalEmails: number;
   totalJobs: number;
   createdAt: string;
   createdAtIso: string;
+  filters?: JobFilterConfig;
 }
 
-interface ReviewData {
-  summary: ReviewSummary;
-  emails: ReviewEmail[];
+export interface GenerateFilteredReviewOptions {
+  reviewData?: ReviewData;
+  writeHtml?: boolean;
+  writeJson?: boolean;
 }
 
-export function generateFilteredReview() {
+export function generateFilteredReview(
+  source: JobSourceConfig,
+  filters: JobFilterConfig,
+  options: GenerateFilteredReviewOptions = {}
+): ReviewData {
+  const { reviewData: inputReviewData, writeHtml = true, writeJson = true } = options;
   const outputDir = path.join(__dirname, '../Results');
-  const inputPath = path.join(outputDir, 'Linked-In-Jobs-Review.json');
-  const htmlOutputPath = path.join(outputDir, 'Linked-In-Jobs-Review-Filtered.html');
-  const jsonOutputPath = path.join(outputDir, 'Linked-In-Jobs-Review-Filtered.json');
+  const inputPath = path.join(outputDir, `${source.outputBaseName}-Review.json`);
+  const htmlOutputPath = path.join(outputDir, `${source.outputBaseName}-Review-Filtered.html`);
+  const jsonOutputPath = path.join(outputDir, `${source.outputBaseName}-Review-Filtered.json`);
 
-  if (!fs.existsSync(inputPath)) {
-    throw new Error(`Review JSON not found at ${inputPath}. Generate Linked-In-Jobs-Review.json first.`);
-  }
-
-  const reviewData = JSON.parse(fs.readFileSync(inputPath, 'utf8')) as ReviewData;
-  const filteredData = buildFilteredReview(reviewData);
-  const html = buildFilteredHtml(filteredData);
+  const reviewData = inputReviewData ?? readReviewDataFromJson(inputPath);
+  const filteredData = buildFilteredReview(reviewData, filters);
+  const html = buildFilteredHtml(filteredData, source);
 
   fs.mkdirSync(outputDir, { recursive: true });
-  fs.writeFileSync(htmlOutputPath, html);
-  fs.writeFileSync(jsonOutputPath, JSON.stringify(filteredData, null, 2));
-  console.log(`Linked-In-Jobs-Review-Filtered.html generated at ${htmlOutputPath}`);
-  console.log(`Linked-In-Jobs-Review-Filtered.json generated at ${jsonOutputPath}`);
+  if (writeHtml) {
+    fs.writeFileSync(htmlOutputPath, html);
+    console.log(`${path.basename(htmlOutputPath)} generated at ${htmlOutputPath}`);
+  }
+  if (writeJson) {
+    fs.writeFileSync(jsonOutputPath, JSON.stringify(filteredData, null, 2));
+    console.log(`${path.basename(jsonOutputPath)} generated at ${jsonOutputPath}`);
+  }
+
+  return filteredData;
 }
 
-function buildFilteredReview(reviewData: ReviewData): ReviewData {
+function readReviewDataFromJson(inputPath: string): ReviewData {
+  if (!fs.existsSync(inputPath)) {
+    throw new Error(`Review JSON not found at ${inputPath}. Generate ${path.basename(inputPath)} first.`);
+  }
+  return JSON.parse(fs.readFileSync(inputPath, 'utf8')) as ReviewData;
+}
+
+function buildFilteredReview(reviewData: ReviewData, filters: JobFilterConfig): ReviewData {
   const sortedEmails = [...reviewData.emails].sort((a, b) => parseEmailDate(b.datetime) - parseEmailDate(a.datetime));
-  const seenLinks = new Set<string>();
+  const seenKeys = new Set<string>();
 
   const filteredEmails = sortedEmails
     .map(email => {
       const jobs = email.jobs
-        .filter(job => {
-          const jobKey = getJobKey(job);
-          if (seenLinks.has(jobKey)) return false;
-          seenLinks.add(jobKey);
-          return true;
-        })
+        .filter(job => applyJobFilters(job, filters, seenKeys))
         .map((job, index) => ({
           ...job,
           index: index + 1
@@ -80,24 +101,46 @@ function buildFilteredReview(reviewData: ReviewData): ReviewData {
 
   return {
     summary: {
-      source: reviewData.summary.source,
+      sourceId: reviewData.summary.sourceId,
+      sourceEmail: reviewData.summary.sourceEmail,
+      displayName: reviewData.summary.displayName,
       totalEmails: filteredEmails.length,
       totalJobs,
       createdAt: createdAtDate.toLocaleString('en-US', {
         dateStyle: 'medium',
         timeStyle: 'medium'
       }),
-      createdAtIso: createdAtDate.toISOString()
+      createdAtIso: createdAtDate.toISOString(),
+      filters
     },
     emails: filteredEmails
   };
 }
 
-function buildFilteredHtml(reviewData: ReviewData): string {
+function applyJobFilters(
+  job: ReviewJob,
+  filters: JobFilterConfig,
+  seenKeys: Set<string>
+): boolean {
+  if (filters.dedupe) {
+    const key = (job.key || `${job.title}|${job.company}|${job.location}`.toLowerCase()).trim();
+    if (seenKeys.has(key)) return false;
+    seenKeys.add(key);
+  }
+
+  if (typeof filters.minSalaryUsdYear === 'number') {
+    const requireSalary = Boolean(filters.requireSalaryForMinSalaryFilter);
+    if (!jobMeetsMinSalaryUsdYear(job.salary, filters.minSalaryUsdYear, requireSalary)) return false;
+  }
+
+  return true;
+}
+
+function buildFilteredHtml(reviewData: ReviewData, source: JobSourceConfig): string {
   return `
   <html>
   <head>
-    <title>LinkedIn Jobs Filtered</title>
+    <title>${escapeHtml(source.displayName)} Filtered</title>
     <style>
       :root {
         color-scheme: light;
@@ -250,10 +293,10 @@ function buildFilteredHtml(reviewData: ReviewData): string {
   </head>
   <body>
     <div class="page">
-      <h1>LinkedIn Jobs Filtered</h1>
+      <h1>${escapeHtml(source.displayName)} Filtered</h1>
       <p class="summary">
         <strong class="summary-title">Summary</strong><br />
-        Total emails from <strong>${escapeHtml(reviewData.summary.source)}</strong> with unique jobs: <strong>${reviewData.summary.totalEmails}</strong><br />
+        Total emails from <strong>${escapeHtml(reviewData.summary.sourceEmail)}</strong> with filtered jobs: <strong>${reviewData.summary.totalEmails}</strong><br />
         Total unique jobs: <strong>${reviewData.summary.totalJobs}</strong>
         <span class="summary-timestamp"><br />Created: <strong>${escapeHtml(reviewData.summary.createdAt)}</strong></span>
       </p>
@@ -272,7 +315,7 @@ function buildFilteredHtml(reviewData: ReviewData): string {
             ${email.jobs.map(job => `
               <article class="job">
                 <h2 class="job-title"><span class="job-index">#${job.index}</span><span>${escapeHtml(job.title)}</span></h2>
-                <p class="job-meta">${escapeHtml(job.company)} | ${escapeHtml(job.location)}</p>
+                <p class="job-meta">${escapeHtml([job.company, job.location, job.salary?.text, job.postedDate, job.rating].filter(Boolean).join(' | '))}</p>
                 ${job.details.length
                   ? `<ul class="job-details">${job.details.map(detail => `<li>${escapeHtml(detail)}</li>`).join('')}</ul>`
                   : ''}
@@ -293,15 +336,6 @@ function parseEmailDate(value: string): number {
   return Number.isNaN(parsed) ? 0 : parsed;
 }
 
-function getJobKey(job: ReviewJob): string {
-  const idMatch = job.link.match(/\/jobs\/view\/(\d+)/);
-  if (idMatch) {
-    return idMatch[1];
-  }
-
-  return `${job.title}|${job.company}|${job.location}`;
-}
-
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -316,5 +350,7 @@ function escapeAttribute(value: string): string {
 }
 
 if (require.main === module) {
-  generateFilteredReview();
+  for (const source of JOB_SOURCES) {
+    generateFilteredReview(source, JOB_FILTERS[source.id]);
+  }
 }

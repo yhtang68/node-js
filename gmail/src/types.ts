@@ -1,0 +1,40 @@
+export type JobSourceId = 'LinkedIn' | 'Glassdoor' | 'Lensa';
+
+export interface SalaryRangeUsdYear {
+  text: string;
+  minUsd?: number;
+  maxUsd?: number;
+}
+
+export interface JobPosting {
+  key: string;
+  title: string;
+  company: string;
+  location: string;
+  details: string[];
+  link: string;
+  salary?: SalaryRangeUsdYear;
+  postedDate?: string;
+  rating?: string;
+}
+
+export type RawJobPosting = Omit<JobPosting, 'key'>;
+
+export interface JobEmail {
+  subject: string;
+  date: string;
+  jobs: JobPosting[];
+}
+
+export interface JobSourceConfig {
+  id: JobSourceId;
+  fromEmail: string;
+  displayName: string;
+  outputBaseName: string;
+}
+
+export interface JobFilterConfig {
+  dedupe: boolean;
+  minSalaryUsdYear?: number;
+  requireSalaryForMinSalaryFilter?: boolean;
+}
