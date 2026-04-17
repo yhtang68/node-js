@@ -35,6 +35,8 @@
     "manageToken": "ts-node src/manageToken.ts",
     "generateReview": "ts-node src/generateReview.ts",
     "generateFilteredReview": "ts-node src/generateFilteredReview.ts",
-    "reviewJobs": "ts-node src/index.ts"
+    "reviewSamples": "ts-node src/reviewSamples.ts",
+    "reviewJobs": "ts-node src/index.ts",
+    "reviewJobs:debug": "ts-node src/index.ts --debug"
   }
 }

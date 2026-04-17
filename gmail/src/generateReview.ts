@@ -1,15 +1,18 @@
 import fs from 'fs';
 import path from 'path';
-import { JobEmail, JobSourceConfig, SalaryRangeUsdYear } from './types';
+import { JobEmail, JobFilterConfig, JobSourceConfig, SalaryRangeUsdYear } from './types';
 
 export interface ReviewJob {
   index: number;
+  key: string;
   title: string;
   company: string;
   location: string;
   details: string[];
   link: string;
   salary?: SalaryRangeUsdYear;
+  postedDate?: string;
+  rating?: string;
 }
 
 export interface ReviewEmail {
@@ -26,6 +29,7 @@ export interface ReviewSummary {
   totalJobs: number;
   createdAt: string;
   createdAtIso: string;
+  filters?: JobFilterConfig;
 }
 
 export interface ReviewData {
@@ -33,7 +37,13 @@ export interface ReviewData {
   emails: ReviewEmail[];
 }
 
-export function generateReview(source: JobSourceConfig, jobs: JobEmail[]): ReviewData {
+export interface GenerateReviewOptions {
+  writeHtml?: boolean;
+  writeJson?: boolean;
+}
+
+export function generateReview(source: JobSourceConfig, jobs: JobEmail[], options: GenerateReviewOptions = {}): ReviewData {
+  const { writeHtml = true, writeJson = true } = options;
   const totalJobCount = jobs.reduce((sum, email) => sum + email.jobs.length, 0);
   const createdAtDate = new Date();
   const createdAt = createdAtDate.toLocaleString('en-US', {
@@ -58,12 +68,15 @@ export function generateReview(source: JobSourceConfig, jobs: JobEmail[]): Revie
       datetime: email.date,
       jobs: email.jobs.map((job, index) => ({
         index: index + 1,
+        key: job.key,
         title: job.title,
         company: job.company,
         location: job.location,
         details: job.details,
         link: job.link,
-        salary: job.salary
+        salary: job.salary,
+        postedDate: job.postedDate,
+        rating: job.rating
       }))
     }))
   };
@@ -251,7 +264,7 @@ export function generateReview(source: JobSourceConfig, jobs: JobEmail[]): Revie
               ? email.jobs.map((job, jobIndex) => `
                 <article class="job">
                   <h2 class="job-title"><span class="job-index">#${jobIndex + 1}</span><span>${escapeHtml(job.title)}</span></h2>
-                  <p class="job-meta">${escapeHtml([job.company, job.location, job.salary?.text].filter(Boolean).join(' | '))}</p>
+                  <p class="job-meta">${escapeHtml([job.company, job.location, job.salary?.text, job.postedDate, job.rating].filter(Boolean).join(' | '))}</p>
                   ${job.details.length
                     ? `<ul class="job-details">${job.details.map(detail => `<li>${escapeHtml(detail)}</li>`).join('')}</ul>`
                     : ''}
@@ -268,10 +281,14 @@ export function generateReview(source: JobSourceConfig, jobs: JobEmail[]): Revie
   `;
 
   fs.mkdirSync(outputDir, { recursive: true });
-  fs.writeFileSync(htmlOutputPath, html);
-  fs.writeFileSync(jsonOutputPath, JSON.stringify(jsonPayload, null, 2));
-  console.log(`${path.basename(htmlOutputPath)} generated at ${htmlOutputPath}`);
-  console.log(`${path.basename(jsonOutputPath)} generated at ${jsonOutputPath}`);
+  if (writeHtml) {
+    fs.writeFileSync(htmlOutputPath, html);
+    console.log(`${path.basename(htmlOutputPath)} generated at ${htmlOutputPath}`);
+  }
+  if (writeJson) {
+    fs.writeFileSync(jsonOutputPath, JSON.stringify(jsonPayload, null, 2));
+    console.log(`${path.basename(jsonOutputPath)} generated at ${jsonOutputPath}`);
+  }
 
   return jsonPayload;
 }

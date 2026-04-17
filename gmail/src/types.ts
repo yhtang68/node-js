@@ -7,13 +7,18 @@ export interface SalaryRangeUsdYear {
 }
 
 export interface JobPosting {
+  key: string;
   title: string;
   company: string;
   location: string;
   details: string[];
   link: string;
   salary?: SalaryRangeUsdYear;
+  postedDate?: string;
+  rating?: string;
 }
+
+export type RawJobPosting = Omit<JobPosting, 'key'>;
 
 export interface JobEmail {
   subject: string;

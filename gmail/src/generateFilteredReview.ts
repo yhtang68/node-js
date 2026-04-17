@@ -2,17 +2,20 @@ import fs from 'fs';
 import path from 'path';
 import { JOB_FILTERS, JOB_SOURCES } from './config';
 import { JobFilterConfig, JobSourceConfig, SalaryRangeUsdYear } from './types';
-import { getJobKey } from './utils/jobKey';
 import { jobMeetsMinSalaryUsdYear } from './utils/salary';
+import { ReviewData } from './generateReview';
 
 interface ReviewJob {
   index: number;
+  key?: string;
   title: string;
   company: string;
   location: string;
   details: string[];
   link: string;
   salary?: SalaryRangeUsdYear;
+  postedDate?: string;
+  rating?: string;
 }
 
 interface ReviewEmail {
@@ -32,43 +35,55 @@ interface ReviewSummary {
   filters?: JobFilterConfig;
 }
 
-interface ReviewData {
-  summary: ReviewSummary;
-  emails: ReviewEmail[];
+export interface GenerateFilteredReviewOptions {
+  reviewData?: ReviewData;
+  writeHtml?: boolean;
+  writeJson?: boolean;
 }
 
-export function generateFilteredReview(source: JobSourceConfig, filters: JobFilterConfig): ReviewData {
+export function generateFilteredReview(
+  source: JobSourceConfig,
+  filters: JobFilterConfig,
+  options: GenerateFilteredReviewOptions = {}
+): ReviewData {
+  const { reviewData: inputReviewData, writeHtml = true, writeJson = true } = options;
   const outputDir = path.join(__dirname, '../Results');
   const inputPath = path.join(outputDir, `${source.outputBaseName}-Review.json`);
   const htmlOutputPath = path.join(outputDir, `${source.outputBaseName}-Review-Filtered.html`);
   const jsonOutputPath = path.join(outputDir, `${source.outputBaseName}-Review-Filtered.json`);
 
-  if (!fs.existsSync(inputPath)) {
-    throw new Error(`Review JSON not found at ${inputPath}. Generate ${path.basename(inputPath)} first.`);
-  }
-
-  const reviewData = JSON.parse(fs.readFileSync(inputPath, 'utf8')) as ReviewData;
+  const reviewData = inputReviewData ?? readReviewDataFromJson(inputPath);
   const filteredData = buildFilteredReview(reviewData, filters);
   const html = buildFilteredHtml(filteredData, source);
 
   fs.mkdirSync(outputDir, { recursive: true });
-  fs.writeFileSync(htmlOutputPath, html);
-  fs.writeFileSync(jsonOutputPath, JSON.stringify(filteredData, null, 2));
-  console.log(`${path.basename(htmlOutputPath)} generated at ${htmlOutputPath}`);
-  console.log(`${path.basename(jsonOutputPath)} generated at ${jsonOutputPath}`);
+  if (writeHtml) {
+    fs.writeFileSync(htmlOutputPath, html);
+    console.log(`${path.basename(htmlOutputPath)} generated at ${htmlOutputPath}`);
+  }
+  if (writeJson) {
+    fs.writeFileSync(jsonOutputPath, JSON.stringify(filteredData, null, 2));
+    console.log(`${path.basename(jsonOutputPath)} generated at ${jsonOutputPath}`);
+  }
 
   return filteredData;
 }
 
+function readReviewDataFromJson(inputPath: string): ReviewData {
+  if (!fs.existsSync(inputPath)) {
+    throw new Error(`Review JSON not found at ${inputPath}. Generate ${path.basename(inputPath)} first.`);
+  }
+  return JSON.parse(fs.readFileSync(inputPath, 'utf8')) as ReviewData;
+}
+
 function buildFilteredReview(reviewData: ReviewData, filters: JobFilterConfig): ReviewData {
-  const sourceId = reviewData.summary.sourceId as JobSourceConfig['id'];
   const sortedEmails = [...reviewData.emails].sort((a, b) => parseEmailDate(b.datetime) - parseEmailDate(a.datetime));
-  const seenLinks = new Set<string>();
+  const seenKeys = new Set<string>();
 
   const filteredEmails = sortedEmails
     .map(email => {
       const jobs = email.jobs
-        .filter(job => applyJobFilters(sourceId, job, filters, seenLinks))
+        .filter(job => applyJobFilters(job, filters, seenKeys))
         .map((job, index) => ({
           ...job,
           index: index + 1
@@ -103,13 +118,12 @@ function buildFilteredReview(reviewData: ReviewData, filters: JobFilterConfig): 
 }
 
 function applyJobFilters(
-  sourceId: JobSourceConfig['id'],
   job: ReviewJob,
   filters: JobFilterConfig,
   seenKeys: Set<string>
 ): boolean {
   if (filters.dedupe) {
-    const key = getJobKey(sourceId, job);
+    const key = (job.key || `${job.title}|${job.company}|${job.location}`.toLowerCase()).trim();
     if (seenKeys.has(key)) return false;
     seenKeys.add(key);
   }
@@ -301,7 +315,7 @@ function buildFilteredHtml(reviewData: ReviewData, source: JobSourceConfig): str
             ${email.jobs.map(job => `
               <article class="job">
                 <h2 class="job-title"><span class="job-index">#${job.index}</span><span>${escapeHtml(job.title)}</span></h2>
-                <p class="job-meta">${escapeHtml([job.company, job.location, job.salary?.text].filter(Boolean).join(' | '))}</p>
+                <p class="job-meta">${escapeHtml([job.company, job.location, job.salary?.text, job.postedDate, job.rating].filter(Boolean).join(' | '))}</p>
                 ${job.details.length
                   ? `<ul class="job-details">${job.details.map(detail => `<li>${escapeHtml(detail)}</li>`).join('')}</ul>`
                   : ''}

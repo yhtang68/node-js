@@ -1,6 +1,6 @@
-# Job Review (LinkedIn + Glassdoor)
+# Job Review (LinkedIn + Glassdoor + Lensa)
 
-This project reads job alert emails from Gmail (LinkedIn + Glassdoor) and generates review files in both HTML and JSON format, including a filtered version with duplicate jobs removed (and optional salary filtering for Glassdoor).
+This project reads job alert emails from Gmail (LinkedIn + Glassdoor + Lensa) and generates review files in both HTML and JSON format, including a filtered version with duplicate jobs removed (and optional salary filtering by source).
 
 ## 1. Project Setup
 
@@ -121,6 +121,18 @@ This script runs:
 "reviewJobs": "ts-node src/index.ts"
 ```
 
+For debug snapshots (JSON in/out on disk), run:
+
+```bash
+npm run reviewJobs:debug
+```
+
+This script runs:
+
+```json
+"reviewJobs:debug": "ts-node src/index.ts --debug"
+```
+
 What it does:
 
 * Starts the review flow from [`index.ts`](/c:/dev/yhtang/node-js/gmail/src/index.ts).
@@ -128,13 +140,19 @@ What it does:
 * Fetches emails from:
   * `jobalerts-noreply@linkedin.com` (LinkedIn)
   * `noreply@glassdoor.com` (Glassdoor)
+  * `jobalert@lensa.com` (Lensa)
 * Parses job entries from those emails.
-* Generates the full review files (per source), for example:
-  * `Results/Linked-In-Jobs-Review.html` + `Results/Linked-In-Jobs-Review.json`
-  * `Results/Glassdoor-Jobs-Review.html` + `Results/Glassdoor-Jobs-Review.json`
-* Generates the filtered review files (per source), for example:
-  * `Results/Linked-In-Jobs-Review-Filtered.html` + `Results/Linked-In-Jobs-Review-Filtered.json`
-  * `Results/Glassdoor-Jobs-Review-Filtered.html` + `Results/Glassdoor-Jobs-Review-Filtered.json`
+* Generates full + filtered HTML review files (per source), for example:
+  * `Results/Linked-In-Jobs-Review.html`
+  * `Results/Linked-In-Jobs-Review-Filtered.html`
+  * `Results/Glassdoor-Jobs-Review.html`
+  * `Results/Glassdoor-Jobs-Review-Filtered.html`
+  * `Results/Lensa-Jobs-Review.html`
+  * `Results/Lensa-Jobs-Review-Filtered.html`
+* In normal mode (`reviewJobs`), filtered review uses in-memory objects (no JSON read/write I/O in the pipeline).
+* In debug mode (`reviewJobs:debug`), JSON snapshots are also written for inspection:
+  * `*-Review.json`
+  * `*-Review-Filtered.json`
 
 Filtered review behavior:
 
@@ -142,9 +160,47 @@ Filtered review behavior:
 * Duplicate jobs are kept in the latest email only.
 * The same jobs are removed from older emails.
 * Any email with `0` jobs after filtering is omitted from the filtered output.
-* For Glassdoor, the filtered review also applies the salary filter configured in [`src/config.ts`](/c:/dev/yhtang/node-js/gmail/src/config.ts).
+* Source-level salary filtering is configured in [`src/config.ts`](/c:/dev/yhtang/node-js/gmail/src/config.ts) (currently applied for Glassdoor and Lensa).
+
+### Run with local sample emails
+
+Run:
+
+```bash
+npm run reviewSamples
+```
+
+This parses explicit sample files under [`Sample`](/c:/dev/yhtang/node-js/gmail/Sample):
+
+* `Sample/LinkedIn.eml`
+* `Sample/Glassdoor.eml`
+* `Sample/Lensa.eml`
+
+And generates the same review + filtered outputs into [`Results`](/c:/dev/yhtang/node-js/gmail/Results).
 
 Open the generated files in [`Results`](/c:/dev/yhtang/node-js/gmail/Results) to review the outputs.
+
+## 4. Architecture (Parser Tiers)
+
+The parser layer uses a tiered design to balance source-specific parsing and shared behavior:
+
+* [`BaseJobEmailParser`](/c:/dev/yhtang/node-js/gmail/src/parsers/BaseJobEmailParser.ts)
+  * Shared Gmail-fetch flow.
+  * Shared `JobRecord` model.
+  * Shared MIME-part extraction for Gmail/sample `.eml` processing.
+* [`HtmlJobEmailParser`](/c:/dev/yhtang/node-js/gmail/src/parsers/HtmlJobEmailParser.ts)
+  * Shared HTML-heavy parsing helpers (decode/normalize/html-text fallback).
+  * Base tier for HTML-style sources.
+* Source parsers:
+  * [`LinkedInParser`](/c:/dev/yhtang/node-js/gmail/src/parsers/LinkedInParser.ts) (plain-text flavor)
+  * [`GlassdoorParser`](/c:/dev/yhtang/node-js/gmail/src/parsers/GlassdoorParser.ts) (hairy HTML flavor)
+  * [`LensaParser`](/c:/dev/yhtang/node-js/gmail/src/parsers/LensaParser.ts) (hairy HTML flavor)
+
+Design intent:
+
+* Keep source flavor logic isolated in child classes.
+* Keep shared flow/utilities centralized in base tiers.
+* Keep field mapping explicit in parser code through `JobRecord` property setters.
 
 ### Cleanup scripts
 
